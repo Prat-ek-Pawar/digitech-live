@@ -322,8 +322,8 @@ li,
   @color declaration
   */
   --tp-common-white: #ffffff;
-  --tp-common-black: #141414;
-  --tp-common-black-2: #232323;
+  --tp-common-black: #040316;
+  --tp-common-black-2: #441b1b;
   --tp-common-black-3: #000;
   --tp-common-black-4: #0a0a0a;
   --tp-common-black-5: #121212;
@@ -358,7 +358,7 @@ li,
   --tp-coffe-2: #552411;
   --tp-cream-1: #B7AB98;
   --tp-cream-2: #CFC292;
-  --tp-text-body: #2e2d2d;
+  --tp-text-body: #040316;
   --tp-theme-green: #A0FF27;
   --tp-theme-pink: #EC6FD5;
   --tp-theme-yellow: #FFB701;
@@ -2835,7 +2835,7 @@ input[type=color] {
   display: inline-block;
   width: 8px;
   height: 8px;
-  border: solid #333;
+  border: solid #040316;
   border-width: 0 1px 1px 0;
   transform: rotate(45deg);
   transition: transform 0.3s ease;
@@ -4875,8 +4875,11 @@ body.tp-magic-cursor #magic-cursor {
   width: 50px;
   line-height: 50px;
   border-radius: 10px;
-  color: var(--tp-common-black);
-  background-color: var(--tp-common-green-regular);
+  color:#040316 ;
+  background-color: #dafa66;
+  
+  /* color: var(--tp-common-black); */
+  /* background-color: var(--tp-common-green-regular); */
 }
 .tp-header-3-style .tp-header-bar button i {
   width: 24px;
@@ -13682,7 +13685,7 @@ body.tp-magic-cursor #magic-cursor {
 }
 .crp-hero-funfact-bg {
   width: 340px;
-  padding: 40px;
+  padding-left: 10px;
   background-repeat: no-repeat;
 }
 .crp-hero-funfact-top-content {
@@ -13721,6 +13724,8 @@ body.tp-magic-cursor #magic-cursor {
 }
 .crp-hero-funfact-wrap {
   margin-left: 20px;
+  padding-top:20px;
+  padding-bottom:20px;
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
   .crp-hero-funfact-wrap {
@@ -15955,7 +15960,7 @@ body.tp-magic-cursor #magic-cursor {
 }
 .ar-about-funfact-item-icon {
   color: #000;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 .ar-about-funfact-item-icon span {
   display: grid;
@@ -15973,7 +15978,7 @@ body.tp-magic-cursor #magic-cursor {
   color: black;
 }
 .ar-about-funfact-item-content a {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: black;
 }
@@ -18208,10 +18213,12 @@ body.tp-magic-cursor #magic-cursor {
   -webkit-background-clip: text;
 }
 .creative-service-item.about-us-4 .creative-service-content > span {
-  color: #111013;
+  /* color: #111013; */
+  color:#040316;
 }
 .creative-service-item.about-us-4 .creative-service-category span {
-  color: #111013;
+  /* color: #111013; */
+  color:#040316;
 }
 .creative-service-item.about-us-4 .creative-service-category span::before {
   background-color: #111013;
@@ -19065,7 +19072,7 @@ body.tp-magic-cursor #magic-cursor {
   place-content: center;
   text-align: center;
   display: inline-block;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .cr-service-item-content p {
   font-size: 16px;
@@ -20533,7 +20540,8 @@ body.tp-magic-cursor #magic-cursor {
 }
 @media (max-width: 767px) {
   .pp-service-details-process-title {
-    font-size: 45px;
+    font-size: 38px;
+    line-height:2.6rem;
   }
 }
 .pp-service-details-process-box::before {
@@ -26121,7 +26129,7 @@ margin-top: -80px;
   align-items: center;
   justify-content: center;
   margin: 0 -1px 0 0px;
-  border: 1px solid #E8E8E8;
+  /* border: 1px solid #E8E8E8; */
   border-bottom: 0;
 }
 .dgm-brand-active {
@@ -43219,7 +43227,8 @@ margin-top: -80px;
   color: var(--tp-common-black);
 }
 .agntix-light .creative-blog-top-content p {
-  color: #4d5051;
+  /* color: #4d5051; */
+  color:#040316;
 }
 .agntix-light .creative-service-content > span {
   color: var(--tp-common-black);
@@ -45407,3 +45416,100 @@ margin-top: -80px;
 /*# sourceMappingURL=main.css.map */
 
 
+
+.gradient-text {
+  background: linear-gradient(90deg, #98829b 0%, #dafa66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+  .clients-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin: 60px auto; /* top & bottom margin */
+  }
+
+  .clients-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+  }
+
+  .client-item {
+    flex: 0 0 280px; /* increased width for each logo div */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-image {
+    height: auto;
+    width: 240px; /* logo size inside */
+    display: block;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+
+  .cr-service-item-icon {
+  background-color: #98829b;
+  width: 60px;   /* adjust size */
+  height: 60px;
+  border-radius: 50%; /* makes it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* font vars */
+:root{
+  --heading-font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+  --body-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Headings -> Poppins (from your earlier request) */
+:is(h1,h2,h3,h4,h5,h6,
+    .h1,.h2,.h3,.h4,.h5,.h6,
+    [role="heading"],
+    [class*="title"],[class*="Title"],
+    [class*="heading"],[class*="Heading"]
+){
+  font-family: var(--heading-font) !important;
+}
+
+/* Body/content -> Open Sans */
+html, body{
+  font-family: var(--body-font) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure common text elements inherit Open Sans even if components set fonts */
+:is(p, span, a, li, ul, ol, small, blockquote, cite, figcaption,
+    label, input, textarea, select, button, td, th, dd, dt){
+  font-family: var(--body-font) !important;
+}
+
+/* Don't break icon fonts */
+i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
+.bi, [class^="bi-"], [class*=" bi-"],           /* Bootstrap Icons */
+.las, .la, [class^="la-"], [class*=" la-"]{     /* Line Awesome (if used) */
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome" !important;
+  font-style: normal;
+}
+
+.tp_img_reveal img{
+  border-radius:18px;
+
+}

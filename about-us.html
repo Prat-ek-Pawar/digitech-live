@@ -5,10 +5,38 @@
 
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>About Us | The DigiTech Solutions</title>
+  <title>About Us | Digital Marketing & Web development Company Pune</title>
   <meta name="description"
-    content="Learn about The  DigiTech Solutions, your trusted digital partner in Pune for SEO, websites, branding, and ads. We blend creativity, strategy, and performance.">
+    content="Learn about our journey as a top digital marketing & web development company in Pune. Trusted by 300+ clients for SEO, web design & B2B growth solutions.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+       <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url"
+      content="https://thedigitechsolutions.com/about-us.html">
+    <meta property="og:title"
+      content="About Us | Digital Marketing & Web development Company Pune">
+    <meta property="og:description"
+      content="Learn about our journey as a top digital marketing & web development company in Pune. Trusted by 300+ clients for SEO, web design & B2B growth solutions.">
+    <meta property="og:image"
+      content="https://thedigitechsolutions.com/assets/digital-marketing-and-web-development-company-pune.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@auctus_spine">
+    <meta name="twitter:url"
+      content="https://thedigitechsolutions.com/about-us.html">
+    <meta name="twitter:title"
+      content="About Us | Digital Marketing & Web development Company Pune">
+    <meta name="twitter:description"
+      content="Learn about our journey as a top digital marketing & web development company in Pune. Trusted by 300+ clients for SEO, web design & B2B growth solutions.">
+    <meta name="twitter:image"
+      content="https://thedigitechsolutions.com/assets/digital-marketing-and-web-development-company-pune.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical"
+      href="https://thedigitechsolutions.com/about-us.html">
+
 
   <!-- Place favicon.ico in the root directory -->
    <link
@@ -1907,7 +1935,7 @@
     }
 
     .contact-button {
-      background: #040316;
+      background: #dafa66;
       color: white;
       border: none;
       padding: 12px 24px;
@@ -1923,7 +1951,7 @@
     }
 
     .contact-button:hover {
-      background: #040316;
+      background: #98829b;
       color: white;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(171, 253, 20, 0.3);
@@ -2026,6 +2054,35 @@
         font-size: 14px;
       }
     }
+    /* Mobile: left-align Vision/Mission content */
+@media (max-width: 576px) {
+  .tp-vision-content,
+  .tp-mission-content,
+  .tp-vision-title,
+  .tp-vision-description,
+  .tp-mission-title,
+  .tp-mission-description,
+  .tp-mission-list,
+  .tp-mission-closing-text {
+    text-align: start !important; /* was centered */
+  }
+}
+/* Mobile: smaller heading + left-align all text */
+@media (max-width: 576px) {
+  .tp-about-agency-left,
+  .tp-about-agency-subtitle,
+  .tp-about-agency-title,
+  .tp-about-agency-description {
+    text-align: left !important;
+  }
+
+  .tp-about-agency-title {
+    font-size: 30px !important;  /* reduce from 58px */
+    line-height: 1.25;
+  }
+}
+
+
 
     /* Extra Small Mobile */
     @media (max-width: 480px) {
@@ -2277,7 +2334,7 @@
 
 .dgm-footer-widget-title i {
   font-size: 20px;
-  color: #25d366;
+  color: #051c48;
 }
 
 .footer-address-item {
@@ -2289,7 +2346,7 @@
 
 .footer-address-item i {
   font-size: 18px;
-  color: #007bff;
+  color: #051c48;
   margin-top: 2px;
   min-width: 20px;
 }
@@ -2309,7 +2366,7 @@
 
 .footer-phone-item i {
   font-size: 18px;
-  color: #25d366;
+  color: #051c48;
 }
 
 .footer-phone-item h6 {
@@ -2500,6 +2557,131 @@
 
   </style>
 
+<style>
+  /* Section background (kept) */
+  .tp-about-agency-area{
+    background: radial-gradient(120% 120% at 50% 0%, #141617 0%, #0b0c0f 60%, #0a0b0e 100%);
+    padding: 90px 0 110px;
+  }
+
+  /* Shared max-width for BOTH content and cards */
+  .tp-about-agency-container{ display:block !important; width:100%; }
+  .tp-about-agency-left,
+  .tp-about-agency-right{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  /* Heading/content (unchanged) */
+  .tp-about-agency-left{ text-align:center; margin-bottom:48px; }
+  .tp-about-agency-subtitle{
+    display:inline-block; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+    color:rgba(255,255,255,.75) !important; margin-bottom:16px;
+  }
+  .tp-about-agency-title{
+    font-size: clamp(32px, 6vw, 68px); line-height:1.1; letter-spacing:-.5px;
+    margin:0 0 10px; color:#fff !important;
+  }
+  .tp-about-agency-title .tp-about-agency-highlight{
+    color:#dafa66 !important; -webkit-text-fill-color:#dafa66; background:none !important;
+  }
+  .tp-about-agency-description{
+    margin:10px 0 0; font-size:16px; line-height:1.75; color:rgba(255,255,255,.72) !important;
+  }
+
+  /* Default responsive grid (mobile/tablet/desktop base) */
+  .tp-about-agency-features{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* natural 1→2→3→4 */
+    gap:24px;
+    counter-reset: feature;
+    grid-auto-flow: dense;
+  }
+
+  /* Hide any old bullets/icons */
+  .tp-about-agency-feature-bullet,
+  .tp-about-agency-feature-icon{ display:none; }
+
+  /* Card styling */
+  .tp-about-agency-feature-item{
+    position:relative; padding:22px; border-radius:22px;
+    background: radial-gradient(120% 120% at 50% 0%, #1a1e1f 0%, #141719 50%, #101214 100%);
+    border:1px solid rgba(255,255,255,.06);
+    box-shadow:0 20px 54px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .tp-about-agency-feature-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 28px 72px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
+    border-color:rgba(218,250,102,.22);
+  }
+
+  /* Lime badge */
+  .tp-about-agency-feature-item::before{
+    counter-increment: feature; content: counter(feature, decimal-leading-zero);
+    position:absolute; top:16px; left:16px; font-weight:700; font-size:16px; line-height:1;
+    color:#040316; background:#dafa66; border-radius:10px; padding:8px 10px;
+    box-shadow:0 6px 18px rgba(218,250,102,.35);
+  }
+
+  .tp-about-agency-feature-title{
+    margin:42px 0 6px; font-size:20px; font-weight:700; color:#fff !important;
+  }
+  .tp-about-agency-feature-description{
+    margin:0; font-size:15px; line-height:1.7; color:rgba(255,255,255,.72) !important;
+  }
+
+  /* ===== Desktop/Laptop: keep first row 3 cards, last 2 cards wider ===== */
+  @media (min-width: 992px){
+    /* Force a 6-track grid:
+       - First 3 cards span 2 tracks each  -> 3 equal cards on row 1
+       - Last 2 cards span 3 tracks each   -> 2 wider cards on row 2 */
+    .tp-about-agency-features{ grid-template-columns: repeat(6, 1fr); }
+
+    .tp-about-agency-features > .tp-about-agency-feature-item:nth-child(1),
+    .tp-about-agency-features > .tp-about-agency-feature-item:nth-child(2),
+    .tp-about-agency-features > .tp-about-agency-feature-item:nth-child(3){
+      grid-column: span 2;
+    }
+
+    .tp-about-agency-features > .tp-about-agency-feature-item:nth-child(4),
+    .tp-about-agency-features > .tp-about-agency-feature-item:nth-child(5){
+      grid-column: span 3;
+    }
+  }
+
+  /* Tighten on very small screens */
+  @media (max-width:575.98px){
+    .tp-about-agency-feature-item{ padding:18px; border-radius:18px; }
+    .tp-about-agency-feature-title{ margin-top:36px; font-size:18px; }
+    .tp-about-agency-features{ gap:18px; }
+  }
+</style>
+
+<!-- Put these near the top of <head> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Stack the whole block vertically */
+  .ar-about-us-4-title-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* space between title row and content */
+  }
+
+  /* Keep only the title + arrow in a row */
+  .ar-about-us-4-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+</style>
 </head>
 
 <body class="tp-magic-cursor" data-bg-color="#FFFFFF">
@@ -2512,7 +2694,7 @@
     </a>
 
   <!-- Begin magic cursor -->
-  <div id="magic-cursor" class="cursor-bg-red-2">
+  <div id="magic-cursor" class="cursor-white-bg">
     <div id="ball"></div>
   </div>
   <!-- End magic cursor -->
@@ -2553,9 +2735,9 @@
           <div class="tp-header-logo">
             <a href="/index.html">
               <img data-width="120" class="logo-white"
-                src="/assets/the-digitech-solutions-logo.png" alt="The Digitech Solutions Logo">
+                src="/assets/digitech-logo.jpg" alt="The Digitech Solutions Logo">
               <img data-width="120" class="logo-black d-none"
-                src="/assets/the-digitech-solutions-logo.png" alt="The Digitech Solutions Logo" >
+                src="/assets/digitech-logo.jpg" alt="The Digitech Solutions Logo" >
             </a>
           </div>
         </div>
@@ -3733,8 +3915,8 @@
         <h3 class="tp-offcanvas-title sm">Information</h3>
         <ul>
           <li><a href="tel:+919822857421">+91 98228 57421</a></li>
-          <li><a href="mailto:info@thedigitechsolutions.com ">info@thedigitechsolutions.com </a></li>
-          <li><a href="javascript:void(0)">Astoria Royals C - 106, Mukai Chowk, Ravet, Pune</a></li>
+          <li><a href="mailto:official@thedigitechsolutions.com ">official@thedigitechsolutions.com </a></li>
+          <li><a href="javascript:void(0)">Neo95, SB Patil School Rd, opp. to Goodluck cafe, Ravet, Pimpri-Chinchwad, Pune</a></li>
         </ul>
       </div>
       
@@ -3762,7 +3944,7 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/the_digitech.solutions/" target="_blank">
+            <a href="https://www.instagram.com/the.digitech.solutions?igsh=Y200YjhkY3hrbjJt" target="_blank">
               <span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g>
@@ -3789,40 +3971,55 @@
       <main>
 
 
-        <!-- hero area start -->
-        <div class="ar-hero-area p-relative include-bg"
-          data-background="/assets/blog-bradcum-bg.png">
-          <div class="ar-about-us-4-shape">
-            <img src="/assets/portfolio-shape.png" alt="Portfolio Shape">
-          </div>
-          <div class="container container-1230">
-            <div class="ar-about-us-4-hero-ptb">
-              <div class="row justify-content-center">
-                <div class="col-xl-12">
-                  <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
-                    <h3 class="ar-about-us-4-title" style="color: #040316;">Welcome to The DigiTech Solutions</h3>
-                    <div class="ar-about-us-4-title-box d-flex justify-content-end">
-                      <span class="tp-section-subtitle pre" style="color: #040316;">About Us</span>
-                      <div class="ar-about-us-4-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
-                          <rect y="4" width="80" height="1" fill="#111013" />
-                          <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        </svg>
-                      </div>
-                      <p style="color: #040316;"> <strong style="color: #040316;">The DigiTech Solutions</strong> is a full-service digital marketing and web development agency
-                        headquartered in Pune, Maharashtra. Since our inception, we’ve been passionate about helping
-                        businesses grow, transform, and thrive in the digital age. Our approach combines creativity,
-                        strategy, and technology to build solutions that don't just look good but also perform
-                        exceptionally. <br>
-                      Whether you're a startup looking to establish an online presence or an established brand aiming to scale, we provide tailored solutions that align with your goals. From designing stunning websites to running performance-driven ad campaigns, we partner with you every step of the way to turn your digital vision into reality.</p>
-                    </div>
-                  </div>
+
+<!-- hero area start -->
+<div class="ar-hero-area p-relative include-bg" data-background="/assets/blog-bradcum-bg.png">
+  <div class="ar-about-us-4-shape">
+    <img src="/assets/portfolio-shape.png" alt="Portfolio Shape">
+  </div>
+  <div class="container container-1230">
+    <div class="ar-about-us-4-hero-ptb">
+      <div class="row justify-content-center">
+        <div class="col-xl-12">
+          <div class="ar-hero-title-box tp_fade_anim" data-delay=".3">
+            <h3 class="ar-about-us-4-title" style="color: #040316; font-family: Poppins !important;">Welcome to The DigiTech Solutions</h3>
+
+            <!-- About Us section -->
+            <div class="ar-about-us-4-title-box">
+              <!-- Title + Icon row -->
+              <div class="ar-about-us-4-title-row">
+                <span class="tp-section-subtitle pre" style="color: #040316;">About Us</span>
+                <div class="ar-about-us-4-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="81" height="9" viewBox="0 0 81 9" fill="none">
+                    <rect y="4" width="80" height="1" fill="#111013" />
+                    <path d="M77 7.96366L80.5 4.48183L77 1" stroke="#111013" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
                 </div>
               </div>
+
+              <!-- Content below -->
+              <p style="color: #040316;">
+                <strong style="color: #040316;">The DigiTech Solutions</strong> is a full-service digital marketing and web
+                development agency headquartered in Pune, Maharashtra. Since our inception, we’ve been passionate about
+                helping businesses grow, transform, and thrive in the digital age. Our approach combines creativity,
+                strategy, and technology to build solutions that don't just look good but also perform exceptionally. <br>
+                Whether you're a startup looking to establish an online presence or an established brand aiming to scale,
+                we provide tailored solutions that align with your goals. From designing stunning websites to running
+                performance-driven ad campaigns, we partner with you every step of the way to turn your digital vision into
+                reality.
+              </p>
             </div>
+            <!-- /About Us section -->
+
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- hero area end -->
+
         <!-- hero area end -->
 
         <!-- about us 4 area start -->
@@ -3903,13 +4100,13 @@
             <div class="leadership-row">
               <!-- Image Section -->
               <div class="image-section">
-                <img src="/assets/manager-vishwajit-m.jpg"
+                <img src="/assets/vishwajit.png"
                   alt="Vishwajit Mohol  - Managing Director" class="leader-image">
               </div>
 
               <!-- Content Section -->
               <div class="content-section">
-                <div class="leader-role" style="color: #98829b">Managing Director</div>
+                <div class="leader-role" style="color: #98829b">CEO</div>
                 <h1 class="leader-name">Vishwajit Mohol </h1>
                 <p class="leader-description">
                   Meet the driving force behind The DigiTech Solutions. With a passion for digital innovation and brand
@@ -3941,7 +4138,7 @@
               <div class="tp-vision-block">
                 <div class="tp-vision-content">
                   <div class="tp-vision-subtitle">Our Vision</div>
-                  <h2 class="tp-vision-title">Driving success through a software <span
+                  <h2 class="tp-vision-title" style="font-family: Poppins !important;">Driving success through a software <span
                       class="tp-vision-highlight">solutions</span></h2>
                   <p class="tp-vision-description">
                     Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow
@@ -3962,7 +4159,7 @@
               <div class="tp-mission-block">
                 <div class="tp-mission-content">
                   <div class="tp-mission-subtitle">Our Mission</div>
-                  <h2 class="tp-mission-title">Empowering businesses through <span
+                  <h2 class="tp-mission-title" style="font-family: Poppins !important;">Empowering businesses through <span
                       class="tp-mission-highlight">innovation</span></h2>
                   <p class="tp-mission-description">
                     Our mission is to empower businesses through data-driven digital marketing, breakthrough technology,
@@ -4184,7 +4381,7 @@
             <!-- Left Content -->
             <div class="tp-about-agency-left">
               <div class="tp-about-agency-subtitle">Why Choose DigiTech</div>
-              <h2 class="tp-about-agency-title">
+              <h2 class="tp-about-agency-title" style="font-size: 58px; font-family: Poppins !important; ">
                 Crafting <span class="tp-about-agency-highlight">unique digital</span> experiences that elevate your
                 brand
               </h2>
@@ -4260,6 +4457,7 @@
 
           </div>
         </section>
+        
         <!-- funfact area start -->
         <!-- <div class="tp-funfact-area">
                     <div class="tp-funfact-panel-wrap">
@@ -4559,7 +4757,7 @@
               <div class="col-lg-6">
                 <div class="tp-work-title-box tp-panel-pin">
                   <span class="tp-section-subtitle pre mb-20" style="color: #040316 !important;">How we Work</span>
-                  <h2 class="tp-section-title " style="font-size: 80px !important;color: #040316 !important;">Our <br> design thinking process</h2>
+                  <h2 class="tp-section-title " style="font-size: 80px !important;color: #040316 !important; font-family: Poppins !important;">Our <br> design thinking process</h2>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -4622,32 +4820,35 @@
               <div class="col-xl-6">
                 <div class="tp-testimonial-title-wrap z-index-3">
                   <div class="tp-testimonial-title-box mb-75 text-center">
-                    <h4 class="tp-section-title text-[#2e2d2d]" style="font-size: 80px !important;margin-top:-70px; color: #040316 !important;">meet <br>
+                    <h4 class="tp-section-title text-[#2e2d2d]" style="font-size: 80px !important;margin-top:-70px; color: #040316 !important; font-family: Poppins !important;">meet <br>
                       our team</h4>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
           <div class="tp-team-slider-wrap">
             <div class="tp-team-slider-active swiper-container">
               <div class="swiper-wrapper slide-transtion">
+                <!-- vishwajit -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/manager-vishwajit-m.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/vishwajit.png"
                           alt="Vishwajit M Founder"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Vishwajit M</a></h4>
-                        <span>Founder</span>
+                        <span>CEO</span>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- mitesh -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/mitesh-s-marketing.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/mitesh.png"
                           alt="Mitesh S Marketing Executive"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Mitesh S </a></h4>
@@ -4656,10 +4857,11 @@
                     </div>
                   </div>
                 </div>
+                <!-- vaibhav -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/vaibhav-m.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/vaibhav.png"
                           alt="Vaibhav M DevSecOps"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Vaibhav M </a></h4>
@@ -4668,38 +4870,171 @@
                     </div>
                   </div>
                 </div>
+                  <!-- divya  -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/divya-k-hr.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/divya.png"
                           alt="Divya K HR"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Divya K</a></h4>
-                        <span>HR</span>
+                        <span>Project Manager</span>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- Ritik  -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/ritik-r.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/ritik.png"
                           alt="Ritik R Marketing Head"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Ritik R</a></h4>
-                        <span>Marketing Head</span>
+                        <span>Sr. Developer/ MH</span>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- bhima -->
                 <div class="swiper-slide">
                   <div class="tp-team-item">
                     <div class="tp-team-item-thumb">
-                      <a href="javascriptvoid:0"><img src="/assets/bhima-p.jpg"
+                      <a href="javascriptvoid:0"><img src="/assets/bhima.png"
                           alt="Bhima P Editor & Designer"></a>
                       <div class="studio-team-content text-center">
                         <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Bhima P</a></h4>
-                        <span>Editor & Designer</span>
+                        <span>DOP </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- tanmay -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/tanmay.png"
+                          alt="Tanmay Singh"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Tanmay S</a></h4>
+                        <span>Jr. Developer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- pratik -->
+                  <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/pratik.png"
+                          alt="Pratik Pawar"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Pratik P</a></h4>
+                        <span>Jr. Developer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- divya p -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/divya-p.png"
+                          alt="Divya P"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Divya P</a></h4>
+                        <span>Jr. Developer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- samata -->
+                  <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/samata.png"
+                          alt="Samata P"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Samata P</a></h4>
+                        <span>SEO Expert</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Shaileja -->
+                  <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/shaily.png"
+                          alt="Shaileja S"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Shaileja S</a></h4>
+                        <span>Jr. SEO Executive</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pankaj -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/pankaj.png"
+                          alt="Pankaj K"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Pankaj K</a></h4>
+                        <span>Video Editor</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ayush -->
+                   <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/ayush.png"
+                          alt="Ayush S"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Ayush S</a></h4>
+                        <span>SMO Manager</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- kaustubh -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/koustubh.png"
+                          alt="Kaustubh P"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Koustubh J</a></h4>
+                        <span>Performance Merketer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- apeksha -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/apeksha.png"
+                          alt="Apeksha Bide"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Apeksha B</a></h4>
+                        <span>Jr. Developer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- gaytri -->
+                 <div class="swiper-slide">
+                  <div class="tp-team-item">
+                    <div class="tp-team-item-thumb">
+                      <a href="javascriptvoid:0"><img src="/assets/gaytri.png"
+                          alt="Gaytri Shelke"></a>
+                      <div class="studio-team-content text-center">
+                        <h4 class="studio-team-title-sm"><a href="javascriptvoid:0">Gaytri S</a></h4>
+                        <span>Jr. Developer</span>
                       </div>
                     </div>
                   </div>
@@ -4707,9 +5042,8 @@
               </div>
             </div>
           </div>
-        </div>
-
-       
+        </div> 
+    
         <!-- testimonial area end -->
 
         <!-- award area start -->
@@ -4856,7 +5190,7 @@
 
       </main>
 
-     <footer class="pb-20" style="background-color: hsla(0, 0%, 97%, 0.05) !important ;">
+      <footer class="pb-20">
           <div class="dgm-footer-bg p-relative">
            <!-- footer area start -->
             <div class="dgm-footer-area black-bg-5 pt-80 pb-5">
@@ -4872,7 +5206,7 @@
                           > <img
                   data-width="160"
                   class="logo-white"
-                  src="/assets/the-digitech-solutions-logo.png"
+                  src="/assets/digitech-logo.jpg"
                   alt="The Digitech Solutions Logo"
                 ></a>
                       </div>
@@ -4923,7 +5257,7 @@
                             </svg>
                           </span>
                         </a>
-                        <a href="https://www.instagram.com/the_digitech.solutions/" target="_blank">
+                        <a href="https://www.instagram.com/the.digitech.solutions?igsh=Y200YjhkY3hrbjJt" target="_blank">
                           <span>
                             <svg
                               width="16"
@@ -5019,16 +5353,15 @@
                       data-delay=".7"
                     >
                       <h4 class="dgm-footer-widget-title">
-                        <i class="fas fa-map-marker-alt"></i>
                         Address:
                       </h4>
                       <div class="footer-address-item">
                         <i class="fas fa-home"></i>
-                        <p>Astoria Royals C - 106, Mukai Chowk, Ravet, Pune</p>
+                        <p style="color: #040316 !important;">Neo95, SB Patil School Rd, opp. to Goodluck cafe, Ravet, Pimpri-Chinchwad, Pune</p>
                       </div>
                       <div class="footer-phone-item">
                         <i class="fas fa-phone"></i>
-                        <h6>+91 98228 57421</h6>
+                        <h6 style="color: #040316 !important;">+91 98228 57421</h6>
                       </div>
                     </div>
                   </div>
@@ -5045,12 +5378,12 @@
                     <div
                       class="tp-copyright-2-left text-center text-md-start z-index-1"
                     >
-                      <p>© 2025 <a href="javascriptvoid:0">DigitechSolution</a>. All Rights Reserved.</p>
+                      <p>© 2025 <a href="javascriptvoid:0">DigitechSolutions</a>. All Rights Reserved.</p>
                     </div>
                   </div>
                   <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                     <div class="tp-copyright-2-middle">
-                      <a href="mailto:info@thedigitechsolutions.com">
+                      <a href="mailto:official@thedigitechsolutions.com">
                         <span>
                           <svg
                             width="18"
@@ -5077,7 +5410,7 @@
                             />
                           </svg>
                         </span>
-                        info@thedigitechsolutions.com
+                        official@thedigitechsolutions.com
                       </a>
                     </div>
                   </div>
