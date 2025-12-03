@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Best Web & Website Development Company in Pune</title>
+  <meta name="description"
+    content="Get the best high-converting web and website development services in Pune. We build responsive, SEO-friendly sites trusted by 100+ local businesses.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="canonical" href="https://thedigitechsolutions.com/service/website-developement.html">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/the-digitech-solutions-favicon.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../../assets/css/slick.css">
+  <link rel="stylesheet" href="../../assets/css/font-awesome-pro.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- GSAP & Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* --- GLOBAL SETTINGS --- */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container-custom {
+      max-width: 85%;
+      margin: 0 auto;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    /* --- HEADER & MEGA MENU FIX --- */
+    #header-sticky {
+      z-index: 9999;
+      position: relative;
+    }
+
+    .tp-header-menu ul li {
+      position: relative;
+      height: 100%;
+      display: inline-block;
+    }
+
+    /* 1. The Bridge: Invisible area to catch mouse movement so menu doesn't close */
+    .tp-header-menu ul li.has-dropdown::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      /* Exact bottom of the link */
+      width: 100%;
+      height: 40px;
+      /* Covers the gap */
+      background: transparent;
+      z-index: 99998;
+    }
+
+    /* 2. The Menu Panel */
+    .tp-megamenu-wrapper {
+      position: absolute;
+      top: 100%;
+      /* Touches the bottom of the nav bar */
+      left: 0;
+      width: 100%;
+      background-color: #051c48 !important;
+      /* Premium Dark Blue */
+      z-index: 99999 !important;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.3s ease-in-out;
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      border-top: 3px solid #dafa66;
+      pointer-events: none;
+      /* Prevents accidental clicks when hidden */
+    }
+
+    /* 3. Hover State */
+    .tp-header-menu ul li.has-dropdown:hover .tp-megamenu-wrapper {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Menu Text Styles */
+    .tp-megamenu-title {
+      color: #dafa66 !important;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tp-megamenu-list ul li a {
+      color: #fff !important;
+      font-size: 15px;
+      font-weight: 400;
+      display: block;
+      padding: 5px 0;
+      transition: 0.2s;
+    }
+
+    .tp-megamenu-list ul li a:hover {
+      color: #dafa66 !important;
+      padding-left: 5px;
+    }
+
+
+    /* --- HERO --- */
+    #premium-hero-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #ffffff;
+      color: #040316;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 120px;
+      overflow: hidden;
+    }
+
+    #three-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-container-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 85%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+      gap: 50px;
+    }
+
+    .hero-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .hero-lottie-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      color: #040316;
+    }
+
+    .hero-title .highlight {
+      color: #7463FF;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 35px;
+      background: #040316;
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hero-btn:hover {
+      background: #7463FF;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 991px) {
+      #premium-hero-wrapper {
+        min-height: auto;
+        padding-bottom: 60px;
+      }
+
+      .hero-container-flex {
+        flex-direction: column-reverse;
+        text-align: center;
+        width: 90%;
+        gap: 20px;
+      }
+
+      .hero-lottie-wrapper {
+        width: 100%;
+      }
+
+      lottie-player {
+        width: 100% !important;
+        height: 300px !important;
+      }
+    }
+
+    /* --- FORM (Minimal) --- */
+    .pp-enquiry-card {
+      background: #fff;
+      max-width: 500px;
+      margin-left: auto;
+      border-left: 1px solid #eee;
+      padding-left: 40px;
+    }
+
+    .pp-enquiry-header {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #040316;
+      margin-bottom: 30px;
+      letter-spacing: -1px;
+    }
+
+    .minimal-input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .minimal-input {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #e1e1e1;
+      background: transparent;
+      padding: 12px 0;
+      font-size: 16px;
+      color: #040316;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .minimal-input:focus {
+      border-bottom-color: #7463FF;
+    }
+
+    .pp-btn-send {
+      background-color: #040316;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 45px;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .pp-btn-send:hover {
+      background-color: #7463FF;
+    }
+
+
+    /* --- STICKY SPLIT SECTION (Template Logic) --- */
+    .sticky-split-section {
+      background-color: #f8f9fa;
+      padding: 0 0 100px 0;
+      position: relative;
+    }
+
+    .sticky-split-wrapper {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 100px;
+    }
+
+    .sticky-left-content {
+      width: 35%;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 150px;
+      /* Sticks here */
+      padding-right: 50px;
+      z-index: 10;
+      height: auto;
+      min-height: 200px;
+    }
+
+    .scrolling-right-content {
+      width: 65%;
+      position: relative;
+      padding-bottom: 50px;
+    }
+
+    .info-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      /* Layout logic managed by GSAP */
+    }
+
+    .info-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #040316;
+    }
+
+    .info-card p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .info-card-icon {
+      min-width: 80px;
+      height: 80px;
+      background: #f0f4ff;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7463FF;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover .info-card-icon {
+      background: #7463FF;
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 991px) {
+      .sticky-split-wrapper {
+        flex-direction: column;
+      }
+
+      .sticky-left-content {
+        width: 100%;
+        position: relative;
+        height: auto;
+        margin-bottom: 50px;
+        top: 0;
+      }
+
+      .scrolling-right-content {
+        width: 100%;
+      }
+    }
+
+
+    /* --- BACKEND GRID (Creative Animations) --- */
+    .backend-section {
+      background-color: #040316;
+      padding: 120px 0;
+      color: #fff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 35px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #dafa66;
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      color: #dafa66;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #aaa;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* --- CREATIVE HOVER ANIMATIONS --- */
+
+    /* 1. Spin (Gears/Settings) */
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .feature-card:hover .fa-cogs {
+      animation: spin 2s linear infinite;
+    }
+
+    /* 2. Flash/Scale (Lightning/Bolt) */
+    @keyframes flash {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+    }
+
+    .feature-card:hover .fa-bolt {
+      animation: flash 0.6s ease infinite;
+      color: #fff;
+      text-shadow: 0 0 10px #dafa66;
+    }
+
+    /* 3. Flicker (Fire) */
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: scaleY(1.1);
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .feature-card:hover .fa-fire {
+      animation: flicker 0.8s ease-in-out infinite;
+      color: #ff5722;
+    }
+
+    /* 4. Pulse (Server) */
+    @keyframes pulse-glow {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(218, 250, 102, 0);
+      }
+
+      50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(218, 250, 102, 0.5);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .feature-card:hover .fa-server {
+      animation: pulse-glow 1.5s infinite;
+    }
+
+    /* 5. Bounce (Database) */
+    @keyframes bounce-icon {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .feature-card:hover .fa-database {
+      animation: bounce-icon 1s ease infinite;
+    }
+
+    /* 6. Float (Cloud) */
+    @keyframes float-icon {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px) translateX(2px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .feature-card:hover .fa-cloud {
+      animation: float-icon 2s ease-in-out infinite;
+    }
+
+    }
+
+    .review-card {
+      background: #f8f9fa;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 15px;
+      border: 1px solid #eee;
+    }
+
+    /* --- FLOATING BUTTONS --- */
+    .phone-float {
+      margin-right: 20px;
+      position: fixed;
+      width: 52px;
+      height: 52px;
+      bottom: 180px;
+      right: 20px;
+      background-color: #007bff;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      margin-right: 20px;
+      position: fixed;
+      width: 52px;
+      height: 52px;
+      bottom: 120px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+
+    /* --- Section & Grid Styling --- */
+  .backend-section {
+    background-color: #111; /* Dark background assumed based on text colors */
+    padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  /* --- Card Styling --- */
+  .feature-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 30px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: #555;
+  }
+
+  /* --- Icon Styling --- */
+  .feature-icon {
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  /* Icon Base Size & Alignment */
+  .feature-icon i {
+    font-size: 2.5rem; 
+    transition: all 0.3s ease;
+  }
+
+  /* --- Typography --- */
+  .feature-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .feature-card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* =========================================
+     ANIMATIONS & BRAND COLORS 
+     ========================================= */
+
+  /* 1. HTML5 - Orange - Bounce */
+  .icon-html { color: #E34F26; }
+  .feature-card:hover .icon-html {
+    animation: bounce 1s infinite;
+  }
+
+  /* 2. JS - Yellow - Wiggle/Shake */
+  .icon-js { color: #F7DF1E; }
+  .feature-card:hover .icon-js {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+
+  /* 3. React - Cyan - Spin (Atom effect) */
+  .icon-react { color: #61DAFB; }
+  .feature-card:hover .icon-react {
+    animation: spin 3s linear infinite;
+  }
+
+  /* 4. Angular - Red - Flip (Shield effect) */
+  .icon-angular { color: #DD0031; }
+  .feature-card:hover .icon-angular {
+    animation: flip 1.5s ease-in-out infinite;
+  }
+
+  /* 5. Vue - Green - Pulse (Reactivity) */
+  .icon-vue { color: #4FC08D; }
+  .feature-card:hover .icon-vue {
+    animation: pulse 1.5s infinite;
+  }
+
+  /* 6. Flutter - Blue - Float/Fly */
+  .icon-flutter { color: #02569B; }
+  .feature-card:hover .icon-flutter {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  /* 7. Tailwind - Sky - Dash/Wind */
+  .icon-tailwind { color: #38B2AC; }
+  .feature-card:hover .icon-tailwind {
+    animation: windDash 1s ease-in-out infinite;
+  }
+
+  /* --- Keyframes Definitions --- */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes flip {
+    0% { transform: perspective(400px) rotateY(0); }
+    50% { transform: perspective(400px) rotateY(180deg); }
+    100% { transform: perspective(400px) rotateY(360deg); }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px) translateX(2px); }
+  }
+
+  @keyframes windDash {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(10px); opacity: 0.7; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  /* --- Section & Grid Styling (Shared with Frontend) --- */
+  .backend-section {
+    background-color: #111;
+    padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  /* --- Card Styling (Clean Matte Look) --- */
+  .feature-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 30px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: #555;
+  }
+
+  /* --- Typography --- */
+  .feature-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .feature-card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* --- Icon Base Styling --- */
+  .feature-icon {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  
+  .feature-icon i {
+    font-size: 2.5rem; 
+    transition: all 0.3s ease;
+  }
+
+  /* =========================================
+     BACKEND SPECIFIC COLORS & ANIMATIONS 
+     ========================================= */
+
+  /* 1. PHP - Purple/Blue - Pulse */
+  .icon-php { color: #777BB4; }
+  .feature-card:hover .icon-php { animation: pulse 1.5s infinite; }
+
+  /* 2. Laravel - Red - Spin (Gears) */
+  .icon-laravel { color: #FF2D20; }
+  .feature-card:hover .icon-laravel { animation: spin 3s linear infinite; }
+
+  /* 3. .NET - Purple - Flip (Windows) */
+  .icon-net { color: #512BD4; }
+  .feature-card:hover .icon-net { animation: flip 1.5s ease-in-out infinite; }
+
+  /* 4. Node - Green - Flash/Shake */
+  .icon-node { color: #68A063; }
+  .feature-card:hover .icon-node { animation: wiggle 0.5s ease-in-out infinite; }
+
+  /* 5. Python - Blue/Yellow - Wiggle (Snake) */
+  .icon-python { color: #3776AB; }
+  .feature-card:hover .icon-python { animation: wiggle 2s ease-in-out infinite; }
+
+  /* 6. SQL - Blue - Bounce (Database) */
+  .icon-sql { color: #00758F; }
+  .feature-card:hover .icon-sql { animation: bounce 1s infinite; }
+
+  /* 7. Mongo - Green - Float (Leaf) */
+  .icon-mongo { color: #47A248; }
+  .feature-card:hover .icon-mongo { animation: float 2s ease-in-out infinite; }
+
+  /* 8. Firebase - Yellow - Flicker (Fire) */
+  .icon-firebase { color: #FFCA28; }
+  .feature-card:hover .icon-firebase { animation: flicker 0.2s infinite alternate; }
+
+  /* --- Animation Keyframes --- */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes flip {
+    0% { transform: perspective(400px) rotateY(0); }
+    50% { transform: perspective(400px) rotateY(180deg); }
+    100% { transform: perspective(400px) rotateY(360deg); }
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px) translateX(2px); }
+  }
+  @keyframes flicker {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.8; transform: scale(1.05); }
+  }
+
+  /* --- MOBILE AUTOPLAY LOGIC --- */
+  @media (max-width: 991px) {
+    /* Force animations to run continuously on mobile without hover */
+    .feature-card .icon-php { animation: pulse 2s infinite; }
+    .feature-card .icon-laravel { animation: spin 4s linear infinite; }
+    .feature-card .icon-net { animation: flip 3s ease-in-out infinite; }
+    .feature-card .icon-node { animation: wiggle 2s ease-in-out infinite; }
+    .feature-card .icon-python { animation: wiggle 3s ease-in-out infinite; }
+    .feature-card .icon-sql { animation: bounce 2s infinite; }
+    .feature-card .icon-mongo { animation: float 3s ease-in-out infinite; }
+    .feature-card .icon-firebase { animation: flicker 0.5s infinite alternate; }
+  }
+
+      /* --- Section Container --- */
+  .cms-frameworks-section {
+    background-color: #0a0a0a; /* Dark background */
+    padding: 100px 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* --- Text Overrides (Using !important to ignore inline dark styles) --- */
+  .cms-frameworks-section .tp-career-title {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px;
+    margin-bottom: 50px !important;
+  }
+
+  .cms-frameworks-section h4 {
+    color: #e0e0e0 !important;
+    transition: all 0.3s ease;
+  }
+
+  .cms-frameworks-section p {
+    color: #888 !important;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    transition: color 0.3s ease;
+  }
+
+  /* --- Number Styling --- */
+  .cms-frameworks-section span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800 !important;
+    opacity: 0.3;
+    transform-origin: left bottom;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #fff !important; /* Base color before hover */
+    margin-bottom: 15px !important;
+  }
+
+  /* --- Column Interaction Area --- */
+  /* Target the bootstrap columns directly */
+  .cms-frameworks-section .col-xl-3 {
+    position: relative;
+    padding-bottom: 20px;
+    cursor: default;
+  }
+
+  /* Animated Line at Bottom */
+  .cms-frameworks-section .col-xl-3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px; /* Matches bootstrap gutter */
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.4s ease;
+  }
+
+  /* --- Hover Effects --- */
+  .cms-frameworks-section .col-xl-3:hover span {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.1);
+  }
+
+  .cms-frameworks-section .col-xl-3:hover h4 {
+    color: #fff !important;
+    text-shadow: 0 0 20px rgba(255,255,255,0.1);
+  }
+
+  .cms-frameworks-section .col-xl-3:hover p {
+    color: #bbb !important;
+  }
+
+  .cms-frameworks-section .col-xl-3:hover::after {
+    width: 80px; /* Fixed width underline for style */
+  }
+
+  /* --- Brand Specific Colors (Unique to each column) --- */
+  
+  /* 1. WooCommerce (Purple) */
+  .cms-frameworks-section .row > div:nth-child(1):hover span { color: #96588a !important; text-shadow: 0 0 15px rgba(150, 88, 138, 0.6); }
+  .cms-frameworks-section .row > div:nth-child(1)::after { background: #96588a; }
+
+  /* 2. Magento (Orange) */
+  .cms-frameworks-section .row > div:nth-child(2):hover span { color: #f26322 !important; text-shadow: 0 0 15px rgba(242, 99, 34, 0.6); }
+  .cms-frameworks-section .row > div:nth-child(2)::after { background: #f26322; }
+
+  /* 3. Contentful (Blue) */
+  .cms-frameworks-section .row > div:nth-child(3):hover span { color: #3fbbf0 !important; text-shadow: 0 0 15px rgba(63, 187, 240, 0.6); }
+  .cms-frameworks-section .row > div:nth-child(3)::after { background: #3fbbf0; }
+
+  /* 4. Webflow (Royal Blue) */
+  .cms-frameworks-section .row > div:nth-child(4):hover span { color: #4353ff !important; text-shadow: 0 0 15px rgba(67, 83, 255, 0.6); }
+  .cms-frameworks-section .row > div:nth-child(4)::after { background: #4353ff; }
+
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPCEC64DLJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-VPCEC64DLJ');
+  </script>
+</head>
+
+<body class="tp-magic-cursor">
+
+  <!-- Floating Contact Buttons -->
+  <a href="https://api.whatsapp.com/send?phone=919822857421" class="whatsapp-float" target="_blank"><i
+      class="fa fa-whatsapp"></i></a>
+  <a href="tel:+919822857421" class="phone-float" target="_blank"><i class="fa fa-phone"></i></a>
+
+  <!-- Header Sticky -->
+  <div id="header-sticky"
+    class="tp-header-area tp-header-inner-style header-inner-white tp-header-ptb tp-header-blur sticky-white-bg header-transparent mt-30">
+    <div class="container container-1750">
+      <div class="row align-items-center">
+        <div class="col-xl-2 col-lg-6 col-6">
+          <div class="tp-header-logo">
+            <a href="/index.html">
+              <img data-width="120" class="logo-white" src="/assets/digitech-logo.png"
+                alt="The Digitech Solutions Logo">
+              <img data-width="120" class="logo-black d-none" src="/assets/digitech-logo.png"
+                alt="The Digitech Solutions Logo">
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-8 d-none d-xl-block">
+          <div class="tp-header-box text-center">
+            <div class="tp-header-menu tp-header-dropdown dropdown-black-bg">
+              <nav class="tp-mobile-menu-active">
+                <ul>
+                  <li><a href="/index.html">Home</a></li>
+                  <li><a href="/about-us.html">About</a></li>
+                  <li class="has-dropdown">
+                    <a href="javascript:void(0)">Services</a>
+                    <!-- Mega Menu (Fixed) -->
+                    <div class="tp-megamenu-wrapper mega-menu">
+                      <div class="row gx-0">
+                        <div class="col-xl-3">
+                          <div class="tp-megamenu-list">
+                            <h4 class="tp-megamenu-title">Digital Marketing</h4>
+                            <ul>
+                              <li><a href="/service/search-engine-optimization.html">Search Engine Optimization</a></li>
+                              <li><a href="/service/social-media-marketing.html">Social Media Marketing</a></li>
+                              <li><a href="/service/content-marketing.html">Content Marketing</a></li>
+                              <li><a href="/service/google-ads-ppc.html">Google Ads PPC</a></li>
+                              <li><a href="/service/email-marketing.html">Email Marketing</a></li>
+                              <li><a href="/service/sms-marketing.html">SMS Marketing</a></li>
+                              <li><a href="/service/google-my-business.html">Google My Business</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-xl-3">
+                          <div class="tp-megamenu-list">
+                            <h4 class="tp-megamenu-title">Website Development</h4>
+                            <ul>
+                              <li><a href="/service/website-developement.html">Website Development</a></li>
+                              <li><a href="/service/ecommerce-development.html">E-Commerce Development</a></li>
+                              <li><a href="/service/mobile-app-development.html">Mobile App Development</a></li>
+                              <li><a href="/service/cms-development.html">CMS Development</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-xl-3">
+                          <div class="tp-megamenu-list">
+                            <h4 class="tp-megamenu-title">Branding Collaterals</h4>
+                            <ul>
+                              <li><a href="/service/video-production.html">Video Production</a></li>
+                              <li><a href="/service/brand-name.html">Brand Name</a></li>
+                              <li><a href="/service/logo-design.html">Logo Design</a></li>
+                              <li><a href="/service/brochure-design.html">Brochure Design</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="col-xl-3">
+                          <div class="tp-megamenu-list">
+                            <h4 class="tp-megamenu-title">Industries</h4>
+                            <ul>
+                              <li><a href="/service/digital-marketing-agency-manufacturers-pune.html">Manufactures</a>
+                              </li>
+                              <li><a href="/service/digital-marketing-education-industry-pune.html">Education</a></li>
+                              <li><a href="/service/real-estate-digital-marketing-agency-pune.html">Real Estate</a></li>
+                              <li><a href="/service/ecommerce-digital-marketing-agency-pune.html">E-Commerce</a></li>
+                              <li><a href="/service/digital-marketing-agency-for-travel-tourism-pune.html">Travel</a>
+                              </li>
+                              <li><a href="/service/digital-marketing-services-for-hospitals-in-pune.html">Hospital</a>
+                              </li>
+                              <li><a href="/service/political-digital-marketing-agency-pune.html">Political</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="/contact.html">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-6">
+          <div class="tp-header-right text-end">
+            <a href="/contact.html" class="hero-btn" style="padding: 10px 20px; font-size:14px;">Let's Talk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <main>
+
+        <!-- Hero -->
+        <div id="premium-hero-wrapper">
+          <canvas id="three-canvas"></canvas>
+          <div class="hero-container-flex">
+            <div class="hero-content">
+              <span
+                style="color:#7463FF; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 20px;">Digitech
+                Solutions</span>
+              <h1 class="hero-title">
+                Crafting Digital <br>
+                <span class="highlight">Experiences</span> That <br>
+                Matter.
+              </h1>
+              <p class="hero-subtitle">
+                We don't just build websites. We engineer digital ecosystems for Pune's most ambitious brands. Fast,
+                scalable, and impossible to ignore.
+              </p>
+              <div class="btn-wrapper">
+                <a href="/contact.html" class="hero-btn">
+                  <span>Start Project</span>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12H19" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M12 5L19 12L12 19" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="hero-lottie-wrapper">
+              <lottie-player src="../lottie/Web Development.json" background="transparent" speed="1"
+                style="width: 700px; height: 700px;" loop autoplay>
+              </lottie-player>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fun Facts (White Numbers) -->
+        <div class="container-custom" style="margin-top: -10px; position: relative; z-index: 10; background-color: #000000; min-height: 50% !important  ;">
+          <div class="ar-funfact-area" style="padding: 21px;">
+            <div class="row" id="funfact-row">
+              <div class="col-lg-3 col-md-4">
+                <div class="ar-funfact-item text-center">
+                  <h4 style="color:rgb(255, 255, 255); font-size:xx-large; font-weight: bold;"><span class="counter"
+                      data-target="695"  style="font-size: xx-large; font-weight: bold; color: white;">0</span>k+</h4>
+                  <span style="color:#dafa66; text-transform: uppercase;">Ads Campaign</span>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                <div class="ar-funfact-item text-center">
+                  <h4 style="color:rgb(255, 255, 255); font-size: xx-large; font-weight: bold;"><span class="counter"
+                      data-target="500 "  style="font-size: xx-large; font-weight: bold; color: white;">0</span>+</h4>
+                  <span style="color:#dafa66; text-transform: uppercase;">Clients Trust</span>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                <div class="ar-funfact-item text-center">
+                  <h4 style="color:rgb(255, 255, 255); font-size:xx-large; font-weight: bold;"><span class="counter"
+                      data-target="30" style="font-size: xx-large; font-weight: bold; color: white;">0</span>+</h4>
+                  <span style="color:#dafa66; text-transform: uppercase;">Awrangers Team</span>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4">
+                <div class="ar-funfact-item text-center">
+                  <h4 style="color:rgb(255, 255, 255); font-size: x-large; font-weight: bold;"><span class="counter"
+                      data-target="7"  style="font-size: xx-large; font-weight: bold; color: white;">0</span>+</h4>
+                  <span style="color:#dafa66; text-transform: uppercase;">Years At Service</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview & Minimal Form -->
+        <div class="pt-100 pb-100" style="    margin-block: 6%;">
+          <div class="container-custom">
+            <div class="row align-items-center">
+              <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="overview-title"
+                  style="color: #040316; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Why Local Pune
+                  Businesses Trust Our <span style="color:#98829b">Website Development</span></h2>
+                <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">As a trusted website
+                  development company near you in Pune, we understand the digital needs of local markets. From SMEs to
+                  corporates, we offer custom services backed by proven results.</p>
+                <ul style="list-style: none; padding: 0;">
+                  <li style="margin-bottom: 10px; font-weight: 500;">✓ Transparent Process</li>
+                  <li style="margin-bottom: 10px; font-weight: 500;">✓ On-time Delivery</li>
+                  <li style="margin-bottom: 10px; font-weight: 500;">✓ Local Pune Support</li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <div class="pp-enquiry-card">
+                  <div class="pp-enquiry-header">Let's Discuss.</div>
+                  <form class="pp-enquiry-form">
+                    <div class="minimal-input-group">
+                      <input type="text" class="minimal-input" placeholder="Name" required>
+                    </div>
+                    <div class="minimal-input-group">
+                      <input type="email" class="minimal-input" placeholder="Work Email" required>
+                    </div>
+                    <div class="minimal-input-group">
+                      <input type="text" class="minimal-input" placeholder="Phone" required>
+                    </div>
+                    <div class="minimal-input-group">
+                      <textarea class="minimal-input" placeholder="Tell us about your project..." rows="1"
+                        required></textarea>
+                    </div>
+                    <button type="submit" class="pp-btn-send">Send Request</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRONTEND: STICKY TITLE LEFT / CARDS RIGHT -->
+ <div class="backend-section">
+  <div class="container-custom">
+    
+    <!-- Header -->
+    <div class="text-center mb-5" style="text-align:center; margin-bottom:3rem;">
+      <span style="color:#dafa66; font-weight:600; text-transform:uppercase; letter-spacing:1px;">PROCESS</span>
+      <h2 style="font-size: 3rem; font-weight:800; color:#fff; margin-top:10px;">Frontend Technologies</h2>
+      <p style="color:#aaa; max-width:600px; margin:0 auto; margin-top:15px;">
+        We build pixel-perfect, responsive interfaces using the latest frameworks with dynamic interactions.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="feature-grid">
+
+      <!-- 1. HTML5 & CSS3 (Bounce) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using fa-html5 brand icon -->
+          <i class="fab fa-html5 icon-html"></i>
+        </div>
+        <h3>HTML5 & CSS3</h3>
+        <p>We use HTML5 and CSS3 to create mobile-first, responsive web designs for fast, accessible, static and dynamic websites.</p>
+      </div>
+
+      <!-- 2. JavaScript (Wiggle) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using fa-js brand icon -->
+          <i class="fab fa-js icon-js"></i>
+        </div>
+        <h3>JavaScript (Vanilla JS)</h3>
+        <p>JavaScript adds interactivity, form validation, animations, and dynamic behavior to responsive websites across all devices.</p>
+      </div>
+
+      <!-- 3. React.js (Spin) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using fa-react brand icon -->
+          <i class="fab fa-react icon-react"></i>
+        </div>
+        <h3>React.js</h3>
+        <p>React helps build fast, scalable single-page applications with component-based architecture and optimized UI/UX.</p>
+      </div>
+
+      <!-- 4. Angular (Flip) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using fa-angular brand icon -->
+          <i class="fab fa-angular icon-angular"></i>
+        </div>
+        <h3>Angular</h3>
+        <p>Angular is ideal for building enterprise-level dynamic websites with real-time updates, reusable components, and strong architecture.</p>
+      </div>
+
+      <!-- 5. Vue.js (Pulse) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using fa-vuejs brand icon -->
+          <i class="fab fa-vuejs icon-vue"></i>
+        </div>
+        <h3>Vue.js</h3>
+        <p>Vue.js enables reactive user interfaces with minimal code, perfect for small businesses seeking modern responsive web design.</p>
+      </div>
+
+      <!-- 6. Flutter (Float) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using paper-plane as a metaphor for Flutter/Dart -->
+          <i class="fa fa-paper-plane icon-flutter"></i>
+        </div>
+        <h3>Flutter (Web)</h3>
+        <p>We use Flutter to develop responsive, cross-platform websites and apps with pixel-perfect UI/UX using Google’s Dart language.</p>
+      </div>
+
+      <!-- 7. Tailwind CSS (Wind Dash) -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- Using wind icon for Tailwind -->
+          <i class="fa fa-wind icon-tailwind"></i>
+        </div>
+        <h3>Tailwind CSS</h3>
+        <p>Tailwind CSS accelerates development of mobile-responsive websites with a utility-first approach for highly customizable designs.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+        <!-- BACKEND: GRID WITH CREATIVE ANIMATIONS -->
+       <div class="backend-section">
+  <div class="container-custom">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-5" style="text-align:center; margin-bottom:3rem;">
+      <span style="color:#dafa66; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Architecture</span>
+      <h2 style="font-size: 3rem; font-weight:800; color:#fff; margin-top:10px;">Backend & Databases</h2>
+      <p style="color:#aaa; max-width:600px; margin:0 auto; margin-top:15px;">
+        Robust server-side technologies with dynamic hover effects.
+      </p>
+    </div>
+
+    <!-- Backend Grid (Styled Exactly like Frontend) -->
+    <div class="feature-grid">
+
+      <!-- 1. PHP -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-php icon-php"></i></div>
+        <h3>PHP 8</h3>
+        <p>Fast, secure backend development using PHP for CMS and ecommerce sites.</p>
+      </div>
+
+      <!-- 2. Laravel -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-laravel icon-laravel"></i></div>
+        <h3>Laravel</h3>
+        <p>Robust PHP MVC framework for custom applications and dashboards.</p>
+      </div>
+
+      <!-- 3. .NET Core -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-microsoft icon-net"></i></div>
+        <h3>.NET Core</h3>
+        <p>Cross-platform enterprise-grade software and API integrations.</p>
+      </div>
+
+      <!-- 4. Node.js -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-node-js icon-node"></i></div>
+        <h3>Node.js</h3>
+        <p>Real-time, scalable applications and interactive server-side functionality.</p>
+      </div>
+
+      <!-- 5. Python -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-python icon-python"></i></div>
+        <h3>Python</h3>
+        <p>Automation and data-driven applications with Django or Flask.</p>
+      </div>
+
+      <!-- 6. MySQL -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa fa-database icon-sql"></i></div>
+        <h3>MySQL / SQL</h3>
+        <p>Relational databases for structured and scalable data handling.</p>
+      </div>
+
+      <!-- 7. MongoDB -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fab fa-leaf icon-mongo"></i></div>
+        <h3>MongoDB</h3>
+        <p>NoSQL database for storing dynamic content in full-stack web apps.</p>
+      </div>
+
+      <!-- 8. Firebase -->
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa fa-fire icon-firebase"></i></div>
+        <h3>Firebase</h3>
+        <p>Real-time syncing, authentication, and cloud functions for apps.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        <!-- CMS & Ecommerce Steps (Restored) -->
+        <div class="pt-100 pb-100">
+         <div class="cms-frameworks-section">
+    <div class="container-custom">
+            <h3 class="tp-career-title pb-40" style="color:#040316; font-size: 2.5rem;">CMS, Ecommerce & Frameworks</h3>
+            <div class="row align-items-end">
+              <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                <span style="color: #98829b; font-weight:700; font-size:1.5rem;">01</span>
+                <h4 style="color: #040316; font-size:1.25rem; font-weight:700; margin: 10px 0;">WooCommerce</h4>
+                <p style="color: #040316;">Ecommerce plugin for WordPress enabling online stores with easy checkout.</p>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                <span style="color: #98829b; font-weight:700; font-size:1.5rem;">02</span>
+                <h4 style="color: #040316; font-size:1.25rem; font-weight:700; margin: 10px 0;">Magento 2</h4>
+                <p style="color: #040316;">Enterprise ecommerce platform with strong inventory and user role management.
+                </p>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                <span style="color: #98829b; font-weight:700; font-size:1.5rem;">03</span>
+                <h4 style="color: #040316; font-size:1.25rem; font-weight:700; margin: 10px 0;">Contentful</h4>
+                <p style="color: #040316;">Manage structured content via API for React, Vue, and JAMstack websites.</p>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                <span style="color: #98829b; font-weight:700; font-size:1.5rem;">04</span>
+                <h4 style="color: #040316; font-size:1.25rem; font-weight:700; margin: 10px 0;">Webflow</h4>
+                <p style="color: #040316;">Visual development platform for responsive websites with clean code.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- Clients Section (Restored) -->
+        <div class="pt-60 pb-60" style="border-top: 1px solid #eee;">
+          <div class="container-custom text-center">
+            <h2 class="mb-5" style="color: #040316; font-weight: 700;">Trusted by Leading Brands</h2>
+            <div class="row align-items-center justify-content-center" style="gap:40px;">
+              <img src="/assets/pulse-logo.png" alt="Pulse" style="max-height: 50px; width:auto;">
+              <img src="/assets/acutus-logo.png" alt="acutus" style="max-height: 50px; width:auto;">
+              <img src="/assets/bhosale-empire.png" alt="Bhosale Empire" style="max-height: 50px; width:auto;">
+              <img src="/assets/capri-logo.png" alt="Capri" style="max-height: 50px; width:auto;">
+              <img src="/assets/nutridine-logo.png" alt="Nutridine" style="max-height: 50px; width:auto;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Section (Restored with Original Content) -->
+        <div class="reviews-section">
+          <div class="container-custom">
+            <div class="text-center mb-5">
+              <h2 style="color:#040316; font-size: 2.5rem; font-weight:800;">What Pune Clients Are Saying</h2>
+              <p style="color:#666;">Trusted by 500+ businesses in Pune</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 mb-4">
+                <div class="review-card">
+                  <div style="color:#ffc107; margin-bottom:15px;">★★★★★</div>
+                  <p style="color:#333; font-style: italic;">“We saw a huge jump in our traffic within just 3 months.
+                    They are the best SEO company in Pune — hands down.”</p>
+                  <h5 style="color:#040316; margin-top:20px; font-weight:700;">- Dr. Shubham, Healthcare</h5>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                <div class="review-card">
+                  <div style="color:#ffc107; margin-bottom:15px;">★★★★★</div>
+                  <p style="color:#333; font-style: italic;">“Our Google rankings exploded. We now get leads daily
+                    without spending on ads!”</p>
+                  <h5 style="color:#040316; margin-top:20px; font-weight:700;">- Ravi, Real Estate</h5>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                <div class="review-card">
+                  <div style="color:#ffc107; margin-bottom:15px;">★★★★★</div>
+                  <p style="color:#333; font-style: italic;">“I run a gym in Viman Nagar... Google Ads through this
+                    agency changed everything.”</p>
+                  <h5 style="color:#040316; margin-top:20px; font-weight:700;">- Rahul V., Gym Owner</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Area (Restored) -->
+        <div class="app-faq-area pt-100 pb-100" style="background: #f9f9f9;">
+          <div class="container-custom">
+            <div class="text-center mb-5">
+              <h3 style="color:#040316; font-size:2.5rem; font-weight:700;">Frequently Asked Questions</h3>
+            </div>
+            <div style="background:#fff; padding:30px; border-radius:15px;">
+              <div style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                <h4 style="color:#040316; font-size:1.1rem; font-weight:700;">1. Which is the best website development
+                  company in Pune?</h4>
+                <p style="color:#555; margin-top:10px;">If you're looking for the best website development company in
+                  Pune, choose one with a strong local client portfolio, responsive design practices, and a team of
+                  expert web developers.</p>
+              </div>
+              <div style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                <h4 style="color:#040316; font-size:1.1rem; font-weight:700;">2. How much does it cost to develop a
+                  website in Pune?</h4>
+                <p style="color:#555; margin-top:10px;">The cost depends on the type—static, dynamic, ecommerce, or
+                  WordPress. Local agencies offer cost-effective packages.</p>
+              </div>
+              <div style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                <h4 style="color:#040316; font-size:1.1rem; font-weight:700;">3. How long does it take to build a
+                  website in Pune?</h4>
+                <p style="color:#555; margin-top:10px;">Most local web development companies in Pune can deliver a
+                  responsive business website in 1–3 weeks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Footer (Exact Content) -->
+      <footer class="pb-20">
+        <div class="dgm-footer-bg p-relative">
+          <div class="dgm-footer-area black-bg-5 pt-80 pb-5">
+            <div class="container container-1430">
+              <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-40">
+                  <div class="dgm-footer-widget dgm-footer-col-1 z-index-1">
+                    <div class="dgm-footer-logo mb-30">
+                      <a href="/index.html"> <img data-width="160" class="logo-white" src="/assets/digitech-logo.png"
+                          alt="The Digitech Solutions Logo"></a>
+                    </div>
+                    <div class="dgm-footer-widget-paragraph mb-35">
+                      <p>We are committed to helping you succeed, and we will work with you every step of the way.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-2 mb-40">
+                  <div class="dgm-footer-widget dgm-footer-col-2">
+                    <h4 class="dgm-footer-widget-title">Service</h4>
+                    <div class="dgm-footer-widget-menu">
+                      <ul>
+                        <li><a href="/service/website-developement.html">Website Development</a></li>
+                        <li><a href="/service/mobile-app-development.html">App Development</a></li>
+                        <li><a href="/service/search-engine-optimization.html">Search Engine Optimization</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3 mb-40">
+                  <div class="dgm-footer-widget dgm-footer-col-4">
+                    <h4 class="dgm-footer-widget-title">Links</h4>
+                    <div class="dgm-footer-widget-menu">
+                      <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-6 mb-40">
+                  <div class="dgm-footer-widget dgm-footer-col-5 z-index-1">
+                    <h4 class="dgm-footer-widget-title">Address:</h4>
+                    <div class="footer-address-item">
+                      <p style="color: #040316;">Neo95, SB Patil School Rd, Ravet, Pune</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/vendor/jquery.js"></script>
+  <script src="../../assets/js/bootstrap-bundle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // 1. GSAP SCROLLTRIGGER FOR SPLIT SECTION
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Only animate if desktop/large screen
+      if (window.innerWidth > 991) {
+
+        const infoCards = document.querySelectorAll('.info-card');
+
+        // Stacking effect for the right column cards
+        infoCards.forEach((card, index) => {
+          if (index === 0) return; // First card stays
+
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=100",
+              end: "top center",
+              scrub: 1,
+            },
+            y: 100,
+            opacity: 0,
+            scale: 0.95,
+            duration: 1
+          });
+        });
+      }
+
+      // 2. FUN FACT COUNTER
+      const counters = document.querySelectorAll('.counter');
+      const counterSection = document.getElementById('funfact-row');
+
+      const animateCounters = () => {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const duration = 2000;
+          const increment = target / (duration / 16);
+
+          let current = 0;
+          const updateCount = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = Math.ceil(current);
+              requestAnimationFrame(updateCount);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          updateCount();
+        });
+      };
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      if (counterSection) counterObserver.observe(counterSection);
+
+      // 3. ROUND PARTICLES
+      const canvas = document.getElementById('three-canvas');
+      if (canvas) {
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0xffffff, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        const getCircleTexture = () => {
+          const matCanvas = document.createElement('canvas');
+          matCanvas.width = 32; matCanvas.height = 32;
+          const context = matCanvas.getContext('2d');
+          context.beginPath();
+          context.arc(16, 16, 15, 0, 2 * Math.PI);
+          context.fillStyle = '#ffffff';
+          context.fill();
+          return new THREE.CanvasTexture(matCanvas);
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        const count = 1500;
+        const positions = new Float32Array(count * 3);
+
+        for (let i = 0; i < count; i++) {
+          positions[i * 3] = (Math.random() - 0.5) * 45;
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 45;
+          positions[i * 3 + 2] = (Math.random() - 0.5) * 45;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const material = new THREE.PointsMaterial({
+          size: 0.12,
+          map: getCircleTexture(),
+          color: 0x7463FF,
+          transparent: true,
+          opacity: 0.6,
+          alphaTest: 0.5
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+        camera.position.z = 10;
+
+        const clock = new THREE.Clock();
+        function animate() {
+          requestAnimationFrame(animate);
+          const t = clock.getElapsedTime();
+          particles.rotation.y = t * 0.03;
+          particles.rotation.x = t * 0.01;
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
