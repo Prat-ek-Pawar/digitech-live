@@ -100,7 +100,6 @@
     .backend-section {
       position: relative;
       padding: 100px 0;
-      /* Opaque background to cover hero when pinned */
       background-color: #020617; 
       background-image: radial-gradient(circle at center top, #1a1f35 0%, #020617 60%);
       overflow: hidden;
@@ -169,7 +168,7 @@
       .card-item { min-height: 320px; }
     }
 
-    /* --- MOBILE LAYOUT (FULL WIDTH & COMPACT) --- */
+    /* --- MOBILE LAYOUT (COMPACT & SLOW SCROLL) --- */
     @media (max-width: 991px) {
       .container-custom {
         max-width: 100% !important;
@@ -178,13 +177,17 @@
       }
 
       .backend-section { 
-        padding: 20px 0 10px 0; /* Minimal padding */
-        min-height: auto; 
-        height: auto;
+        padding: 10px 0; /* REDUCED PADDING */
+        min-height: auto !important;
+        height: auto !important;
+        max-height: none !important; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       } 
       
       .section-header {
-        margin-bottom: 15px; 
+        margin-bottom: 10px; /* REDUCED MARGIN */
       }
       
       .section-title { font-size: 2rem; }
@@ -192,8 +195,8 @@
       .card-stack-wrapper { 
         display: flex; 
         flex-direction: column; 
-        gap: 12px; 
-        padding-bottom: 10px; 
+        gap: 8px; /* TIGHTER GAP */
+        padding-bottom: 5px; 
       }
       
       .card-item { 
@@ -201,7 +204,7 @@
         opacity: 1 !important; 
         visibility: visible !important; 
         transform: none !important; 
-        padding: 20px; 
+        padding: 15px; /* REDUCED CARD PADDING */
         box-sizing: border-box; 
       }
       
@@ -705,21 +708,22 @@
                   });
               },
   
-              // --- MOBILE: ULTRA COMPACT & NO EMPTY SCROLL ---
+              // --- MOBILE: COMPACT & SLOWER SCROLL ---
               "(max-width: 991px)": function() {
                   
                   gsap.set(cards, { clearProps: "all" });
                   
-                  // Calculates exact scroll needed for (N-1) cards * chip height
-                  // 65px per card is roughly 1:1 with the visual collapse
-                  const scrollDistance = (cards.length - 1) * 65; 
+                  // INCREASED SCROLL DISTANCE MULTIPLIER (65 -> 150)
+                  // This means you have to scroll MORE pixels to collapse a card
+                  // making the animation feel slower and more controlled.
+                  const scrollDistance = (cards.length - 1) * 150; 
   
                   const tl = gsap.timeline({
                       scrollTrigger: {
                           trigger: section,
                           start: "top top",      
                           end: `+=${scrollDistance}`, 
-                          scrub: 0.1, // Almost instant response            
+                          scrub: 0.5, 
                           pin: true,             
                           pinSpacing: true,
                           invalidateOnRefresh: true 
@@ -744,7 +748,7 @@
                           borderRadius: "10px",
                           boxShadow: "none",
                           duration: 1,
-                          ease: "linear" // Linear ensures even spacing
+                          ease: "linear"
                       })
                       .to(cardBody, { height: 0, opacity: 0, marginTop: 0, display: 'none', duration: 0.5 }, "<")
                       .to(cardIcon, { width: "24px", height: "24px", background: "transparent", border: "none", duration: 0.5 }, "<")
