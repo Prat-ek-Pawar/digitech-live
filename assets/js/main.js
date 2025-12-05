@@ -2153,3 +2153,134 @@
 
 
 })(jQuery);
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+  /* 
+     -----------------------------------------------------
+     CPU OPTIMIZED THREE.JS PARTICLE SYSTEM 
+     Uses BufferGeometry for 1 Draw Call per frame.
+     -----------------------------------------------------
+  */
+  const container = document.getElementById('three-footer-container');
+
+  if (!container) return;
+
+  // Scene Setup
+  const scene = new THREE.Scene();
+  // Fog adds depth and fades particles in the distance
+  scene.fog = new THREE.FogExp2(0x21212D, 0.001); 
+
+  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 1000);
+  camera.position.z = 400; // Pull camera back
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false }); // Antialias false for performance
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio > 2 ? 2 : window.devicePixelRatio); // Cap pixel ratio
+  container.appendChild(renderer.domElement);
+
+  // --- 1. CREATE CUSTOM CIRCLE TEXTURE (No external image requests) ---
+  const getSprite = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext('2d');
+    // Radial Gradient for soft glowing dot
+    const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.4, 'rgba(255,255,255,0.8)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 32, 32);
+    return new THREE.CanvasTexture(canvas);
+  };
+
+  // --- 2. PARTICLE GEOMETRY (BUFFER) ---
+  const geometry = new THREE.BufferGeometry();
+  
+  // Mobile Optimization: Reduce count on small screens
+  const isMobile = window.innerWidth < 768;
+  const count = isMobile ? 400 : 1000; 
+
+  const positions = [];
+  const colors = [];
+  
+  // Define Palette Colors
+  const color1 = new THREE.Color('#C1ED00'); // --tp-common-green-regular
+  const color2 = new THREE.Color('#43D4A0'); // --tp-common-paste
+
+  for (let i = 0; i < count; i++) {
+    // Spread particles wide
+    const x = Math.random() * 1600 - 800;
+    const y = Math.random() * 800 - 400;
+    const z = Math.random() * 1000 - 500;
+    positions.push(x, y, z);
+
+    // Randomly assign one of the two colors
+    const color = Math.random() > 0.5 ? color1 : color2;
+    colors.push(color.r, color.g, color.b);
+  }
+
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  // Material setup
+  const material = new THREE.PointsMaterial({
+    size: 4,
+    map: getSprite(),
+    vertexColors: true, // Use the colors array we created
+    transparent: true,
+    opacity: 0.9,
+    depthWrite: false, // Performance boost: don't write to depth buffer
+    blending: THREE.AdditiveBlending // Glow effect
+  });
+
+  const particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  // --- 3. MOUSE INTERACTION (Parallax) ---
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  // Add event listener only on desktop for performance
+  if (!isMobile) {
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX - window.innerWidth / 2) * 0.5;
+      mouseY = (event.clientY - window.innerHeight / 2) * 0.5;
+    });
+  }
+
+  // --- 4. ANIMATION LOOP ---
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const elapsedTime = clock.getElapsedTime();
+
+    // 1. Smoothly rotate the entire particle cloud
+    particles.rotation.y = elapsedTime * 0.05; 
+    particles.rotation.x = elapsedTime * 0.02;
+
+    // 2. Mouse Parallax (Ease towards target)
+    targetX = mouseX * 0.001;
+    targetY = mouseY * 0.001;
+    
+    // Smooth camera movement based on mouse
+    camera.rotation.y += 0.05 * (targetX - camera.rotation.y);
+    camera.rotation.x += 0.05 * (targetY - camera.rotation.x);
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // --- 5. RESIZE HANDLER ---
+  window.addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+});
