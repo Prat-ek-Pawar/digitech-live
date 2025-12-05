@@ -46130,9 +46130,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
         justify-content: center;
         align-items: center;
         font-size: 48px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         color: #fff;
-        border: 1px solid rgba(255,255,255,0.05);
     }
     
     .tech-card-content h3 {
