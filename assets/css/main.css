@@ -442,6 +442,9 @@ body {
   color: var(--tp-text-body);
   font-family: var(--tp-ff-body);
 }
+.hero-title{
+  width: 140%;
+}
 
 img {
   max-width: 100%;
@@ -46234,6 +46237,9 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     }
     
     @media (max-width: 991px) {
+      .hero-title{
+        max-width: 97%;
+      }
         .tech-stack-wrapper.reverse { flex-direction: column; }
         .tech-stack-wrapper.reverse .tech-content-left { 
             padding: 0 0 60px 0; 
