@@ -387,61 +387,156 @@
         updateCount();
     });
 
-
 (function () {
   function initReviewsCarousel() {
     const carousel = document.getElementById('reviewsCarousel');
-    if (!carousel) return;
+    if (!carousel) {
+      console.warn('Carousel element #reviewsCarousel not found.');
+      return;
+    }
 
     const inner = carousel.querySelector('.reviews-inner');
-    const cards = Array.from(inner.querySelectorAll('.review-card'));
+    const originalCards = Array.from(inner.querySelectorAll('.review-card'));
     const nextBtn = carousel.querySelector('.review-nav.next');
     const prevBtn = carousel.querySelector('.review-nav.prev');
 
-    if (!cards.length) return;
+    if (originalCards.length === 0) return;
 
-    let currentIndex = 0;
+    // --- 1. CLONE FIRST & LAST CARDS ---
+    const firstClone = originalCards[0].cloneNode(true);
+    const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
+
+    firstClone.id = 'first-clone';
+    lastClone.id = 'last-clone';
+
+    inner.append(firstClone);
+    inner.prepend(lastClone);
+
+    const allCards = inner.querySelectorAll('.review-card');
+
+    // --- 2. SETUP VARIABLES ---
+    let currentIndex = 1; // Start at 1 (because 0 is a clone)
+    let isTransitioning = false;
+    let autoScrollInterval;
+    const transitionTime = 500; // Must match CSS (0.5s)
 
     function getStepWidth() {
-      const card = cards[0];
-      const rect = card.getBoundingClientRect();
-      const style = getComputedStyle(card);
-      const marginRight = parseFloat(style.marginRight || 0);
-      return rect.width + marginRight;
+      const card = allCards[1]; // Use a real card, not a clone
+      if (!card) return 0;
+      
+      const style = window.getComputedStyle(card);
+      const width = card.offsetWidth;
+      const marginRight = parseFloat(style.marginRight) || 0;
+      const marginLeft = parseFloat(style.marginLeft) || 0;
+      
+      return width + marginRight + marginLeft;
     }
 
-    function goToIndex(index) {
-      const total = cards.length;
-      currentIndex = (index + total) % total; // wrap around
-      const offset = -currentIndex * getStepWidth();
-      inner.style.transform = 'translateX(' + offset + 'px)';
+    function updateCarousel(enableTransition) {
+      const step = getStepWidth();
+      
+      if (enableTransition) {
+        inner.classList.add('smooth-transition');
+      } else {
+        inner.classList.remove('smooth-transition');
+      }
+
+      // Move the container
+      inner.style.transform = `translateX(${-currentIndex * step}px)`;
     }
 
-    function next() {
-      goToIndex(currentIndex + 1);
-    }
+    // --- 3. TELEPORT LOGIC (Infinite Loop) ---
+    // This fires when the slide animation finishes
+    inner.addEventListener('transitionend', () => {
+      isTransitioning = false;
 
-    function prev() {
-      goToIndex(currentIndex - 1);
-    }
+      const currentCard = allCards[currentIndex];
 
-    // Manual controls
-    if (nextBtn) nextBtn.addEventListener('click', next);
-    if (prevBtn) prevBtn.addEventListener('click', prev);
+      if (currentCard.id === 'first-clone') {
+        // We reached the fake end, jump to real start
+        inner.classList.remove('smooth-transition');
+        currentIndex = 1;
+        inner.style.transform = `translateX(${-currentIndex * getStepWidth()}px)`;
+      }
 
-    // AUTO SCROLL – SIMPLE, NO PAUSE/RESUME LOGIC
-    setInterval(next, 3000); // change 3500 to adjust speed
-
-    // Keep position correct on resize
-    window.addEventListener('resize', function () {
-      goToIndex(currentIndex);
+      if (currentCard.id === 'last-clone') {
+        // We reached the fake start, jump to real end
+        inner.classList.remove('smooth-transition');
+        currentIndex = allCards.length - 2;
+        inner.style.transform = `translateX(${-currentIndex * getStepWidth()}px)`;
+      }
     });
 
-    // Init
-    goToIndex(0);
+    // --- 4. NAVIGATION FUNCTIONS ---
+    function move(direction) {
+      // Prevent clicking if already moving
+      if (isTransitioning) return;
+      
+      const step = getStepWidth();
+      if (step === 0) return; // Wait for load
+
+      isTransitioning = true;
+
+      if (direction === 'next') {
+        currentIndex++;
+      } else {
+        currentIndex--;
+      }
+
+      updateCarousel(true);
+
+      // SAFETY FALLBACK: If transitionend doesn't fire (e.g., tab inactive), unlock controls
+      setTimeout(() => {
+        isTransitioning = false;
+      }, transitionTime + 50);
+    }
+
+    // --- 5. EVENT LISTENERS ---
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        move('next');
+        startAutoSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        move('prev');
+        startAutoSlide();
+      });
+    }
+
+    function startAutoSlide() {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => {
+        move('next');
+      }, 3000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoScrollInterval);
+    }
+
+    // --- 6. INITIALIZATION ---
+    // Force immediate position set (no animation) to show the first real card
+    setTimeout(() => {
+        updateCarousel(false); 
+        startAutoSlide();
+    }, 100); // Slight delay ensures DOM is painted
+
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+      updateCarousel(false);
+    });
+    
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoSlide);
+    carousel.addEventListener('mouseleave', startAutoSlide);
   }
 
-  // Safe init
+  // Load when ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initReviewsCarousel);
   } else {

@@ -47014,3 +47014,72 @@ body.mobile-menu-open {
         .stat-number-wrapper {
             font-size: 3rem;
         }
+/* Wrapper hides the overflow */
+.reviews-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Inner container holds the cards in a row */
+.reviews-inner {
+  display: flex;
+  width: max-content; /* vital for scrolling */
+  will-change: transform; /* performance optimization */
+}
+
+/* The magic class - JS toggles this */
+.reviews-inner.smooth-transition {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Ensure cards have a fixed width so calculations work */
+.review-card {
+  /* Example width - adjust as needed */
+  width: 300px; 
+  margin-right: 20px; /* spacing between cards */
+  flex-shrink: 0;
+}
+/* Wrapper hides the overflow */
+.reviews-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Add a gradient mask for a pro fade effect (optional) */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #fff 10%, #fff 90%, transparent);
+}
+
+/* Inner Container - The Moving Part */
+.reviews-inner {
+  display: flex;
+  width: max-content; /* Force single line */
+  /* This animation moves the whole strip to the left */
+  animation: scrollLoop 30s linear infinite; 
+}
+
+/* Pause on hover so people can read */
+.reviews-inner:hover {
+  animation-play-state: paused;
+}
+
+.review-card {
+  width: 300px; /* Or whatever width you want */
+  margin-right: 30px; /* Spacing */
+  flex-shrink: 0; /* Prevent squishing */
+}
+
+/* Hide buttons because continuous scroll doesn't need them */
+.review-nav {
+  display: none; 
+}
+
+/* The Animation Logic */
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* We move it exactly -50% because we doubled the content */
+    transform: translateX(-50%);
+  }
+}
