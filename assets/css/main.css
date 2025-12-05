@@ -46130,9 +46130,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
         justify-content: center;
         align-items: center;
         font-size: 48px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         color: #fff;
-        border: 1px solid rgba(255,255,255,0.05);
     }
     
     .tech-card-content h3 {
@@ -47087,5 +47085,217 @@ body.mobile-menu-open {
   100% {
     /* We move it exactly -50% because we doubled the content */
     transform: translateX(-50%);
+  }
+}
+.hero-title{
+  width: 122% !important;
+  text-align: left !important;
+  transform: translateX(-20px) !important;
+}
+
+/* --- FOOTER LAYOUT & PALETTE --- */
+.adv-tech-footer {
+  position: relative;
+  background-color: #21212D;
+  overflow: hidden;
+  /* REDUCED: Was 100px/50px */
+  padding-top: 40px; 
+  padding-bottom: 20px; /* Added explicit bottom padding */
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+}
+
+#three-footer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.footer-overlay-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, #21212D 90%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.relative-layer {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- TEXT & LINKS STYLING --- */
+.logo-glow {
+  transition: 0.3s;
+  /* Optional: Restrict logo width if it's too tall */
+  max-width: 150px; 
+}
+.logo-glow:hover {
+  filter: drop-shadow(0 0 10px #C1ED00);
+}
+
+.brand-desc {
+  color: #b0b0b0;
+  font-size: 0.9rem; /* Slightly smaller font */
+  line-height: 1.5;
+  /* REDUCED: Was 20px */
+  margin-top: 15px;
+  margin-bottom: 20px; 
+}
+
+.tech-title {
+  font-size: 1.15rem; /* Slightly smaller title */
+  font-weight: 700;
+  color: #fff;
+  /* REDUCED: Was 30px */
+  margin-bottom: 15px; 
+  position: relative;
+  display: inline-block;
+}
+
+.tech-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Moved closer to text */
+  width: 40px;
+  height: 3px;
+  background: #C1ED00;
+  border-radius: 2px;
+}
+
+.tech-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-links li {
+  /* REDUCED: Was 12px */
+  margin-bottom: 6px; 
+}
+
+.link-hover-effect {
+  color: #cfcfcf;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.link-hover-effect:hover {
+  color: #C1ED00;
+  transform: translateX(10px);
+  padding-left: 15px;
+}
+
+.link-hover-effect::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s;
+  color: #43D4A0;
+  font-weight: bold;
+}
+
+.link-hover-effect:hover::before {
+  opacity: 1;
+}
+
+/* --- SOCIAL BUTTONS --- */
+.social-orbit {
+  display: flex;
+  gap: 10px; /* Reduced gap */
+}
+
+.orbit-btn {
+  width: 40px; /* Reduced size from 45px */
+  height: 40px; /* Reduced size from 45px */
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.orbit-btn:hover {
+  background: #C1ED00;
+  color: #21212D;
+  border-color: #C1ED00;
+  transform: translateY(-3px);
+}
+
+/* --- CONTACT ICONS --- */
+.info-card-item {
+  display: flex;
+  align-items: flex-start;
+  /* REDUCED: Was 20px */
+  margin-bottom: 10px; 
+}
+
+.info-icon {
+  min-width: 35px; /* Reduced from 40px */
+  height: 35px;    /* Reduced from 40px */
+  background: rgba(67, 212, 160, 0.15);
+  color: #43D4A0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.info-card-item:hover .info-icon {
+  background: #C1ED00;
+  color: #21212D;
+  box-shadow: 0 0 15px rgba(193, 237, 0, 0.4);
+}
+
+.info-text p, .info-text a {
+  color: #cfcfcf;
+  margin: 0;
+  line-height: 1.4;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.info-text a:hover {
+  color: #fff;
+}
+
+/* --- BOTTOM COPYRIGHT AREA --- */
+.border-tech-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 30px; /* Space above copyright line */
+  padding-top: 20px; /* Space inside copyright area */
+  padding-bottom: 10px;
+}
+
+.copyright-txt {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 991px) {
+  .adv-tech-footer {
+    padding-top: 40px;
+    text-align: left;
   }
 }
