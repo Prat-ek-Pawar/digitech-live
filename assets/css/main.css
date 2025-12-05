@@ -47089,3 +47089,8 @@ body.mobile-menu-open {
     transform: translateX(-50%);
   }
 }
+.hero-title{
+  width: 122% !important;
+  text-align: left !important;
+  transform: translateX(-20px) !important;
+}
