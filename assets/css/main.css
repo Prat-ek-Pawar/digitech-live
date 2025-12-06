@@ -47299,3 +47299,308 @@ body.mobile-menu-open {
     text-align: left;
   }
 }
+
+
+
+/* about us css */
+    /* --- THEME VARS & RESET --- */
+    :root {
+      --primary: #7463FF;
+      --accent: #dafa66;
+      --dark: #040316;
+      --text-body: #555;
+      --bg-light: #f8f9fc;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background: #fff;
+      color: var(--text-body);
+    }
+    .glass-footer{
+      margin-top: 0%;
+    }
+    h1, h2, h3, h4 { color: var(--dark); }
+
+    /* --- UTILS --- */
+    .container-custom { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
+    .text-purple { color: var(--primary); }
+    .sub-title {
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    .hero-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 14px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary);
+        box-shadow: 0 10px 20px -10px rgba(116, 99, 255, 0.5);
+    }
+    .hero-btn:hover { background: transparent; color: var(--primary); transform: translateY(-3px); }
+
+    /* --- SECTIONS COMMON --- */
+    section { padding: 120px 0; position: relative; }
+
+    /* --- HERO SECTION (Creative Depth) --- */
+    .about-hero {
+        padding-top: 200px;
+        padding-bottom: 100px;
+        /* Subtle gradient for depth */
+        background: radial-gradient(circle at top right, rgba(116, 99, 255, 0.08), transparent 70%);
+    }
+    .hero-heading {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 25px;
+    }
+    .hero-text { font-size: 1.2rem; line-height: 1.7; margin-bottom: 35px; max-width: 600px; }
+
+    /* --- FOUNDER SECTION (Layered UI) --- */
+    .founder-section { background: #fff; overflow: hidden; }
+    
+    /* Giant background text for agency feel */
+    .founder-bg-text {
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        transform: translateY(-50%);
+        font-size: 15vw;
+        font-weight: 900;
+        color: rgba(0,0,0,0.02);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .founder-content-wrapper { position: relative; z-index: 1; }
+
+    .founder-img-frame {
+        position: relative;
+        z-index: 2;
+    }
+    /* Creative Offset Border Effect */
+    .founder-img-frame::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 100%;
+        height: 100%;
+        border: 3px solid var(--primary);
+        border-radius: 30px;
+        z-index: -1;
+        transition: 0.4s ease;
+    }
+    .founder-img {
+        border-radius: 30px;
+        width: 100%;
+        display: block;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        background: #fff; /* placeholder bg */
+        transition: 0.4s ease;
+    }
+    .founder-img-frame:hover .founder-img { transform: translate(-10px, -10px); }
+    .founder-img-frame:hover::before { transform: translate(10px, 10px); border-color: var(--accent); }
+
+    .founder-quote {
+        font-size: 1.15rem;
+        line-height: 1.9;
+        font-style: italic;
+        color: #444;
+        position: relative;
+        padding-left: 30px;
+        border-left: 4px solid var(--accent);
+    }
+
+    /* --- VISION & MISSION (Structured Cards) --- */
+    .vm-section {
+        background: var(--bg-light);
+        padding-bottom: 60px; /* offset for cards */
+    }
+    .vm-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 60px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+        margin-bottom: 60px;
+        border: 1px solid rgba(0,0,0,0.03);
+        transition: 0.3s;
+    }
+    .vm-card:hover { box-shadow: 0 25px 50px rgba(116, 99, 255, 0.08); }
+    
+    /* Subtle tint for Vision card */
+    .vm-card.vision-mode { background: linear-gradient(to right, #fff, rgba(116, 99, 255, 0.03)); }
+    /* Subtle tint for Mission card */
+    .vm-card.mission-mode { background: linear-gradient(to left, #fff, rgba(218, 250, 102, 0.1)); }
+
+    .vm-icon-box {
+        width: 70px;
+        height: 70px;
+        background: var(--bg-light);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: var(--primary);
+        margin-bottom: 25px;
+    }
+    .vm-heading { font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; }
+    .vm-text { font-size: 1.1rem; line-height: 1.8; }
+    
+    .mission-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+    }
+    .mission-list i {
+        background: rgba(116, 99, 255, 0.1);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 15px;
+        font-size: 14px;
+    }
+
+    /* --- TEAM SECTION (Polished Infinite Scroll) --- */
+    .team-section {
+        padding: 120px 0;
+        background: #fff;
+        position: relative;
+    }
+    
+    .team-scroll-stage {
+        width: 100%;
+        overflow: hidden;
+        padding: 50px 0;
+        /* Soft fade on edges */
+        mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+    }
+
+    .team-track {
+        display: flex;
+        gap: 60px;
+        width: max-content;
+        padding-left: 60px; /* Initial offset */
+    }
+
+    .team-item {
+        width: 260px;
+        text-align: center;
+        flex-shrink: 0;
+        group; /* for hover states */
+    }
+
+    .team-img-wrapper {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        overflow: hidden;
+        /* Double border effect */
+        box-shadow: 0 0 0 5px #fff, 0 0 0 8px var(--primary);
+        transition: 0.4s ease;
+    }
+
+    .team-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: grayscale(80%); /* Artistic grayscale initial state */
+    }
+    
+    /* Hover Effect: Colorize and Zoom */
+    .team-item:hover .team-img-wrapper { box-shadow: 0 0 0 5px #fff, 0 0 0 12px var(--accent); }
+    .team-item:hover .team-img-wrapper img {
+        transform: scale(1.1);
+        filter: grayscale(0%);
+    }
+
+    .team-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
+    .team-role { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+    /* --- CTA SECTION --- */
+    .cta-section {
+        padding: 100px 0;
+        background: var(--dark);
+        text-align: center;
+        color: #fff;
+        /* Subtle pattern overlay option */
+        background-image: radial-gradient(circle at center, rgba(255,255,255,0.03) 2px, transparent 2px);
+        background-size: 40px 40px;
+    }
+
+    /* --- RESPONSIVE FIXES --- */
+    @media (max-width: 991px) {
+        section { padding: 80px 0; }
+        .hero-heading { font-size: 2.8rem; }
+        .hero-text { font-size: 1.1rem; }
+        .founder-bg-text { display: none; } /* Hide giant text on mobile */
+        .founder-img-frame { margin-bottom: 50px; }
+        
+        /* HERO MOBILE: Lottie First, Text Below */
+        .about-hero .row {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .about-hero .col-lg-6.text-center { margin-bottom: 40px; }
+
+        /* VM SECTION MOBILE: Split View (Lottie on BG, Text in Card) */
+        .vm-card { 
+            padding: 0; 
+            background: transparent !important; 
+            box-shadow: none !important; 
+            border: none;
+            margin-bottom: 60px;
+        }
+        
+        .vm-mobile-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .vm-card.vision-mode .vm-mobile-card {
+            background: linear-gradient(to bottom, #fff, rgba(116, 99, 255, 0.05));
+        }
+        .vm-card.mission-mode .vm-mobile-card {
+             background: linear-gradient(to bottom, #fff, rgba(218, 250, 102, 0.15));
+        }
+
+        .vm-icon-box { margin: 0 auto 25px; }
+        .mission-list li { justify-content: center; text-align: left; }
+        
+        /* Reorder Mission for Mobile: Lottie First (order 1), Text Second (order 2) */
+        .order-mobile-1 { order: 1; margin-bottom: 40px; } /* Lottie Container */
+        .order-mobile-2 { order: 2; } /* Text Container */
+        
+        /* Reorder Vision for Mobile: Lottie First, Text Second */
+        .vm-card.vision-mode .row {
+            display: flex;
+            flex-direction: column-reverse; /* Puts Lottle (2nd col) on top */
+        }
+        .vm-card.vision-mode .col-lg-6.text-center {
+            margin-bottom: 40px; /* Space between Lottie and Card */
+        }
+    }
+ 
