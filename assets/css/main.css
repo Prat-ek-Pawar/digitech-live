@@ -47299,7 +47299,7 @@ body.mobile-menu-open {
     text-align: left;
   }
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 /* --- FOOTER LINK ARROW FIX --- */
 .link-hover-effect {
   position: relative;
@@ -47423,7 +47423,7 @@ body.mobile-menu-open {
     border: none;
     visibility: hidden;
 }
-=======
+/* ======= */
 
 
 
@@ -47630,7 +47630,7 @@ body.mobile-menu-open {
         width: 260px;
         text-align: center;
         flex-shrink: 0;
-        group; /* for hover states */
+        /* group; for hover states */
     }
 
     .team-img-wrapper {
