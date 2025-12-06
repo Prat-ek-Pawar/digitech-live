@@ -45546,7 +45546,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     .tp-header-menu nav ul li a { color: #040316; font-weight: 500; text-decoration: none; font-size: 16px; transition: 0.3s; }
     .tp-header-menu nav ul li:hover > a { color: #7463FF; }
     
-    .hero-btn { background: #040316; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; }
+    .hero-btn { background: #040316 !important; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; }
     .hero-btn:hover { background: #7463FF; color: #fff; transform: translateY(-2px); }
     
     .mobile-menu-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #040316; padding: 0; margin-left: auto; }
