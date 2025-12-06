@@ -54,12 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         .gh-nav-list {
+        background-color: black;
+        width:300px;
+       max-height: 60px;
             list-style: none;
-            margin: 0;
-            padding: 0;
+            margin-top:20px;
+            padding-left: 50;
             display: flex;
             align-items: center;
             gap: 40px;
+            border-radius: 48px;
         }
 
         .gh-nav-item {
@@ -71,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .gh-nav-link {
             text-decoration: none;
-            color: #000000;
+            color: #ffffffff;
             font-weight: 500;
             font-size: 16px;
             display: flex;
