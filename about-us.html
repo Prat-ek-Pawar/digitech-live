@@ -42,7 +42,9 @@
       background: #fff;
       color: var(--text-body);
     }
-    
+    .glass-footer{
+      margin-top: 0%;
+    }
     h1, h2, h3, h4 { color: var(--dark); }
 
     /* --- UTILS --- */
@@ -274,14 +276,56 @@
     @media (max-width: 991px) {
         section { padding: 80px 0; }
         .hero-heading { font-size: 2.8rem; }
+        .hero-text { font-size: 1.1rem; }
         .founder-bg-text { display: none; } /* Hide giant text on mobile */
         .founder-img-frame { margin-bottom: 50px; }
-        .vm-card { padding: 40px 30px; text-align: center; }
+        
+        /* HERO MOBILE: Lottie First, Text Below */
+        .about-hero .row {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .about-hero .col-lg-6.text-center { margin-bottom: 40px; }
+
+        /* VM SECTION MOBILE: Split View (Lottie on BG, Text in Card) */
+        .vm-card { 
+            padding: 0; 
+            background: transparent !important; 
+            box-shadow: none !important; 
+            border: none;
+            margin-bottom: 60px;
+        }
+        
+        .vm-mobile-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .vm-card.vision-mode .vm-mobile-card {
+            background: linear-gradient(to bottom, #fff, rgba(116, 99, 255, 0.05));
+        }
+        .vm-card.mission-mode .vm-mobile-card {
+             background: linear-gradient(to bottom, #fff, rgba(218, 250, 102, 0.15));
+        }
+
         .vm-icon-box { margin: 0 auto 25px; }
         .mission-list li { justify-content: center; text-align: left; }
-        /* Reorder Mission for Mobile: Lottie first */
-        .order-mobile-1 { order: 1; margin-bottom: 40px; }
-        .order-mobile-2 { order: 2; }
+        
+        /* Reorder Mission for Mobile: Lottie First (order 1), Text Second (order 2) */
+        .order-mobile-1 { order: 1; margin-bottom: 40px; } /* Lottie Container */
+        .order-mobile-2 { order: 2; } /* Text Container */
+        
+        /* Reorder Vision for Mobile: Lottie First, Text Second */
+        .vm-card.vision-mode .row {
+            display: flex;
+            flex-direction: column-reverse; /* Puts Lottle (2nd col) on top */
+        }
+        .vm-card.vision-mode .col-lg-6.text-center {
+            margin-bottom: 40px; /* Space between Lottie and Card */
+        }
     }
   </style>
 </head>
@@ -293,7 +337,7 @@
   <div class="tp-offcanvas-wrapper offcanvas-black-bg">
     <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
       <div class="tp-offcanvas-logo">
-        <a href="/index.html">
+        <a href="index.html">
           <img class="logo-1" data-width="120" src="/assets/digitech-logo.png" alt="The Digitech Solutions Logo" >
         </a>
       </div>
@@ -321,7 +365,7 @@
           <div class="row gx-2">
             <div class="col-md-3 col-3">
               <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="/assets/best-digital-agency-for-startups-pune.jpeg">
+                <a class="popup-image" href="assets/best-digital-agency-for-startups-pune.jpeg">
                   <img src="/assets/best-digital-agency-for-startups-pune.jpeg"
                     alt="Best Digital Agency for Startups Pune">
                 </a>
@@ -329,7 +373,7 @@
             </div>
             <div class="col-md-3 col-3">
               <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="/assets/landing-page-design-services-pune.jpeg">
+                <a class="popup-image" href="assets/landing-page-design-services-pune.jpeg">
                   <img src="/assets/landing-page-design-services-pune.jpeg"
                     alt="Landing Page Design Services Pune">
                 </a>
@@ -337,7 +381,7 @@
             </div>
             <div class="col-md-3 col-3">
               <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="/assets/top-digital-marketing-companies-maharashtra.jpeg">
+                <a class="popup-image" href="assets/top-digital-marketing-companies-maharashtra.jpeg">
                   <img src="/assets/top-digital-marketing-companies-maharashtra.jpeg"
                     alt="Top Digital Marketing Companies Maharashtra">
                 </a>
@@ -345,7 +389,7 @@
             </div>
             <div class="col-md-3 col-3">
               <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="/assets/top-website-developers-in-pune.jpeg">
+                <a class="popup-image" href="assets/top-website-developers-in-pune.jpeg">
                   <img src="/assets/top-website-developers-in-pune.jpeg"
                     alt="Top Website Developers in Pune">
                 </a>
@@ -417,7 +461,7 @@
       <div class="row align-items-center">
         <div class="col-xl-2 col-lg-6 col-6">
             <div class="tp-header-logo">
-            <a href="/index.html">
+            <a href="index.html">
               <img data-width="120" class="logo-white"
                 src="assets/digitech-logo.png" alt="The Digitech Solutions Logo" >
               <img data-width="120" class="logo-black d-none"
@@ -431,7 +475,7 @@
               <nav class="tp-mobile-menu-active">
                 <ul>
                   <li>
-                    <a href="/index.html">Home</a>
+                    <a href="index.html">Home</a>
                     <!-- <div
                         class="tp-megamenu-wrapper mega-menu megamenu-black-bg"
                       >
@@ -745,7 +789,7 @@
                       </div> -->
                   </li>
                   <li>
-                   <a href="/about-us.html">About</a>
+                   <a href="about-us.html">About</a>
                     <!-- <div
                         class="tp-megamenu-wrapper mega-menu megamenu-black-bg"
                       >
@@ -1070,32 +1114,32 @@
                             </h4>
                             <ul>
                               <li>
-                                <a href="/service/search-engine-optimization.html">Search Engine
+                                <a href="service/search-engine-optimization.html">Search Engine
                                   Optimization</a>
                               </li>
                               <li>
-                                <a href="/service/social-media-marketing.html">Social
+                                <a href="service/social-media-marketing.html">Social
                                   Media Marketing</a>
                               </li>
                               <li>
-                                <a href="/service/content-marketing.html">Content
+                                <a href="service/content-marketing.html">Content
                                   Marketing</a>
                               </li>
 
                               <li>
-                                <a href="/service/google-ads-ppc.html">Google Ads PPC</a>
+                                <a href="service/google-ads-ppc.html">Google Ads PPC</a>
                               </li>
                               <li>
-                                <a href="/service/email-marketing.html">Email
+                                <a href="service/email-marketing.html">Email
                                   Marketing</a>
                               </li>
 
                               <li>
-                                <a href="/service/sms-marketing.html">SMS Marketing</a>
+                                <a href="service/sms-marketing.html">SMS Marketing</a>
                               </li>
 
                               <li>
-                                <a href="/service/google-my-business.html">Google My
+                                <a href="service/google-my-business.html">Google My
                                   Business</a>
                               </li>
                             </ul>
@@ -1109,15 +1153,15 @@
                               Website Development
                             </h4>
                             <ul>
-                              <li><a href="/service/website-development.html">Website
+                              <li><a href="service/website-development.html">Website
                                   Development</a></li>
-                              <li><a href="/service/ecommerce-development.html">E-Commerce
+                              <li><a href="service/ecommerce-development.html">E-Commerce
                                   Development</a></li>
                               <li>
-                                <a href="/service/mobile-app-development.html">Mobile
+                                <a href="service/mobile-app-development.html">Mobile
                                   App Development</a>
                               </li>
-                              <li><a href="/service/cms-development.html">CMS
+                              <li><a href="service/cms-development.html">CMS
                                   Development</a></li>
 
                             </ul>
@@ -1131,11 +1175,11 @@
                               Branding Collaterals
                             </h4>
                             <ul>
-                              <li><a href="/service/video-production.html">Video
+                              <li><a href="service/video-production.html">Video
                                   Production</a></li>
-                              <li><a href="/service/brand-name.html">Brand Name</a></li>
-                              <li><a href="/service/logo-design.html">Logo Design</a></li>
-                              <li><a href="/service/brochure-design.html">Brochure
+                              <li><a href="service/brand-name.html">Brand Name</a></li>
+                              <li><a href="service/logo-design.html">Logo Design</a></li>
+                              <li><a href="service/brochure-design.html">Brochure
                                   Design</a></li>
 
                             </ul>
@@ -1148,26 +1192,26 @@
                             <h4 class="tp-megamenu-title">Industries</h4>
                             <ul>
                               <li><a
-                                  href="/service/digital-marketing-agency-manufacturers-pune.html">Manufactures</a>
+                                  href="service/digital-marketing-agency-manufacturers-pune.html">Manufactures</a>
                               </li>
                               <li><a
-                                  href="/service/digital-marketing-education-industry-pune.html">Education</a>
+                                  href="service/digital-marketing-education-industry-pune.html">Education</a>
                               </li>
                               <li>
-                                <a href="/service/real-estate-digital-marketing-agency-pune.html">Real
+                                <a href="service/real-estate-digital-marketing-agency-pune.html">Real
                                   Estate</a>
                               </li>
                               <li><a
-                                  href="/service/ecommerce-digital-marketing-agency-pune.html">E-Commerce
+                                  href="service/ecommerce-digital-marketing-agency-pune.html">E-Commerce
                                 </a></li>
                               <li><a
-                                  href="/service/digital-marketing-agency-for-travel-tourism-pune.html">Travel</a>
+                                  href="service/digital-marketing-agency-for-travel-tourism-pune.html">Travel</a>
                               </li>
                               <li><a
-                                  href="/service/digital-marketing-services-for-hospitals-in-pune.html">Hospital</a>
+                                  href="service/digital-marketing-services-for-hospitals-in-pune.html">Hospital</a>
                               </li>
                               <li><a
-                                  href="/service/political-digital-marketing-agency-pune.html">Political</a>
+                                  href="service/political-digital-marketing-agency-pune.html">Political</a>
                               </li>
 
                             </ul>
@@ -1485,7 +1529,7 @@
                       </ul>
                     </li> -->
                   <li>
-                    <a href="/contact.html">Contact</a>
+                    <a href="contact.html">Contact</a>
                     <!-- <ul class="tp-submenu submenu">
                         <li><a href="contact-me-light.html">Contact Me</a></li>
                         <li>
@@ -1577,9 +1621,11 @@
         <div class="vm-card vision-mode">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="vm-icon-box"><i class="fa-solid fa-eye"></i></div>
-                    <h2 class="vm-heading">Our Vision</h2>
-                    <p class="vm-text">Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow online by offering smart, scalable, and easy-to-use digital solutions. From website development to mobile app creation, we aim to make powerful technology accessible to businesses of all sizes. We believe in building digital tools that deliver real results.</p>
+                    <div class="vm-mobile-card">
+                        <div class="vm-icon-box"><i class="fa-solid fa-eye"></i></div>
+                        <h2 class="vm-heading">Our Vision</h2>
+                        <p class="vm-text">Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow online by offering smart, scalable, and easy-to-use digital solutions. From website development to mobile app creation, we aim to make powerful technology accessible to businesses of all sizes. We believe in building digital tools that deliver real results.</p>
+                    </div>
                 </div>
                 <div class="col-lg-6 text-center">
                     <lottie-player src="https://lottie.host/9f50f757-9d7a-4284-a16f-77983050c82f/4k3Kj9r3z1.json" background="transparent" speed="1" style="width: 100%; max-width: 450px; margin: 0 auto;" loop autoplay></lottie-player>
@@ -1593,15 +1639,17 @@
                     <lottie-player src="https://lottie.host/c538a7c2-9e8d-4f7f-8c3b-2f3b9e4a6a5a/M5g6l3a9sD.json" background="transparent" speed="1" style="width: 100%; max-width: 450px; margin: 0 auto;" loop autoplay></lottie-player>
                 </div>
                 <div class="col-lg-6 order-mobile-2">
-                    <div class="vm-icon-box"><i class="fa-solid fa-rocket"></i></div>
-                    <h2 class="vm-heading">Our Mission</h2>
-                    <p class="vm-text mb-4">Our mission is to empower businesses through data-driven digital marketing, breakthrough technology, and purpose-led strategies. We are dedicated to:</p>
-                    
-                    <ul class="list-unstyled mission-list">
-                        <li><i class="fa-solid fa-check text-purple"></i> Delivering high-impact digital solutions</li>
-                        <li><i class="fa-solid fa-check text-purple"></i> Building long-term partnerships rooted in trust</li>
-                        <li><i class="fa-solid fa-check text-purple"></i> Driving growth through strategic thinking</li>
-                    </ul>
+                    <div class="vm-mobile-card">
+                        <div class="vm-icon-box"><i class="fa-solid fa-rocket"></i></div>
+                        <h2 class="vm-heading">Our Mission</h2>
+                        <p class="vm-text mb-4">Our mission is to empower businesses through data-driven digital marketing, breakthrough technology, and purpose-led strategies. We are dedicated to:</p>
+                        
+                        <ul class="list-unstyled mission-list">
+                            <li><i class="fa-solid fa-check text-purple"></i> Delivering high-impact digital solutions</li>
+                            <li><i class="fa-solid fa-check text-purple"></i> Building long-term partnerships rooted in trust</li>
+                            <li><i class="fa-solid fa-check text-purple"></i> Driving growth through strategic thinking</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1677,7 +1725,7 @@
         <div class="container-custom">
             <h2 style="font-weight:800; font-size: 2.5rem; margin-bottom:25px; color: #fff;">Ready to Transform Your Digital Presence?</h2>
             <p style="color:rgba(255,255,255,0.7); font-size: 1.2rem; margin-bottom:40px; max-width: 700px; margin-left: auto; margin-right: auto;">Let's discuss how we can help you achieve your business goals with our tailored solutions.</p>
-            <a href="/contact.html" class="hero-btn" style="background:var(--accent); color:var(--dark); border-color: var(--accent);">Start A Project</a>
+            <a href="contact.html" class="hero-btn" style="background:var(--accent); color:var(--dark); border-color: var(--accent);">Start A Project</a>
         </div>
     </section>
 
