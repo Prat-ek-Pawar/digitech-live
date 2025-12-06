@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="gh-mm-col">
                                 <span class="gh-mm-title">Digital Marketing</span>
                                 <ul class="gh-mm-list">
-                                    <li><a href="/service/seo.html">SEO</a></li>
+                                    <li><a href="/service/seo.html">Search Engine Optimization</a></li>
                                     <li><a href="/service/smm.html">Social Media Marketing</a></li>
                                     <li><a href="/service/content-marketing.html">Content Marketing</a></li>
                                     <li><a href="/service/google-ads-ppc.html">Google Ads PPC</a></li>
