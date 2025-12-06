@@ -1,20 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Define the HTML Structure with Unique 'gh-' Classes
+  // 1. Define the HTML Structure
   const headerHTML = `
     <style>
-        /* --- RESET & ISOLATION --- */
-        #gh-header-container {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            z-index: 9999;
-            background-color: #ffffff;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            font-family: 'Inter', sans-serif; /* Ensure consistent font */
+        /* --- GENERAL RESET --- */
+        body {
+            padding-top: 0 !important;
+            margin: 0 !important;
         }
 
-        /* --- LAYOUT --- */
+        /* --- BODY SCROLL LOCK (CRITICAL) --- */
+        /* When menu is open, lock body completely */
+        body.gh-menu-open {
+            overflow: hidden !important;
+            height: 100vh !important;
+            /* touch-action: none; REMOVED to allow scrolling inside the fixed menu */
+        }
+
+        /* --- DESKTOP HEADER STYLES --- */
+        #gh-header-container {
+            width: 100%;
+            position: relative;
+            z-index: 999; 
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            font-family: 'Inter', sans-serif;
+            height: 90px;
+        }
+
         .gh-container {
             max-width: 1750px;
             margin: 0 auto;
@@ -22,18 +34,17 @@ document.addEventListener("DOMContentLoaded", function () {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 90px; /* Fixed height to prevent jumping */
+            height: 100%;
         }
 
-        /* --- LOGO --- */
         .gh-logo img {
             max-width: 140px;
             display: block;
         }
 
-        /* --- DESKTOP NAVIGATION --- */
+        /* --- DESKTOP MENU --- */
         .gh-desktop-menu {
-            display: none; /* Hidden on mobile by default */
+            display: none;
         }
 
         @media (min-width: 1200px) {
@@ -53,6 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .gh-nav-item {
             position: relative;
+            height: 90px; /* Full height for hover area */
+            display: flex;
+            align-items: center;
         }
 
         .gh-nav-link {
@@ -63,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
             display: flex;
             align-items: center;
             gap: 5px;
-            padding: 30px 0; /* Increases hover area */
             transition: color 0.3s ease;
         }
 
@@ -73,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         .gh-nav-link svg {
             transition: transform 0.3s ease;
+            stroke: #000000; /* Default Black Arrow */
         }
 
         .gh-nav-item:hover .gh-nav-link svg {
@@ -86,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
             left: 50%;
             transform: translateX(-50%) translateY(20px);
             width: 1100px;
-            background-color: #050505; /* Solid Black */
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
+            background-color: #050505;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 0 0 12px 12px;
             padding: 40px;
             box-shadow: 0 30px 80px rgba(0,0,0,0.4);
             opacity: 0;
@@ -106,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         .gh-mm-col {
-            width: 25%; /* 4 columns */
+            width: 25%;
             padding: 0 15px;
             box-sizing: border-box;
         }
@@ -134,11 +148,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         .gh-mm-list a {
-            color: #cccccc;
+            color: #f0f0f0;
             text-decoration: none;
             font-size: 15px;
             transition: 0.2s;
             display: block;
+            font-weight: 500;
         }
 
         .gh-mm-list a:hover {
@@ -146,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
             transform: translateX(5px);
         }
 
-        /* --- BUTTONS --- */
+        /* --- ACTIONS --- */
         .gh-actions {
             display: flex;
             align-items: center;
@@ -166,7 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         .gh-contact-btn:hover {
-            background-color: #7463FF;
+            background-color: #dafa66;
+            color: #000000 !important;
             transform: translateY(-2px);
         }
 
@@ -174,13 +190,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .gh-contact-btn { display: inline-block; }
         }
 
-        /* --- HAMBURGER --- */
+        /* --- HAMBURGER BUTTON --- */
         .gh-burger-btn {
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
+            padding: 0;
             display: block;
+            line-height: 0;
         }
 
         @media (min-width: 1200px) {
@@ -191,13 +208,20 @@ document.addEventListener("DOMContentLoaded", function () {
         .gh-mobile-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             z-index: 99998;
             opacity: 0;
             visibility: hidden;
             transition: 0.3s;
+            backdrop-filter: blur(3px);
         }
 
+        .gh-mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* The Panel Container */
         .gh-mobile-panel {
             position: fixed;
             top: 0;
@@ -209,46 +233,47 @@ document.addEventListener("DOMContentLoaded", function () {
             z-index: 99999;
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 0; /* Reset padding */
+            display: flex;           /* FLEXBOX IS KEY */
+            flex-direction: column;  /* Stack children vertically */
+            height: 100%;            /* Full viewport height */
         }
 
-        /* States for Open */
-        body.gh-menu-open {
-            overflow: hidden; /* Lock scroll */
-        }
-
-        body.gh-menu-open .gh-mobile-overlay {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        body.gh-menu-open .gh-mobile-panel {
+        .gh-mobile-panel.active {
             transform: translateX(0);
         }
 
-        /* Mobile Inner Layout */
+        /* 1. Fixed Header inside Panel */
         .gh-mobile-header {
             padding: 20px;
             display: flex;
             justify-content: flex-end;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0; /* Prevent shrinking */
+            background: #000;
         }
 
         .gh-close-btn {
             background: none;
             border: none;
-            color: white;
             cursor: pointer;
+            padding: 5px;
+        }
+        
+        .gh-close-btn svg {
+            stroke: #ffffff;
         }
 
+        /* 2. Scrollable Content Area */
         .gh-mobile-content {
-            padding: 20px;
-            overflow-y: auto;
-            flex: 1;
+            padding: 0 20px;
+            flex-grow: 1;       /* Take up all remaining space */
+            overflow-y: auto;   /* Scroll ONLY this area */
+            overscroll-behavior: contain; /* Prevent scroll from passing to body */
+            -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+            position: relative;
         }
 
+        /* Links */
         .gh-mobile-link {
             display: block;
             color: #ffffff;
@@ -259,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Sticky Dropdown Header */
+        /* 3. Sticky "Services" Header INSIDE the scrollable area */
         .gh-mobile-dd-header {
             display: flex;
             justify-content: space-between;
@@ -270,22 +295,24 @@ document.addEventListener("DOMContentLoaded", function () {
             padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             cursor: pointer;
-            position: sticky;
-            top: -20px; /* Stick to top area */
-            background: #000000;
-            z-index: 10;
+            
+            /* STICKY MAGIC */
+            position: sticky; 
+            top: 0;           
+            background: #000000; /* Must have background to cover scrolling content */
+            z-index: 10;         /* Sit on top of content */
         }
 
         .gh-mobile-dd-body {
             display: none;
             background: #111111;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 10px;
+            padding: 0 15px; /* Removed vertical padding */
+            margin-top: 0;
         }
 
         .gh-mobile-dd-body.active {
             display: block;
+            padding-bottom: 15px;
         }
 
         .gh-mobile-dd-title {
@@ -293,31 +320,38 @@ document.addEventListener("DOMContentLoaded", function () {
             font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            margin-top: 15px;
-            margin-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .gh-mobile-dd-link {
             display: block;
-            color: #cccccc;
+            color: #d1d1d1;
             text-decoration: none;
             font-size: 15px;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        
+        .gh-mobile-dd-link:last-child {
+            border-bottom: none;
+        }
 
-        /* Social Icons */
+        /* 4. Social Footer (Fixed at bottom or scrolled) */
+        /* We put it inside scrollable area to ensure it's reachable on small screens */
         .gh-mobile-social {
             margin-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 20px;
+            padding-bottom: 40px; 
         }
 
         .gh-mobile-social h4 {
             color: #fff;
             font-size: 16px;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .gh-social-list {
@@ -325,6 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
             gap: 15px;
             padding: 0;
             list-style: none;
+            margin: 0;
         }
 
         .gh-social-link {
@@ -342,8 +377,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .gh-social-link:hover {
             background: #dafa66;
             border-color: #dafa66;
-            color: #000;
+            color: #000; /* Black Icon on Hover */
         }
+        
+        /* SVG Colors Fix */
+        .gh-burger-btn svg { stroke: #000000; }
+        .gh-close-btn svg { stroke: #ffffff; }
+        .gh-mobile-dd-header svg { stroke: #ffffff; transition: transform 0.3s; }
+        .gh-social-link svg { stroke: currentColor; }
     </style>
 
     <div id="gh-header-container">
@@ -428,7 +469,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a href="/contact.html" class="gh-contact-btn">Contact Us</a>
                 
                 <button class="gh-burger-btn" id="gh-open-menu">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="3" y1="12" x2="21" y2="12"></line>
                       <line x1="3" y1="6" x2="21" y2="6"></line>
                       <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -440,28 +481,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     <!-- MOBILE MENU STRUCTURE -->
     <div class="gh-mobile-overlay" id="gh-overlay"></div>
+    
     <div class="gh-mobile-panel" id="gh-panel">
+        <!-- Fixed Header inside Panel -->
         <div class="gh-mobile-header">
             <button class="gh-close-btn" id="gh-close-menu">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
         </div>
         
+        <!-- Scrollable Content -->
         <div class="gh-mobile-content">
             <a href="/index.html" class="gh-mobile-link">Home</a>
             <a href="/about-us.html" class="gh-mobile-link">About</a>
             
             <!-- Dropdown -->
             <div>
+                <!-- This Header is Sticky via CSS -->
                 <div class="gh-mobile-dd-header" id="gh-dd-toggle">
                     <span>Services</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
+                
                 <div class="gh-mobile-dd-body" id="gh-dd-body">
                      <!-- Digital Marketing -->
                      <span class="gh-mobile-dd-title">Digital Marketing</span>
@@ -506,14 +552,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <ul class="gh-social-list">
                     <li>
                       <a href="https://www.facebook.com/thedigitechsolutions/" target="_blank" class="gh-social-link">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                         </svg>
                       </a>
                     </li>
                     <li>
                       <a href="https://www.instagram.com/the.digitech.solutions/" target="_blank" class="gh-social-link">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -522,7 +568,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </li>
                     <li>
                       <a href="https://www.linkedin.com/in/the-digitech-solutions-a3a30033a/" target="_blank" class="gh-social-link">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                               <rect x="2" y="9" width="4" height="12"></rect>
                               <circle cx="4" cy="4" r="2"></circle>
@@ -543,7 +589,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.insertAdjacentHTML("afterbegin", headerHTML);
   }
 
-  // 3. Init Logic (Scoped to new IDs)
+  // 3. Init Logic
   initGlobalHeader();
 });
 
@@ -551,19 +597,28 @@ function initGlobalHeader() {
     const openBtn = document.getElementById('gh-open-menu');
     const closeBtn = document.getElementById('gh-close-menu');
     const overlay = document.getElementById('gh-overlay');
+    const panel = document.getElementById('gh-panel');
     const body = document.body;
     
     const ddToggle = document.getElementById('gh-dd-toggle');
     const ddBody = document.getElementById('gh-dd-body');
     const ddIcon = ddToggle ? ddToggle.querySelector('svg') : null;
 
-    function toggleMenu() {
-        body.classList.toggle('gh-menu-open');
+    function openMenu() {
+        panel.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('gh-menu-open');
     }
 
-    if(openBtn) openBtn.addEventListener('click', toggleMenu);
-    if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
-    if(overlay) overlay.addEventListener('click', toggleMenu);
+    function closeMenu() {
+        panel.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('gh-menu-open');
+    }
+
+    if(openBtn) openBtn.addEventListener('click', openMenu);
+    if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if(overlay) overlay.addEventListener('click', closeMenu);
 
     // Mobile Accordion Logic
     if(ddToggle && ddBody) {
