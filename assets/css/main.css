@@ -47299,3 +47299,126 @@ body.mobile-menu-open {
     text-align: left;
   }
 }
+/* --- FOOTER LINK ARROW FIX --- */
+.link-hover-effect {
+  position: relative;
+  padding-left: 0;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.link-hover-effect::before {
+  content: '\f105'; /* FontAwesome Chevron Right Unicode */
+  font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free", sans-serif; /* Force FontAwesome */
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s;
+  color: #43D4A0; /* Digitech Green/Accent */
+  font-size: 14px;
+  top: 2px; /* Adjust vertical alignment */
+}
+
+.link-hover-effect:hover {
+  transform: translateX(10px);
+  padding-left: 15px;
+  color: #fff;
+}
+
+.link-hover-effect:hover::before {
+  opacity: 1;
+}
+
+/* --- MOBILE MENU & SOCIAL FIXES --- */
+.mobile-menu-panel {
+  background-color: #0e0f11 !important; /* Dark Background */
+  color: #fff;
+}
+
+.mobile-nav a {
+  color: #e0e0e0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.mobile-dropdown-header {
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.mobile-dropdown-content {
+  background: #1a1a1a !important; /* Slightly lighter dark for dropdown */
+  padding-left: 20px !important;
+}
+
+.mobile-dropdown-content a {
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  color: #b0b0b0 !important;
+  font-size: 15px !important;
+}
+
+.mobile-dropdown-content div {
+  color: #dafa66 !important; /* Section Titles (Digital Marketing, etc) */
+  opacity: 0.8;
+}
+
+/* Mobile Social Icons */
+.mobile-social h4 {
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.mobile-social ul {
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mobile-social ul li a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.mobile-social ul li a:hover {
+  background: #dafa66;
+  color: #000;
+  border-color: #dafa66;
+}
+
+.mobile-social ul li a svg {
+  width: 18px;
+  height: 18px;
+}
+#header-sticky
+ {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    padding: 0px 0;
+}
+.tp-header-inner-style.header-inner-white .tp-header-dropdown > nav > ul > li.has-dropdown::after
+ {
+    color: #ffffff;
+    border: none;
+    visibility: hidden;
+}

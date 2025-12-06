@@ -8,14 +8,15 @@
   <meta name="description" content="Learn about The DigiTech Solutions, your trusted digital partner in Pune.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" type="image/x-icon" href="assets/the-digitech-solutions-favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/the-digitech-solutions-favicon.png">
 
   <!-- External Assets -->
-  <link rel="shortcut icon" type="image/x-icon" href="/assets/the-digitech-solutions-favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../assets/css/main.css"> 
 
   <!-- GSAP & Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -25,18 +26,178 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../../assets/css/slick.css">
-  <link rel="stylesheet" href="../../assets/css/swiper-bundle.css">
-  <link rel="stylesheet" href="../../assets/css/magnific-popup.css">
-  <link rel="stylesheet" href="../../assets/css/font-awesome-pro.css">
-  <link rel="stylesheet" href="../../assets/css/spacing.css">
-  <link rel="stylesheet" href="../../assets/css/atropos.min.css">
-  <link rel="stylesheet" href="../../assets/css/main.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
   <style>
-    /* --- THEME VARS & RESET --- */
+    /* --- HEADER & MOBILE MENU FIXES --- */
+    
+    body.menu-open {
+        overflow: hidden !important;
+        height: 100vh;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        pointer-events: none;
+        visibility: hidden;
+        transition: visibility 0s linear 0.3s;
+    }
+
+    .mobile-menu.open {
+        pointer-events: auto;
+        visibility: visible;
+        transition-delay: 0s;
+    }
+
+    .mobile-menu-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open .mobile-menu-overlay {
+        opacity: 1;
+    }
+
+    .mobile-menu-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 85%;
+        max-width: 400px;
+        background: #fff; /* Changed to white to match Agntix offcanvas style */
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        padding: 40px 30px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu.open .mobile-menu-panel {
+        transform: translateX(0);
+    }
+
+    /* Mobile Menu Items */
+    .mobile-nav a {
+        display: block;
+        color: #040316;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .mobile-nav a:hover {
+        color: #7463FF;
+    }
+
+    /* Dropdown Header */
+    .mobile-dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #040316;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .mobile-dropdown-content {
+        padding-left: 15px;
+        background: #f9f9f9;
+        margin-top: 5px;
+        border-radius: 8px;
+    }
+    .mobile-dropdown-content a {
+        font-size: 15px;
+        padding: 10px 0;
+        color: #555;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .mobile-dropdown-content div {
+        color: #7463FF;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 15px 0 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* SVGs in Menu */
+    .mobile-menu-btn svg, 
+    .mobile-dropdown-header svg, 
+    .mobile-menu-close svg {
+        transition: transform 0.3s ease;
+    }
+    .mobile-menu-close {
+        background: transparent;
+        border: none;
+        color: #040316;
+        padding: 0;
+        cursor: pointer;
+    }
+    .mobile-menu-close:hover svg {
+        transform: rotate(90deg);
+        color: #7463FF;
+    }
+
+    /* Mobile Social Icons */
+    .mobile-social {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+    .mobile-social h4 {
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: #040316;
+        font-weight: 700;
+    }
+    .mobile-social ul {
+        display: flex;
+        gap: 15px;
+        padding: 0;
+        list-style: none;
+    }
+    .mobile-social ul li a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #eee;
+        color: #040316;
+        transition: 0.3s;
+    }
+    .mobile-social ul li a:hover {
+        background: #040316;
+        color: #fff;
+        border-color: #040316;
+    }
+
+    /* Fixed Header */
+    #header-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        padding: 15px 0;
+    }
+
+    /* --- PAGE STYLES --- */
+    body { font-family: 'Inter', sans-serif; color: var(--text-body); padding-top: 80px; }
     :root {
       --primary: #7463FF;
       --accent: #dafa66;
@@ -44,1543 +205,63 @@
       --text-body: #555;
       --bg-light: #f8f9fc;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      background: #fff;
-      color: var(--text-body);
-    }
-    .glass-footer{
-      margin-top: 0%;
-    }
-    h1, h2, h3, h4 { color: var(--dark); }
-
-    /* --- UTILS --- */
     .container-custom { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
-    .text-purple { color: var(--primary); }
-    .sub-title {
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        display: block;
-        margin-bottom: 15px;
-        color: var(--primary);
-    }
-
-    .hero-btn {
-        background: var(--primary);
-        color: #fff;
-        padding: 14px 35px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        display: inline-block;
-        transition: all 0.3s ease;
-        border: 2px solid var(--primary);
-        box-shadow: 0 10px 20px -10px rgba(116, 99, 255, 0.5);
-    }
-    .hero-btn:hover { background: transparent; color: var(--primary); transform: translateY(-3px); }
-
-    /* --- SECTIONS COMMON --- */
+    .sub-title { font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 15px; color: var(--primary); }
+    .hero-btn { background: var(--primary); color: #fff; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s ease; border: 2px solid var(--primary); }
+    .hero-btn:hover { background: transparent; color: var(--primary); }
     section { padding: 120px 0; position: relative; }
 
-    /* --- HERO SECTION (Creative Depth) --- */
-    .about-hero {
-        padding-top: 200px;
-        padding-bottom: 100px;
-        /* Subtle gradient for depth */
-        background: radial-gradient(circle at top right, rgba(116, 99, 255, 0.08), transparent 70%);
-    }
-    .hero-heading {
-        font-size: clamp(3rem, 5vw, 4.5rem);
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 25px;
-    }
+    .about-hero { padding-top: 100px; padding-bottom: 100px; background: radial-gradient(circle at top right, rgba(116, 99, 255, 0.08), transparent 70%); }
+    .hero-heading { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 25px; color: var(--dark); }
     .hero-text { font-size: 1.2rem; line-height: 1.7; margin-bottom: 35px; max-width: 600px; }
-
-    /* --- FOUNDER SECTION (Layered UI) --- */
+    
     .founder-section { background: #fff; overflow: hidden; }
-    
-    /* Giant background text for agency feel */
-    .founder-bg-text {
-        position: absolute;
-        top: 50%;
-        left: -5%;
-        transform: translateY(-50%);
-        font-size: 15vw;
-        font-weight: 900;
-        color: rgba(0,0,0,0.02);
-        pointer-events: none;
-        z-index: 0;
-    }
+    .founder-bg-text { position: absolute; top: 50%; left: -5%; transform: translateY(-50%); font-size: 15vw; font-weight: 900; color: rgba(0,0,0,0.02); pointer-events: none; z-index: 0; }
+    .founder-img-frame { position: relative; z-index: 2; }
+    .founder-img-frame::before { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 3px solid var(--primary); border-radius: 30px; z-index: -1; }
+    .founder-img { border-radius: 30px; width: 100%; display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .founder-quote { font-size: 1.15rem; line-height: 1.9; font-style: italic; color: #444; padding-left: 30px; border-left: 4px solid var(--accent); }
 
-    .founder-content-wrapper { position: relative; z-index: 1; }
-
-    .founder-img-frame {
-        position: relative;
-        z-index: 2;
-    }
-    /* Creative Offset Border Effect */
-    .founder-img-frame::before {
-        content: '';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 100%;
-        height: 100%;
-        border: 3px solid var(--primary);
-        border-radius: 30px;
-        z-index: -1;
-        transition: 0.4s ease;
-    }
-    .founder-img {
-        border-radius: 30px;
-        width: 100%;
-        display: block;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        background: #fff; /* placeholder bg */
-        transition: 0.4s ease;
-    }
-    .founder-img-frame:hover .founder-img { transform: translate(-10px, -10px); }
-    .founder-img-frame:hover::before { transform: translate(10px, 10px); border-color: var(--accent); }
-
-    .founder-quote {
-        font-size: 1.15rem;
-        line-height: 1.9;
-        font-style: italic;
-        color: #444;
-        position: relative;
-        padding-left: 30px;
-        border-left: 4px solid var(--accent);
-    }
-
-    /* --- VISION & MISSION (Structured Cards) --- */
-    .vm-section {
-        background: var(--bg-light);
-        padding-bottom: 60px; /* offset for cards */
-    }
-    .vm-card {
-        background: #fff;
-        border-radius: 24px;
-        padding: 60px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-        margin-bottom: 60px;
-        border: 1px solid rgba(0,0,0,0.03);
-        transition: 0.3s;
-    }
-    .vm-card:hover { box-shadow: 0 25px 50px rgba(116, 99, 255, 0.08); }
-    
-    /* Subtle tint for Vision card */
-    .vm-card.vision-mode { background: linear-gradient(to right, #fff, rgba(116, 99, 255, 0.03)); }
-    /* Subtle tint for Mission card */
-    .vm-card.mission-mode { background: linear-gradient(to left, #fff, rgba(218, 250, 102, 0.1)); }
-
-    .vm-icon-box {
-        width: 70px;
-        height: 70px;
-        background: var(--bg-light);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        color: var(--primary);
-        margin-bottom: 25px;
-    }
-    .vm-heading { font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; }
+    .vm-section { background: var(--bg-light); }
+    .vm-card { background: #fff; border-radius: 24px; padding: 60px; box-shadow: 0 15px 40px rgba(0,0,0,0.04); margin-bottom: 60px; }
+    .vm-icon-box { width: 70px; height: 70px; background: var(--bg-light); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--primary); margin-bottom: 25px; }
+    .vm-heading { font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; color: var(--dark); }
     .vm-text { font-size: 1.1rem; line-height: 1.8; }
+
+    .team-section { padding: 120px 0; background: #fff; overflow: hidden; }
+    .team-scroll-stage { width: 100%; overflow: hidden; padding: 50px 0; }
+    .team-track { display: flex; gap: 60px; width: max-content; padding-left: 60px; }
+    .team-item { width: 260px; text-align: center; flex-shrink: 0; }
+    .team-img-wrapper { width: 220px; height: 220px; margin: 0 auto 25px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 5px #fff, 0 0 0 8px var(--primary); }
+    .team-img-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.4s; }
+    .team-item:hover .team-img-wrapper img { filter: grayscale(0%); transform: scale(1.1); }
+    .team-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; color: var(--dark); }
+    .team-role { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; font-weight: 600; }
+
+    .cta-section { padding: 100px 0; background: var(--dark); text-align: center; color: #fff; }
     
-    .mission-list li {
-        margin-bottom: 15px;
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-    }
-    .mission-list i {
-        background: rgba(116, 99, 255, 0.1);
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin-right: 15px;
-        font-size: 14px;
-    }
+    .adv-tech-footer { background: #21212D; color: #fff; padding: 80px 0 20px; margin-top: 0; }
+    .footer-logo { max-width: 160px; margin-bottom: 20px; }
+    .footer-links a { color: #aaa; text-decoration: none; margin-bottom: 10px; display: block; transition: 0.3s; }
+    .footer-links a:hover { color: #fff; padding-left: 5px; }
 
-    /* --- TEAM SECTION (Polished Infinite Scroll) --- */
-    .team-section {
-        padding: 120px 0;
-        background: #fff;
-        position: relative;
-    }
-    
-    .team-scroll-stage {
-        width: 100%;
-        overflow: hidden;
-        padding: 50px 0;
-        /* Soft fade on edges */
-        mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-    }
-
-    .team-track {
-        display: flex;
-        gap: 60px;
-        width: max-content;
-        padding-left: 60px; /* Initial offset */
-    }
-
-    .team-item {
-        width: 260px;
-        text-align: center;
-        flex-shrink: 0;
-        group; /* for hover states */
-    }
-
-    .team-img-wrapper {
-        width: 220px;
-        height: 220px;
-        margin: 0 auto 25px;
-        border-radius: 50%;
-        overflow: hidden;
-        /* Double border effect */
-        box-shadow: 0 0 0 5px #fff, 0 0 0 8px var(--primary);
-        transition: 0.4s ease;
-    }
-
-    .team-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease, filter 0.5s ease;
-        filter: grayscale(80%); /* Artistic grayscale initial state */
-    }
-    
-    /* Hover Effect: Colorize and Zoom */
-    .team-item:hover .team-img-wrapper { box-shadow: 0 0 0 5px #fff, 0 0 0 12px var(--accent); }
-    .team-item:hover .team-img-wrapper img {
-        transform: scale(1.1);
-        filter: grayscale(0%);
-    }
-
-    .team-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
-    .team-role { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-
-    /* --- CTA SECTION --- */
-    .cta-section {
-        padding: 100px 0;
-        background: var(--dark);
-        text-align: center;
-        color: #fff;
-        /* Subtle pattern overlay option */
-        background-image: radial-gradient(circle at center, rgba(255,255,255,0.03) 2px, transparent 2px);
-        background-size: 40px 40px;
-    }
-
-    /* --- RESPONSIVE FIXES --- */
     @media (max-width: 991px) {
-        section { padding: 80px 0; }
-        .hero-heading { font-size: 2.8rem; }
-        .hero-text { font-size: 1.1rem; }
-        .founder-bg-text { display: none; } /* Hide giant text on mobile */
-        .founder-img-frame { margin-bottom: 50px; }
-        
-        /* HERO MOBILE: Lottie First, Text Below */
-        .about-hero .row {
-            display: flex;
-            flex-direction: column-reverse;
-        }
+        .founder-bg-text { display: none; }
+        .founder-img-frame { margin-bottom: 40px; }
+        .about-hero .row { flex-direction: column-reverse; }
         .about-hero .col-lg-6.text-center { margin-bottom: 40px; }
-
-        /* VM SECTION MOBILE: Split View (Lottie on BG, Text in Card) */
-        .vm-card { 
-            padding: 0; 
-            background: transparent !important; 
-            box-shadow: none !important; 
-            border: none;
-            margin-bottom: 60px;
-        }
-        
-        .vm-mobile-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .vm-card.vision-mode .vm-mobile-card {
-            background: linear-gradient(to bottom, #fff, rgba(116, 99, 255, 0.05));
-        }
-        .vm-card.mission-mode .vm-mobile-card {
-             background: linear-gradient(to bottom, #fff, rgba(218, 250, 102, 0.15));
-        }
-
-        .vm-icon-box { margin: 0 auto 25px; }
-        .mission-list li { justify-content: center; text-align: left; }
-        
-        /* Reorder Mission for Mobile: Lottie First (order 1), Text Second (order 2) */
-        .order-mobile-1 { order: 1; margin-bottom: 40px; } /* Lottie Container */
-        .order-mobile-2 { order: 2; } /* Text Container */
-        
-        /* Reorder Vision for Mobile: Lottie First, Text Second */
-        .vm-card.vision-mode .row {
-            display: flex;
-            flex-direction: column-reverse; /* Puts Lottle (2nd col) on top */
-        }
-        .vm-card.vision-mode .col-lg-6.text-center {
-            margin-bottom: 40px; /* Space between Lottie and Card */
-        }
     }
   </style>
 </head>
 
 <body>
 
- <!-- tp-offcanvus-area-start -->
- <div class="tp-offcanvas-area">
-  <div class="tp-offcanvas-wrapper offcanvas-black-bg">
-    <div class="tp-offcanvas-top d-flex align-items-center justify-content-between">
-      <div class="tp-offcanvas-logo">
-        <a href="index.html">
-          <img class="logo-1" data-width="120" src="/assets/digitech-logo.png" alt="The Digitech Solutions Logo" >
-        </a>
-      </div>
-      <div class="tp-offcanvas-close">
-        <button class="tp-offcanvas-close-btn">
-          <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
-    </div>
-    
-    <div class="tp-offcanvas-main">
-      <div class="tp-offcanvas-content d-none d-xl-block">
-        <h3 class="tp-offcanvas-title">Hello There!</h3>
-        <p>We provide innovative digital solutions to help your business grow and succeed in the digital world.</p>
-      </div>
-      
-      <div class="tp-offcanvas-menu d-xl-none">
-        <nav></nav>
-      </div>
-      
-      <div class="tp-offcanvas-gallery d-none d-xl-block">
-          <div class="row gx-2">
-            <div class="col-md-3 col-3">
-              <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="assets/best-digital-agency-for-startups-pune.jpeg">
-                  <img src="/assets/best-digital-agency-for-startups-pune.jpeg"
-                    alt="Best Digital Agency for Startups Pune">
-                </a>
-              </div>
-            </div>
-            <div class="col-md-3 col-3">
-              <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="assets/landing-page-design-services-pune.jpeg">
-                  <img src="/assets/landing-page-design-services-pune.jpeg"
-                    alt="Landing Page Design Services Pune">
-                </a>
-              </div>
-            </div>
-            <div class="col-md-3 col-3">
-              <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="assets/top-digital-marketing-companies-maharashtra.jpeg">
-                  <img src="/assets/top-digital-marketing-companies-maharashtra.jpeg"
-                    alt="Top Digital Marketing Companies Maharashtra">
-                </a>
-              </div>
-            </div>
-            <div class="col-md-3 col-3">
-              <div class="tp-offcanvas-gallery-img fix">
-                <a class="popup-image" href="assets/top-website-developers-in-pune.jpeg">
-                  <img src="/assets/top-website-developers-in-pune.jpeg"
-                    alt="Top Website Developers in Pune">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-      <div class="tp-offcanvas-contact">
-        <h3 class="tp-offcanvas-title sm">Information</h3>
-        <ul>
-          <li><a href="tel:+919822857421">+91 98228 57421</a></li>
-          <li><a href="mailto:official@thedigitechsolutions.com ">official@thedigitechsolutions.com </a></li>
-          <li><a href="javascript:void(0)">Neo95, SB Patil School Rd, opp. to Goodluck cafe, Ravet, Pimpri-Chinchwad, Pune</a></li>
-        </ul>
-      </div>
-      
-      <div class="tp-offcanvas-social">
-        <h3 class="tp-offcanvas-title sm">Follow Us</h3>
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/thedigitechsolutions/" target="_blank">
-              <span>
-                <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 0H5.81818C4.85376 0 3.92883 0.383116 3.24688 1.06507C2.56493 1.74702 2.18182 2.67194 2.18182 3.63636V5.81818H0V8.72727H2.18182V14.5455H5.09091V8.72727H7.27273L8 5.81818H5.09091V3.63636C5.09091 3.44348 5.16753 3.25849 5.30392 3.1221C5.44031 2.98571 5.6253 2.90909 5.81818 2.90909H8V0Z" fill="currentcolor" />
-                </svg>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/the-digitech-solutions-a3a30033a/" target="_blank">
-              <span>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9.8001 4.2002C10.914 4.2002 11.9823 4.64269 12.7699 5.43035C13.5576 6.218 14.0001 7.28629 14.0001 8.4002V13.3002H11.2001V8.4002C11.2001 8.02889 11.0526 7.6728 10.79 7.41025C10.5275 7.1477 10.1714 7.0002 9.8001 7.0002C9.42879 7.0002 9.0727 7.1477 8.81015 7.41025C8.5476 7.6728 8.4001 8.02889 8.4001 8.4002V13.3002H5.6001V8.4002C5.6001 7.28629 6.0426 6.218 6.83025 5.43035C7.6179 4.64269 8.68619 4.2002 9.8001 4.2002Z" fill="currentcolor" />
-                  <path d="M2.8 4.89941H0V13.2994H2.8V4.89941Z" fill="currentcolor" />
-                  <path d="M1.4 2.8C2.1732 2.8 2.8 2.1732 2.8 1.4C2.8 0.626801 2.1732 0 1.4 0C0.626801 0 0 0.626801 0 1.4C0 2.1732 0.626801 2.8 1.4 2.8Z" fill="currentcolor" />
-                </svg>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/the.digitech.solutions/#" target="_blank">
-              <span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g>
-                    <path d="M11.5 1H4.5C2.567 1 1 2.567 1 4.5V11.5C1 13.433 2.567 15 4.5 15H11.5C13.433 15 15 13.433 15 11.5V4.5C15 2.567 13.433 1 11.5 1Z" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M10.8002 7.55921C10.8866 8.14178 10.7871 8.73676 10.5158 9.25952C10.2446 9.78228 9.81539 10.2062 9.28932 10.471C8.76326 10.7358 8.1671 10.8279 7.58564 10.7344C7.00417 10.6408 6.46702 10.3663 6.05057 9.94982C5.63413 9.53338 5.3596 8.99622 5.26603 8.41476C5.17247 7.8333 5.26463 7.23714 5.52941 6.71107C5.7942 6.18501 6.21812 5.75583 6.74087 5.48458C7.26363 5.21333 7.85861 5.11382 8.44119 5.20021C9.03543 5.28833 9.58558 5.56524 10.0104 5.99003C10.4352 6.41482 10.7121 6.96497 10.8002 7.55921Z" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M11.8501 4.15039H11.8571" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </g>
-                </svg>
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="body-overlay"></div>
-  <!-- tp-offcanvus-area-end -->
-  <!-- offcanvas end -->
-
-  <!-- header area start -->
-
-  <!-- header area start -->
-  <div id="header-sticky"
-    class="tp-header-area tp-header-inner-style header-inner-white tp-header-ptb tp-header-blur sticky-white-bg header-transparent mt-30">
-    <div class="container container-1750">
-      <div class="row align-items-center">
-        <div class="col-xl-2 col-lg-6 col-6">
-            <div class="tp-header-logo">
-            <a href="index.html">
-              <img data-width="120" class="logo-white"
-                src="assets/digitech-logo.png" alt="The Digitech Solutions Logo" >
-              <img data-width="120" class="logo-black d-none"
-                src="assets/digitech-logo.png" alt="The Digitech Solutions Logo" >
-            </a>
-          </div>
-        </div>
-        <div class="col-xl-8 d-none d-xl-block">
-          <div class="tp-header-box text-center">
-            <div class="tp-header-menu tp-header-dropdown dropdown-black-bg">
-              <nav class="tp-mobile-menu-active">
-                <ul>
-                  <li>
-                    <a href="index.html">Home</a>
-                    <!-- <div
-                        class="tp-megamenu-wrapper mega-menu megamenu-black-bg"
-                      >
-                        <div class="row gx-0">
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Light Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index.html"
-                                    >Modern Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-studio-light.html"
-                                    >Design Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-digital-marketing-light.html"
-                                    >Digital Marketing
-                                    <span class="new">Trending</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-studio-light.html"
-                                    >Creative Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-agency-light.html"
-                                    >Design Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-agency-light.html"
-                                    >Creative Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-architecture-hub-light.html"
-                                    >Architecture Hub
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-unique-ai-image-light.html"
-                                    >AI Image Genaretor</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Dark Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-dark.html">Modern Agency</a>
-                                </li>
-                                <li>
-                                  <a href="index-design-studio-dark.html"
-                                    >Design Studio
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-digital-marketing-dark.html"
-                                    >Digital Marketing</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-studio-dark.html"
-                                    >Creative Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-agency-dark.html"
-                                    >Design Agency
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-agency-dark.html"
-                                    >Creative Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-architecture-hub-dark.html"
-                                    >Architecture Hub
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="index-unique-ai-image-dark.html"
-                                    >AI Image Genaretor
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Light Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-corporate-agency-light.html"
-                                    >Corporate Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-mobile-application-light.html"
-                                    >Mobile App
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-it-solution-light.html"
-                                    >IT Solutions
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-cryptocurrency-light.html"
-                                    >Cryptocurrency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-startup-agency-light.html"
-                                    >Startup Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-fashion-studio-light.html"
-                                    >Fashion Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-personal-portfolio-light.html"
-                                    >Personal Portfolio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-shop-modern-light.html"
-                                    >Shop Home <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Dark Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-corporate-agency-dark.html"
-                                    >Corporate Agency
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-mobile-application-dark.html"
-                                    >Mobile App</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-it-solution-dark.html"
-                                    >IT Solutions</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-cryptocurrency-dark.html"
-                                    >Cryptocurrency
-                                    <span class="new">Trending</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-startup-agency-dark.html"
-                                    >Startup Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-fashion-studio-dark.html"
-                                    >Fashion Studio
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-personal-portfolio-dark.html"
-                                    >Personal Portfolio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-shop-modern-dark.html"
-                                    >Shop Home</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">Showcases</h4>
-                              <ul>
-                                <li>
-                                  <a href="portfolio-webgl-showcase.html"
-                                    >Webgl Showcase
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-coverflow-slider.html"
-                                    >Coverflow Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-thumb-slider.html"
-                                    >Creative Thumb Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-skew-slider.html"
-                                    >Creative Skew Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-text-slider.html"
-                                    >Creative Text Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-parallax-slider.html"
-                                    >Parallax Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-perspective-slider.html"
-                                    >Paspective Showcase
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-horizontal-showcase.html"
-                                    >Horizontal Showcase</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">Showcases</h4>
-                              <ul>
-                                <li>
-                                  <a href="portfolio-wrapper-slider.html"
-                                    >Wrapper Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-slicer.html"
-                                    >Portfolio slicer
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-showcase.html"
-                                    >Portfolio Showcase</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="brand-showcase.html"
-                                    >Brand Showcase</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="portfolio-interactive-with-hover.html"
-                                    >Interactive with hover
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="portfolio-interactive-with-scroll.html"
-                                    >Interactive with Scroll</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-slider-elegant.html"
-                                    >Slider Elegant</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div> -->
-                  </li>
-                  <li>
-                   <a href="about-us.html">About</a>
-                    <!-- <div
-                        class="tp-megamenu-wrapper mega-menu megamenu-black-bg"
-                      >
-                        <div class="row gx-0">
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Light Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index.html"
-                                    >Modern Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-studio-light.html"
-                                    >Design Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-digital-marketing-light.html"
-                                    >Digital Marketing
-                                    <span class="new">Trending</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-studio-light.html"
-                                    >Creative Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-agency-light.html"
-                                    >Design Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-agency-light.html"
-                                    >Creative Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-architecture-hub-light.html"
-                                    >Architecture Hub
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-unique-ai-image-light.html"
-                                    >AI Image Genaretor</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Dark Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-dark.html">Modern Agency</a>
-                                </li>
-                                <li>
-                                  <a href="index-design-studio-dark.html"
-                                    >Design Studio
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-digital-marketing-dark.html"
-                                    >Digital Marketing</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-studio-dark.html"
-                                    >Creative Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-design-agency-dark.html"
-                                    >Design Agency
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-creative-agency-dark.html"
-                                    >Creative Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-architecture-hub-dark.html"
-                                    >Architecture Hub
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="index-unique-ai-image-dark.html"
-                                    >AI Image Genaretor
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Light Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-corporate-agency-light.html"
-                                    >Corporate Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-mobile-application-light.html"
-                                    >Mobile App
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-it-solution-light.html"
-                                    >IT Solutions
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-cryptocurrency-light.html"
-                                    >Cryptocurrency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-startup-agency-light.html"
-                                    >Startup Agency
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-fashion-studio-light.html"
-                                    >Fashion Studio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-personal-portfolio-light.html"
-                                    >Personal Portfolio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-shop-modern-light.html"
-                                    >Shop Home <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">
-                                Home Dark Version
-                              </h4>
-                              <ul>
-                                <li>
-                                  <a href="index-corporate-agency-dark.html"
-                                    >Corporate Agency
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-mobile-application-dark.html"
-                                    >Mobile App</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-it-solution-dark.html"
-                                    >IT Solutions</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-cryptocurrency-dark.html"
-                                    >Cryptocurrency
-                                    <span class="new">Trending</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-startup-agency-dark.html"
-                                    >Startup Agency</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-fashion-studio-dark.html"
-                                    >Fashion Studio
-                                    <span class="pop">Popular</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-personal-portfolio-dark.html"
-                                    >Personal Portfolio</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="index-shop-modern-dark.html"
-                                    >Shop Home</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">Showcases</h4>
-                              <ul>
-                                <li>
-                                  <a href="portfolio-webgl-showcase.html"
-                                    >Webgl Showcase
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-coverflow-slider.html"
-                                    >Coverflow Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-thumb-slider.html"
-                                    >Creative Thumb Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-skew-slider.html"
-                                    >Creative Skew Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-creative-text-slider.html"
-                                    >Creative Text Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-parallax-slider.html"
-                                    >Parallax Slider</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-perspective-slider.html"
-                                    >Paspective Showcase
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-horizontal-showcase.html"
-                                    >Horizontal Showcase</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <h4 class="tp-megamenu-title">Showcases</h4>
-                              <ul>
-                                <li>
-                                  <a href="portfolio-wrapper-slider.html"
-                                    >Wrapper Slider
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-slicer.html"
-                                    >Portfolio slicer
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-showcase.html"
-                                    >Portfolio Showcase</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="brand-showcase.html"
-                                    >Brand Showcase</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="portfolio-interactive-with-hover.html"
-                                    >Interactive with hover
-                                    <span class="hot">Hot</span></a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="portfolio-interactive-with-scroll.html"
-                                    >Interactive with Scroll</a
-                                  >
-                                </li>
-                                <li>
-                                  <a href="portfolio-slider-elegant.html"
-                                    >Slider Elegant</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div> -->
-                  </li>
-                  <li class="has-dropdown">
-                    <a href="javascript:void(0)">Services</a>
-                    <div class="tp-megamenu-wrapper mega-menu megamenu-black-bg">
-                      <div class="row gx-0">
-                        <!-- Digital Marketing -->
-                        <div class="col-xl-3">
-                          <div class="tp-megamenu-list">
-                            <h4 class="tp-megamenu-title">
-                              Digital Marketing
-                            </h4>
-                            <ul>
-                              <li>
-                                <a href="service/search-engine-optimization.html">Search Engine
-                                  Optimization</a>
-                              </li>
-                              <li>
-                                <a href="service/social-media-marketing.html">Social
-                                  Media Marketing</a>
-                              </li>
-                              <li>
-                                <a href="service/content-marketing.html">Content
-                                  Marketing</a>
-                              </li>
-
-                              <li>
-                                <a href="service/google-ads-ppc.html">Google Ads PPC</a>
-                              </li>
-                              <li>
-                                <a href="service/email-marketing.html">Email
-                                  Marketing</a>
-                              </li>
-
-                              <li>
-                                <a href="service/sms-marketing.html">SMS Marketing</a>
-                              </li>
-
-                              <li>
-                                <a href="service/google-my-business.html">Google My
-                                  Business</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-
-                        <!-- Website Development -->
-                        <div class="col-xl-3">
-                          <div class="tp-megamenu-list">
-                            <h4 class="tp-megamenu-title">
-                              Website Development
-                            </h4>
-                            <ul>
-                              <li><a href="service/website-development.html">Website
-                                  Development</a></li>
-                              <li><a href="service/ecommerce-development.html">E-Commerce
-                                  Development</a></li>
-                              <li>
-                                <a href="service/mobile-app-development.html">Mobile
-                                  App Development</a>
-                              </li>
-                              <li><a href="service/cms-development.html">CMS
-                                  Development</a></li>
-
-                            </ul>
-                          </div>
-                        </div>
-
-                        <!-- Branding Collaterals -->
-                        <div class="col-xl-3">
-                          <div class="tp-megamenu-list">
-                            <h4 class="tp-megamenu-title">
-                              Branding Collaterals
-                            </h4>
-                            <ul>
-                              <li><a href="service/video-production.html">Video
-                                  Production</a></li>
-                              <li><a href="service/brand-name.html">Brand Name</a></li>
-                              <li><a href="service/logo-design.html">Logo Design</a></li>
-                              <li><a href="service/brochure-design.html">Brochure
-                                  Design</a></li>
-
-                            </ul>
-                          </div>
-                        </div>
-
-                        <!-- Industries -->
-                        <div class="col-xl-3">
-                          <div class="tp-megamenu-list">
-                            <h4 class="tp-megamenu-title">Industries</h4>
-                            <ul>
-                              <li><a
-                                  href="service/digital-marketing-agency-manufacturers-pune.html">Manufactures</a>
-                              </li>
-                              <li><a
-                                  href="service/digital-marketing-education-industry-pune.html">Education</a>
-                              </li>
-                              <li>
-                                <a href="service/real-estate-digital-marketing-agency-pune.html">Real
-                                  Estate</a>
-                              </li>
-                              <li><a
-                                  href="service/ecommerce-digital-marketing-agency-pune.html">E-Commerce
-                                </a></li>
-                              <li><a
-                                  href="service/digital-marketing-agency-for-travel-tourism-pune.html">Travel</a>
-                              </li>
-                              <li><a
-                                  href="service/digital-marketing-services-for-hospitals-in-pune.html">Hospital</a>
-                              </li>
-                              <li><a
-                                  href="service/political-digital-marketing-agency-pune.html">Political</a>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  
-                  <!-- <li class="has-dropdown">
-                      <a href="portfolio-metro.html">Projects</a>
-                      <div
-                        class="tp-megamenu-wrapper mega-menu megamenu-black-bg"
-                      >
-                        <div class="row gx-0">
-                          <div class="col-xl-10">
-                            <div class="row gx-0">
-                              <div class="col-xl-3">
-                                <div class="tp-megamenu-list">
-                                  <h4 class="tp-megamenu-title">
-                                    Portfolio Grid
-                                  </h4>
-                                  <ul>
-                                    <li>
-                                      <a href="portfolio-col-2.html"
-                                        >Two Columns</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-col-3.html"
-                                        >Three Columns</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-col-4.html"
-                                        >Four Columns Wide</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-masonry.html"
-                                        >Masonry</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-metro.html"
-                                        >Portfolio Metro</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-pinterest.html"
-                                        >Portfolio Pinterest</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-horizontal-showcase.html"
-                                        >Horizontal Showcase</a
-                                      >
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="col-xl-3">
-                                <div class="tp-megamenu-list">
-                                  <h4 class="tp-megamenu-title">Showcases</h4>
-                                  <ul>
-                                    <li>
-                                      <a href="portfolio-webgl-showcase.html"
-                                        >Webgl Showcase</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-coverflow-slider.html"
-                                        >Coverflow Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-creative-thumb-slider.html"
-                                        >Creative Thumb Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-creative-skew-slider.html"
-                                        >Creative Skew Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-creative-text-slider.html"
-                                        >Creative Text Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-parallax-slider.html"
-                                        >Parallax Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-perspective-slider.html"
-                                        >Paspective Showcase</a
-                                      >
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="col-xl-3">
-                                <div class="tp-megamenu-list">
-                                  <h4 class="tp-megamenu-title">Showcases</h4>
-                                  <ul>
-                                    <li>
-                                      <a href="portfolio-wrapper-slider.html"
-                                        >Wrapper Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-slicer.html"
-                                        >Portfolio slicer</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-showcase.html"
-                                        >Portfolio Showcase</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="brand-showcase.html"
-                                        >Brand Showcase</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-interactive-with-hover.html"
-                                        >Interactive with hover</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-interactive-with-scroll.html"
-                                        >Interactive with Scroll</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-slider-elegant.html"
-                                        >Slider Elegant</a
-                                      >
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div class="col-xl-3">
-                                <div class="tp-megamenu-list">
-                                  <h4 class="tp-megamenu-title">
-                                    Single Projects
-                                  </h4>
-                                  <ul>
-                                    <li>
-                                      <a
-                                        href="portfolio-details-classic-stack.html"
-                                        >Classic Stack</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-details-creative-slider.html"
-                                        >Creative Slider</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-details-gallery.html"
-                                        >Gallery</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-details-modern.html"
-                                        >Modern</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a href="portfolio-details-video.html"
-                                        >Video</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-details-image-comparison.html"
-                                        >Image Comparison</a
-                                      >
-                                    </li>
-                                    <li>
-                                      <a
-                                        href="portfolio-details-custom-light.html"
-                                        >Custom Light</a
-                                      >
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xl-2">
-                            <div class="tp-megamenu-list">
-                              <div class="tp-megamenu-thumb">
-                                <img src="assets/img/menu/menu-1.png" alt="" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li> -->
-                  <!-- <li class="has-dropdown">
-                    <a href="blog-list.html">Blogs</a>
-                    <ul class="tp-submenu submenu">
-                      <li><a href="blog-standard.html">Blog Classic</a></li>
-                      <li>
-                        <a href="blog-standard-light.html">Blog Classic Light</a>
-                      </li>
-                      <li><a href="blog-list.html">Blog Listing</a></li>
-                      <li>
-                        <a href="blog-list-light.html">Blog Listing Light</a>
-                      </li>
-                      <li class="menu-item-has-children">
-                        <a href="blog-grid.html">Grid Layout</a>
-                        <ul class="tp-submenu submenu">
-                          <li>
-                            <a href="blog-grid-2-col.html">2 Columns</a>
-                          </li>
-                          <li>
-                            <a href="blog-grid-2-col-light.html">2 Columns Light</a>
-                          </li>
-                          <li><a href="blog-grid.html">3 Columns</a></li>
-                          <li>
-                            <a href="blog-grid-light.html">3 Columns Light</a>
-                          </li>
-                          <li>
-                            <a href="blog-grid-with-sidebar.html">2 Col + sidebar</a>
-                          </li>
-                          <li>
-                            <a href="blog-grid-with-sidebar-light.html">2 Col + sidebar Light</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a href="blog-masonry.html">Masonry Grid</a></li>
-                      <li>
-                        <a href="blog-masonry-light.html">Masonry Grid Light</a>
-                      </li>
-                      <li class="menu-item-has-children">
-                        <a href="blog-details-without-sidebar.html">Single Layouts</a>
-                        <ul class="tp-submenu submenu">
-                          <li>
-                            <a href="blog-details.html">Blog Single Post</a>
-                          </li>
-                          <li>
-                            <a href="blog-details-light.html">Blog Single Post Light</a>
-                          </li>
-                          <li>
-                            <a href="blog-details-without-sidebar.html">Blog No Sidebar</a>
-                          </li>
-                          <li>
-                            <a href="blog-details-without-sidebar-light.html">Blog No Sidebar Light</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li> -->
-                  <!-- <li class="has-dropdown">
-                      <a href="index-shop-modern-dark.html">Shop</a>
-                      <ul class="tp-submenu submenu">
-                        <li>
-                          <a href="index-shop-modern-light.html">Shop Modern</a>
-                        </li>
-                        <li>
-                          <a href="index-shop-modern-dark.html"
-                            >Shop Modern Dark</a
-                          >
-                        </li>
-                        <li>
-                          <a href="index-shop-with-slider-light.html"
-                            >Shop With Slider</a
-                          >
-                        </li>
-                        <li>
-                          <a href="index-shop-with-slider-dark.html"
-                            >Shop With Slider Dark</a
-                          >
-                        </li>
-                        <li class="menu-item-has-children">
-                          <a href="#">Shop Page</a>
-                          <ul class="tp-submenu submenu">
-                            <li><a href="shop.html">Shop Page</a></li>
-                            <li><a href="shop-dark.html">Shop Page Dark</a></li>
-                            <li>
-                              <a href="shop-details.html">Shop Details</a>
-                            </li>
-                            <li>
-                              <a href="shop-details-dark.html"
-                                >Shop Details Dark</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                          <a href="#">My Account</a>
-                          <ul class="tp-submenu submenu">
-                            <li><a href="my-account.html">My Account</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="wishlist.html">Wishlist</a></li>
-                            <li><a href="login.html">LogIn</a></li>
-                            <li><a href="register.html">Register</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li> -->
-                  <li>
-                    <a href="contact.html">Contact</a>
-                    <!-- <ul class="tp-submenu submenu">
-                        <li><a href="contact-me-light.html">Contact Me</a></li>
-                        <li>
-                          <a href="contact-me-dark.html">Contact Me Dark</a>
-                        </li>
-                        <li><a href="contact-us-light.html">Contact Us</a></li>
-                        <li>
-                          <a href="contact-us-dark.html">Contact Us Dark</a>
-                        </li>
-                        <li><a href="contact.html">Get In Touch</a></li>
-                        <li>
-                          <a href="contact-dark.html">Get In Touch Dark</a>
-                        </li>
-                      </ul> -->
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2 col-lg-6 col-6">
-          <div class="tp-header-right text-end">
-            <div class="tp-header-14-bar-wrap ml-20">
-              <button class="tp-header-8-bar tp-offcanvas-open-btn">
-                <span>Menu</span>
-                <span>
-                  <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0H14V1.5H0V0Z" fill="currentcolor" />
-                    <path d="M0 6H24V7.5H0V6Z" fill="currentcolor" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- HEADER -->
+<div id="global-header-container"></div>
 
 
   <main>
-
+    <!-- HERO -->
     <section class="about-hero">
       <div class="container-custom">
         <div class="row align-items-center">
@@ -1601,6 +282,7 @@
       </div>
     </section>
 
+    <!-- FOUNDER -->
     <section class="founder-section">
       <div class="founder-bg-text">VISIONARY</div>
       
@@ -1617,13 +299,14 @@
              <h4 class="text-purple" style="font-weight:700; letter-spacing:1px; margin-bottom: 30px;">MANAGING DIRECTOR</h4>
              
              <p class="founder-quote">
-               "Meet the driving force behind The DigiTech Solutions. With a passion for digital innovation and brand growth, Vishwajit founded DigiTech to transform how businesses connect, market, and grow online. His vision turned ideas into impact—and his leadership turned a team into a trusted brand. Quite simply, without him, there would be no DigiTech Solutions."
+               "Meet the driving force behind The DigiTech Solutions. With a passion for digital innovation and brand growth, Vishwajit founded DigiTech to transform how businesses connect, market, and grow online. His vision turned ideas into impact—and his leadership turned a team into a trusted brand."
              </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- VISION & MISSION -->
     <section id="vision" class="vm-section">
       <div class="container-custom">
         
@@ -1633,7 +316,7 @@
                     <div class="vm-mobile-card">
                         <div class="vm-icon-box"><i class="fa-solid fa-eye"></i></div>
                         <h2 class="vm-heading">Our Vision</h2>
-                        <p class="vm-text">Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow online by offering smart, scalable, and easy-to-use digital solutions. From website development to mobile app creation, we aim to make powerful technology accessible to businesses of all sizes. We believe in building digital tools that deliver real results.</p>
+                        <p class="vm-text">Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow online by offering smart, scalable, and easy-to-use digital solutions.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
@@ -1651,21 +334,15 @@
                     <div class="vm-mobile-card">
                         <div class="vm-icon-box"><i class="fa-solid fa-rocket"></i></div>
                         <h2 class="vm-heading">Our Mission</h2>
-                        <p class="vm-text mb-4">Our mission is to empower businesses through data-driven digital marketing, breakthrough technology, and purpose-led strategies. We are dedicated to:</p>
-                        
-                        <ul class="list-unstyled mission-list">
-                            <li><i class="fa-solid fa-check text-purple"></i> Delivering high-impact digital solutions</li>
-                            <li><i class="fa-solid fa-check text-purple"></i> Building long-term partnerships rooted in trust</li>
-                            <li><i class="fa-solid fa-check text-purple"></i> Driving growth through strategic thinking</li>
-                        </ul>
+                        <p class="vm-text mb-4">Our mission is to empower businesses through data-driven digital marketing, breakthrough technology, and purpose-led strategies.</p>
                     </div>
                 </div>
             </div>
         </div>
-
       </div>
     </section>
 
+    <!-- TEAM -->
     <section class="team-section">
       <div class="container-custom">
           <div class="text-center mb-5">
@@ -1675,225 +352,158 @@
 
           <div class="team-scroll-stage">
               <div class="team-track">
-                  
                   <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/vishwajit.jpg" alt="Vishwajit" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=VM'">
-                      </div>
+                      <div class="team-img-wrapper"><img src="/assets/vishwajit.jpg" alt="Vishwajit"></div>
                       <div class="team-name">Vishwajit M</div>
                       <div class="team-role">Founder</div>
                   </div>
-
                   <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/mitesh.jpg" alt="Mitesh" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=MS'">
-                      </div>
+                      <div class="team-img-wrapper"><img src="/assets/mitesh.jpg" alt="Mitesh"></div>
                       <div class="team-name">Mitesh S</div>
                       <div class="team-role">Marketing Exec</div>
                   </div>
-
                   <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/vaibhav.jpg" alt="Vaibhav" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=VM'">
-                      </div>
+                      <div class="team-img-wrapper"><img src="/assets/vaibhav.jpg" alt="Vaibhav"></div>
                       <div class="team-name">Vaibhav M</div>
                       <div class="team-role">DevSecOps</div>
                   </div>
-
                   <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/divya.jpg" alt="Divya" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=DK'">
-                      </div>
+                      <div class="team-img-wrapper"><img src="/assets/divya.jpg" alt="Divya"></div>
                       <div class="team-name">Divya K</div>
                       <div class="team-role">HR Manager</div>
                   </div>
-
                   <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/ritik.jpg" alt="Ritik" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=RR'">
-                      </div>
+                      <div class="team-img-wrapper"><img src="/assets/ritik.jpg" alt="Ritik"></div>
                       <div class="team-name">Ritik R</div>
                       <div class="team-role">Marketing Head</div>
                   </div>
-
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/bhima.jpg" alt="Bhima" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Bhima P</div>
-                    <div class="team-role">Editor</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/bhima.jpg" alt="Bhima" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Tanmay S</div>
-                    <div class="team-role">Sr. App Developer</div>
-                  </div>
-
               </div>
           </div>
-
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="cta-section">
         <div class="container-custom">
             <h2 style="font-weight:800; font-size: 2.5rem; margin-bottom:25px; color: #fff;">Ready to Transform Your Digital Presence?</h2>
             <p style="color:rgba(255,255,255,0.7); font-size: 1.2rem; margin-bottom:40px; max-width: 700px; margin-left: auto; margin-right: auto;">Let's discuss how we can help you achieve your business goals with our tailored solutions.</p>
-            <a href="contact.html" class="hero-btn" style="background:var(--accent); color:var(--dark); border-color: var(--accent);">Start A Project</a>
+            <a href="/contact.html" class="hero-btn" style="background:var(--accent); color:var(--dark); border-color: var(--accent);">Start A Project</a>
         </div>
     </section>
-
   </main>
 
-<footer class="adv-tech-footer">
-  
-  <!-- Container for Three.js -->
-  <div id="three-footer-container"></div>
-  
-  <!-- Gradient Overlay for Text Readability -->
-  <div class="footer-overlay-gradient"></div>
-
-  <div class="container container-1430 relative-layer">
-    <div class="row">
-
-      <!-- Column 1: Brand -->
-      <div class="col-xl-3 col-lg-3 col-md-6 mb-50">
-        <div class="footer-brand-widget" >
-          <div class="brand-logo-anim mb-30" >
-            <a href="/index.html" >
-              <img src="/assets/digitech-logo.png" alt="The Digitech Solutions Logo" style="background-color: rgba(255, 255, 255, 0.934) !important;width: 65%; border-radius: 33px;" class="img-fluid logo-glow" >
-            </a>
-          </div>
-          <p class="brand-desc">
-            We are committed to helping you succeed, and we will work with you every step of the way to engineer digital excellence.
-          </p>
-          <div class="social-orbit mt-4">
-            <a href="https://www.facebook.com/thedigitechsolutions/" target="_blank" class="orbit-btn fb"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/the-digitech-solutions-a3a30033a/" target="_blank" class="orbit-btn in"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/the.digitech.solutions/#" target="_blank" class="orbit-btn ig"><i class="fab fa-instagram"></i></a>
-          </div>
+  <!-- FOOTER -->
+  <footer class="adv-tech-footer glass-footer">
+    <div class="container-custom">
+      <div class="row">
+        <div class="col-lg-4 mb-5">
+          <img src="/assets/digitech-logo.png" alt="Logo" class="footer-logo">
+          <p class="footer-desc">We engineer digital excellence for brands that want to stand out. Trusted by Pune's leading businesses.</p>
         </div>
-      </div>
-
-      <!-- Column 2: Services -->
-      <div class="col-xl-3 col-lg-3 col-md-6 mb-50">
-        <div class="footer-nav-widget">
-          <h4 class="tech-title">Services</h4>
-          <ul class="tech-links">
-            <li><a href="/service/website-developement.html" class="link-hover-effect">Website Development</a></li>
-            <li><a href="/service/mobile-app-development.html" class="link-hover-effect">App Development</a></li>
-            <li><a href="/service/search-engine-optimization.html" class="link-hover-effect">SEO Optimization</a></li>
-            <li><a href="/service/social-media-marketing.html" class="link-hover-effect">Social Media Marketing</a></li>
-            <li><a href="/service/brand-name.html" class="link-hover-effect">Branding Solutions</a></li>
+        <div class="col-lg-2 col-6 mb-5">
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links list-unstyled">
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">App Development</a></li>
+            <li><a href="#">SEO Services</a></li>
+            <li><a href="#">Digital Marketing</a></li>
           </ul>
         </div>
-      </div>
-
-      <!-- Column 3: Industries -->
-      <div class="col-xl-3 col-lg-3 col-md-6 mb-50">
-        <div class="footer-nav-widget">
-          <h4 class="tech-title">Industries</h4>
-          <ul class="tech-links">
-            <li><a href="/service/real-estate-digital-marketing-agency-pune.html" class="link-hover-effect">Real Estate</a></li>
-            <li><a href="/service/digital-marketing-education-industry-pune.html" class="link-hover-effect">Education</a></li>
-            <li><a href="/service/digital-marketing-agency-manufacturers-pune.html" class="link-hover-effect">Manufacturing</a></li>
-            <li><a href="/service/ecommerce-digital-marketing-agency-pune.html" class="link-hover-effect">E-Commerce</a></li>
-            <li><a href="/service/political-digital-marketing-agency-pune.html" class="link-hover-effect">Political</a></li>
+        <div class="col-lg-2 col-6 mb-5">
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links list-unstyled">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
-      </div>
-
-      <!-- Column 4: Contact Info -->
-      <div class="col-xl-3 col-lg-3 col-md-6 mb-50">
-        <div class="footer-contact-widget">
-          <h4 class="tech-title">Get in Touch</h4>
-          
-          <div class="info-card-wrap">
-            <div class="info-card-item">
-              <div class="info-icon pulse-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div class="info-text">
-                <p>Neo95, SB Patil School Rd,<br> Ravet, Pune, Maharashtra</p>
-              </div>
-            </div>
-
-            <div class="info-card-item">
-              <div class="info-icon pulse-icon"><i class="fas fa-phone-alt"></i></div>
-              <div class="info-text">
-                <a href="tel:+919822857421">+91 98228 57421</a>
-              </div>
-            </div>
-
-            <div class="info-card-item">
-              <div class="info-icon pulse-icon"><i class="fas fa-envelope"></i></div>
-              <div class="info-text">
-                <a href="mailto:info@thedigitechsolutions.com">info@thedigitechsolutions.com</a>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Quick Links Mini -->
-          <div class="mini-links-bar mt-4">
-            <a href="/index.html">Home</a> <span class="sep">•</span> <a href="/contact.html">Contact</a> <span class="sep">•</span> <a href="/about-us.html">About</a>
-          </div>
-
+        <div class="col-lg-4 mb-5">
+          <h4 class="footer-title">Contact</h4>
+          <p class="footer-contact">Neo95, SB Patil School Rd, Ravet, Pune, Maharashtra</p>
+          <p class="footer-contact">+91 98228 57421</p>
+          <p class="footer-contact">info@thedigitechsolutions.com</p>
         </div>
       </div>
-
-    </div>
-    
-    <!-- Copyright -->
-    <div class="row pt-30 pb-30 mt-20 border-tech-top">
-      <div class="col-12 text-center">
-        <p class="copyright-txt">© 2025 The Digitech Solutions. All Rights Reserved.</p>
+      <div class="footer-bottom">
+        <p>© 2025 The Digitech Solutions. All Rights Reserved.</p>
       </div>
     </div>
+  </footer>
 
-  </div>
-</footer>
-
-  <script src="assets/js/vendor/jquery.js"></script>
-  <script src="assets/js/bootstrap-bundle.js"></script>
-  <script src="assets/js/plugin.js"></script>
-  <script src="assets/js/magnific-popup.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- SCRIPTS -->
+  <script src="../../assets/js/vendor/jquery.js"></script>
+  <script src="../../assets/js/bootstrap-bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <!-- Keep your main JS here -->
+  <script src="../../assets/js/main.js"></script> 
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       
-      // 1. MOBILE MENU TOGGLE - Handled by main.js
+      /* --- HAMBURGER MENU LOGIC --- */
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileBtns = document.querySelectorAll('.mobile-menu-btn');
+      const mobileClose = document.getElementById('mobileMenuClose');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      const body = document.body;
 
-      // 2. GSAP INFINITE SCROLL (Clean Logic)
+      function toggleMenu() {
+          mobileMenu.classList.toggle('open');
+          
+          // Lock Body Scroll when menu is open
+          if(mobileMenu.classList.contains('open')) {
+            body.classList.add('menu-open');
+          } else {
+            body.classList.remove('menu-open');
+          }
+      }
+      
+      mobileBtns.forEach(btn => btn.addEventListener('click', toggleMenu));
+      if(mobileClose) mobileClose.addEventListener('click', toggleMenu);
+      if(overlay) overlay.addEventListener('click', toggleMenu);
+
+      // Mobile Dropdown Logic
+      const mobileDropdownHeader = document.querySelector('.mobile-dropdown-header');
+      if(mobileDropdownHeader){
+          mobileDropdownHeader.addEventListener('click', () => {
+              const content = document.querySelector('.mobile-dropdown-content');
+              const icon = mobileDropdownHeader.querySelector('svg');
+              if(content.style.display === 'none' || content.style.display === ''){
+                  content.style.display = 'block';
+                  icon.style.transform = 'rotate(180deg)';
+              } else {
+                  content.style.display = 'none';
+                  icon.style.transform = 'rotate(0deg)';
+              }
+          });
+      }
+
+      /* --- INFINITE TEAM SCROLL --- */
       gsap.registerPlugin(ScrollTrigger);
 
       const track = document.querySelector(".team-track");
       if(track) {
-          // Clone items for seamless loop
           const items = gsap.utils.toArray(".team-item");
+          // Duplicate items for loop
           items.forEach(item => { let clone = item.cloneNode(true); track.appendChild(clone); });
           
-          // Note: For perfectly smooth infinite scrolling without duplication visible, 
-          // a more complex GSAP helper function is usually required. 
-          // This is a simplified version that works well for this amount of content.
-          
-          const singleSetWidth = items.length * (260 + 60); // width + gap
+          const singleSetWidth = items.length * (260 + 60); 
 
           gsap.to(track, {
               x: -singleSetWidth, 
               ease: "none",
-              duration: 25, // Adjust Speed
+              duration: 25, 
               repeat: -1,
               overwrite: true
           });
           
-          // Pause on hover for better UX
           track.addEventListener("mouseenter", () => gsap.globalTimeline.pause());
           track.addEventListener("mouseleave", () => gsap.globalTimeline.play());
       }
       
-      // 3. SCROLL REVEAL ANIMATIONS (Subtle and Professional)
+      // Fade Animations
       gsap.utils.toArray('.founder-section, .vm-card').forEach(el => {
           gsap.from(el, {
               y: 60,
@@ -1906,6 +516,6 @@
 
     });
   </script>
-
+<script src="./assets/js/global-header.js"></script> 
 </body>
 </html>
