@@ -36,7 +36,149 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+<style>
+  /* --- Section Base --- */
+.vm-section-fluid {
+    padding: 100px 0;
+    background-color: var(--tp-common-white); /* Clean white background */
+    overflow: hidden;
+    font-family: var(--tp-ff-inter);
+}
 
+.vm-row {
+    margin-bottom: 100px; /* Space between Vision and Mission */
+}
+
+.vm-row:last-child {
+    margin-bottom: 0;
+}
+
+/* --- The "Glow Stage" for Lotties --- */
+/* This creates a soft colored light behind the animation */
+.lottie-stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(80px); /* The glowing blur effect */
+    opacity: 0.4;
+}
+
+.stage-green {
+    background: radial-gradient(circle, var(--tp-theme-green) 0%, transparent 70%);
+}
+
+.stage-blue {
+    background: radial-gradient(circle, var(--tp-common-blue) 0%, transparent 70%);
+}
+
+/* --- Lottie Player Sizing --- */
+.lottie-big {
+    width: 100%;
+    max-width: 600px; /* Increased size significantly */
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 1; /* Sit above the glow */
+    /* Optional: Slight zoom to fill space better */
+    transform: scale(1.1); 
+}
+
+/* --- Content Styling --- */
+.vm-content-box {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+/* Icon Styling */
+.vm-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--tp-common-cream);
+    color: var(--tp-common-black);
+    border-radius: 50%; /* Circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.vm-row:hover .vm-icon-wrapper {
+    transform: rotateY(180deg); /* Fun interaction */
+    background: var(--tp-theme-green);
+    color: var(--tp-common-black);
+}
+
+.icon-blue.vm-icon-wrapper {
+    /* Special hover for mission icon */
+}
+.vm-row:hover .icon-blue {
+    background: var(--tp-common-blue);
+    color: white;
+}
+
+/* Typography */
+.vm-title {
+    font-family: var(--tp-ff-clash-bold), sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--tp-common-black);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.vm-desc {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+/* Decorative Line */
+.vm-line {
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.green-line { background-color: var(--tp-theme-green); }
+.blue-line { background-color: var(--tp-common-blue); }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 991px) {
+    .vm-section-fluid { padding: 60px 0; }
+    .vm-row { margin-bottom: 70px; }
+    
+    .vm-title { font-size: 2.5rem; text-align: center; }
+    .vm-desc { text-align: center; margin: 0 auto 30px auto; }
+    .vm-icon-wrapper { margin: 0 auto 20px auto; }
+    .vm-line { margin: 0 auto; }
+    
+    /* Center the glow and lottie on mobile */
+    .lottie-big {
+        max-width: 350px;
+        transform: scale(1); /* Reset zoom on mobile */
+        margin-bottom: 30px;
+    }
+    
+    .lottie-stage {
+        width: 300px;
+        height: 300px;
+    }
+    
+    /* Fix alignment for Mission row on mobile */
+    .right-align { text-align: center; }
+}
+</style>
  
 </head>
 
@@ -215,161 +357,259 @@
     </section>
 
     <!-- VISION & MISSION -->
-    <section id="vision" class="vm-section">
-      <div class="container-custom">
+   <section id="vision" class="vm-section-fluid">
+    <div class="container-custom">
         
-        <div class="vm-card vision-mode">
+        <!-- VISION ROW -->
+        <div class="vm-row">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="vm-mobile-card">
-                        <div class="vm-icon-box"><i class="fa-solid fa-eye"></i></div>
-                        <h2 class="vm-heading">Our Vision</h2>
-                        <p class="vm-text">Our vision is to become a trusted digital partner for businesses worldwide. We help brands grow online by offering smart, scalable, and easy-to-use digital solutions.</p>
+                    <div class="vm-content-box left-align">
+                        <div class="vm-icon-wrapper">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h2 class="vm-title">Our Vision</h2>
+                        <p class="vm-desc">We envision a world where every business, regardless of size, has the power to dominate their digital space. We strive to be the catalyst that transforms your potential into digital dominance through smart, scalable technology.</p>
+                        <!-- Optional Decorative Line -->
+                        <div class="vm-line green-line"></div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <lottie-player src="/assets/lottie/Business.json" background="transparent" speed="1" style="width: 100%; max-width: 450px; margin: 0 auto;" loop autoplay></lottie-player>
+                
+                <div class="col-lg-6 position-relative">
+                    <!-- The Glow Background -->
+                    <div class="lottie-stage stage-green"></div>
+                    <lottie-player 
+                        src="/assets/lottie/Business.json" 
+                        background="transparent" 
+                        speed="1" 
+                        class="lottie-big" 
+                        loop autoplay>
+                    </lottie-player>
                 </div>
             </div>
         </div>
 
-        <div class="vm-card mission-mode mb-0">
+        <!-- MISSION ROW -->
+        <div class="vm-row">
             <div class="row align-items-center">
-                <div class="col-lg-6 order-mobile-1 text-center">
-                    <lottie-player src="/assets/lottie/growth.json" background="transparent" speed="1" style="width: 100%; max-width: 450px; margin: 0 auto;" loop autoplay></lottie-player>
+                <!-- On Desktop: Lottie Left. On Mobile: Lottie Top (handled by order classes) -->
+                <div class="col-lg-6 order-lg-1 order-1 position-relative">
+                    <!-- The Glow Background -->
+                    <div class="lottie-stage stage-blue"></div>
+                    <lottie-player 
+                        src="/assets/lottie/growth.json" 
+                        background="transparent" 
+                        speed="1" 
+                        class="lottie-big" 
+                        loop autoplay>
+                    </lottie-player>
                 </div>
-                <div class="col-lg-6 order-mobile-2">
-                    <div class="vm-mobile-card">
-                        <div class="vm-icon-box"><i class="fa-solid fa-rocket"></i></div>
-                        <h2 class="vm-heading">Our Mission</h2>
-                        <p class="vm-text mb-4">Our mission is to empower businesses through data-driven digital marketing, breakthrough technology, and purpose-led strategies.</p>
+                
+                <div class="col-lg-6 order-lg-2 order-2">
+                    <div class="vm-content-box right-align">
+                        <div class="vm-icon-wrapper icon-blue">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h2 class="vm-title">Our Mission</h2>
+                        <p class="vm-desc">Our mission is to empower your growth. We don't just deliver services; we deliver purpose-led strategies, breakthrough technology, and data-driven insights that turn visitors into loyal customers.</p>
+                        <div class="vm-line blue-line"></div>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
-    </section>
+
+    </div>
+</section>
 
     <!-- TEAM -->
-    <section class="team-section">
-      <div class="container-custom">
-          <div class="text-center mb-5">
-              <span class="sub-title">The Minds</span>
-              <h2 style="font-size:2.8rem; font-weight:800;">Meet Our Experts</h2>
+<section class="team-pro-section">
+  
+  <!-- Background Decorative Elements -->
+  <div class="bg-layer">
+    <!-- Shape 1 (Top Left) -->
+    <svg class="floating-svg shape-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="var(--tp-theme-green)" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.3C87.4,-33.5,90.1,-18,88.5,-2.8C86.9,12.4,81,27.2,71.8,39.1C62.6,51,50.1,60,37.1,66.6C24.1,73.2,10.6,77.4,-1.8,80.5C-14.2,83.6,-25.5,85.6,-37.2,80.6C-48.9,75.6,-61,63.6,-70.3,50.1C-79.6,36.6,-86.1,21.6,-86.3,6.5C-86.5,-8.6,-80.4,-23.8,-70.6,-36.3C-60.8,-48.8,-47.3,-58.6,-33.4,-66.1C-19.5,-73.6,-5.2,-78.8,9.2,-78.8L23.6,-78.8Z" transform="translate(100 100)" opacity="0.15" />
+    </svg>
+    
+    <!-- Shape 2 (Bottom Right) -->
+    <svg class="floating-svg shape-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="var(--tp-common-blue)" d="M41.7,-67.5C53.3,-62.3,61.7,-48.7,68.6,-35.1C75.5,-21.5,80.9,-7.9,77.7,4.3C74.5,16.5,62.7,27.3,51.8,36.4C40.9,45.5,30.9,52.9,19.6,58.8C8.3,64.7,-4.3,69.1,-16.2,67.7C-28.1,66.3,-39.3,59.1,-49.4,49.9C-59.5,40.7,-68.5,29.5,-72.6,16.6C-76.7,3.7,-75.9,-10.9,-68.6,-23.3C-61.3,-35.7,-47.5,-45.9,-34.2,-50.2C-20.9,-54.5,-8.1,-52.9,5.7,-57.8C19.5,-62.7,30.1,-72.7,41.7,-67.5Z" transform="translate(100 100)" opacity="0.1" />
+    </svg>
+  </div>
+
+  <div class="container-custom relative-z">
+    
+    <div class="section-header">
+      <span class="sub-heading">Our Leadership</span>
+      <h2 class="main-heading">Meet The Experts</h2>
+    </div>
+
+    <div class="carousel-container">
+      
+      <!-- Prev Button -->
+      <button class="nav-minimal prev-btn" id="prevBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <!-- Faded Infinite Window -->
+      <div class="faded-track-window">
+        <div class="infinite-track" id="track">
+          
+          <!-- ITEM 1 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="/assets/vishwajit.png" alt="Vishwajit" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=VM'">
+            </div>
+            <div class="profile-info">
+              <h3>Vishwajit M</h3>
+              <p>Founder</p>
+            </div>
           </div>
 
-          <div class="team-scroll-stage">
-              <div class="team-track">
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/vishwajit.png" alt="Vishwajit"
-                        onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=VM'">
-                    </div>
-                    <div class="team-name">Vishwajit M</div>
-                    <div class="team-role">Founder</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/vaibhav.png" alt="Vaibhav"
-                        onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=VM'">
-                    </div>
-                    <div class="team-name">Vaibhav M</div>
-                    <div class="team-role">DevSecOps</div>
-                  </div>
-                  <div class="team-item">
-                      <div class="team-img-wrapper"><img src="/assets/mitesh.jpg" alt="Mitesh"></div>
-                      <div class="team-name">Mitesh S</div>
-                      <div class="team-role">Marketing Exec</div>
-                  </div>
-                  <div class="team-item">
-                      <div class="team-img-wrapper">
-                          <img src="/assets/divya.png" alt="Divya" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=DK'">
-                      </div>
-                      <div class="team-name">Divya K</div>
-                      <div class="team-role">Project Manager</div>
-                  </div>
-
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/ritik.png" alt="Ritik" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=RR'">
-                    </div>
-                    <div class="team-name">Ritik R</div>
-                    <div class="team-role">Marketing Head</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="./assets/team/praful_sonavane.png" alt="Praful" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=RR'">
-                    </div>
-                    <div class="team-name">Praful S</div>
-                    <div class="team-role">Head - Hr & Admin</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/tanmay.png" alt="Tanmay" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Tanmay S</div>
-                    <div class="team-role">Sr. Developer</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/pratik.png" alt="Pratik" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Pratik P</div>
-                    <div class="team-role">Sr. Developer</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/samata.png" alt="Samata" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Samata P</div>
-                    <div class="team-role">Seo Expert</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="/assets/koustubh.png" alt="koustubh" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Koustubh J</div>
-                    <div class="team-role">Ads expert</div>
-                  </div>
-
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="" alt="Priya" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Priya N</div>
-                    <div class="team-role">Social media manager</div>
-                  </div>
-                  
-                  <div class="team-item">
-                    <div class="team-img-wrapper">
-                      <img src="#" alt="Ravi" onerror="this.src='https://placehold.co/300x300/e0e0e0/7463FF?text=BP'">
-                    </div>
-                    <div class="team-name">Pankaj K</div>
-                    <div class="team-role">Video Editor</div>
-                  </div>
-                  
-
-
-
-              </div>
+          <!-- ITEM 2 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="./assets/team/vaibhav.jpg" alt="Vaibhav" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=VM'">
+            </div>
+            <div class="profile-info">
+              <h3>Vaibhav M</h3>
+              <p>DevSecOps</p>
+            </div>
           </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container-custom">
-            <h2 style="font-weight:800; font-size: 2.5rem; margin-bottom:25px; color: #fff;">Ready to Transform Your Digital Presence?</h2>
-            <p style="color:rgba(255,255,255,0.7); font-size: 1.2rem; margin-bottom:40px; max-width: 700px; margin-left: auto; margin-right: auto;">Let's discuss how we can help you achieve your business goals with our tailored solutions.</p>
-            <a href="/contact.html" class="hero-btn" style="background:var(--accent); color: white !important; border-color: white !important;">Start A Project</a>
+          <!-- ITEM 3 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="/assets/mitesh.jpg" alt="Mitesh" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=MS'">
+            </div>
+            <div class="profile-info">
+              <h3>Mitesh S</h3>
+              <p>Marketing Exec</p>
+            </div>
+          </div>
+
+          <!-- ITEM 4 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="/assets/divya.png" alt="Divya" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=DK'">
+            </div>
+            <div class="profile-info">
+              <h3>Divya K</h3>
+              <p>Project Manager</p>
+            </div>
+          </div>
+
+          <!-- ITEM 5 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="/assets/ritik.png" alt="Ritik" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=RR'">
+            </div>
+            <div class="profile-info">
+              <h3>Ritik R</h3>
+              <p>Marketing Head</p>
+            </div>
+          </div>
+
+          <!-- ITEM 6 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="./assets/team/praful_sonavane.png" alt="Praful" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=PS'">
+            </div>
+            <div class="profile-info">
+              <h3>Praful S</h3>
+              <p>Head - HR</p>
+            </div>
+          </div>
+
+          <!-- ITEM 7 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="./assets/team/tanmmay_singh.png" alt="Tanmay" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=TS'">
+            </div>
+            <div class="profile-info">
+              <h3>Tanmay S</h3>
+              <p>Sr. Developer</p>
+            </div>
+          </div>
+          
+          <!-- ITEM 8 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="./assets/team/pratik.png" alt="Pratik" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=PP'">
+            </div>
+            <div class="profile-info">
+              <h3>Pratik P</h3>
+              <p>Sr. Developer</p>
+            </div>
+          </div>
+
+          <!-- ITEM 9 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="/assets/samata.png" alt="Samata" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=SP'">
+            </div>
+            <div class="profile-info">
+              <h3>Samata P</h3>
+              <p>SEO Expert</p>
+            </div>
+          </div>
+          
+           <!-- ITEM 10 -->
+          <div class="team-profile">
+            <div class="profile-img">
+              <img src="./assets/team/kaustup.jpg" alt="Kaustubh" onerror="this.src='https://placehold.co/500x500/e0e0e0/7463FF?text=KJ'">
+            </div>
+            <div class="profile-info">
+              <h3>Koustubh J</h3>
+              <p>Ads Expert</p>
+            </div>
+          </div>
+
         </div>
-    </section>
+      </div>
+
+      <!-- Next Button -->
+      <button class="nav-minimal next-btn" id="nextBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+    </div>
+  </div>
+</section>
+    <!-- CTA -->
+   <section class="cta-professional">
+    <!-- Background SVG Decoration Left -->
+    <div class="cta-bg-shape shape-left">
+        <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="var(--tp-theme-green)" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.3C87.4,-33.5,90.1,-18,88.5,-2.8C86.9,12.4,81,27.2,71.8,39.1C62.6,51,50.1,60,37.1,66.6C24.1,73.2,10.6,77.4,-1.8,80.5C-14.2,83.6,-25.5,85.6,-37.2,80.6C-48.9,75.6,-61,63.6,-70.3,50.1C-79.6,36.6,-86.1,21.6,-86.3,6.5C-86.5,-8.6,-80.4,-23.8,-70.6,-36.3C-60.8,-48.8,-47.3,-58.6,-33.4,-66.1C-19.5,-73.6,-5.2,-78.8,9.2,-78.8L23.6,-78.8Z" transform="translate(100 100)" opacity="0.15" />
+        </svg>
+    </div>
+
+    <!-- Background SVG Decoration Right -->
+    <div class="cta-bg-shape shape-right">
+        <svg width="250" height="250" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" stroke="var(--tp-common-blue)" stroke-width="2" stroke-dasharray="10 10" opacity="0.1"/>
+            <circle cx="50" cy="50" r="35" stroke="var(--tp-common-blue)" stroke-width="2" opacity="0.2"/>
+            <circle cx="50" cy="50" r="15" fill="var(--tp-common-blue)" opacity="0.1"/>
+        </svg>
+    </div>
+
+    <div class="container-custom relative-z">
+        <div class="cta-content-wrapper">
+            <h2 class="cta-title">Ready to Transform Your <br> <span class="highlight-text">Digital Presence?</span></h2>
+            <p class="cta-desc">Let's discuss how we can help you achieve your business goals with our tailored, high-impact solutions.</p>
+            
+            <div class="cta-btn-wrapper">
+                <a href="/contact.html" class="premium-btn">
+                    <span>Start A Project</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
   </main>
 
   <!-- FOOTER -->
@@ -498,7 +738,73 @@
   <script src="assets/js/plugin.js"></script>
   <script src="assets/js/magnific-popup.js"></script>
   <script src="assets/js/main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("track");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
+    // CONFIGURATION
+    const itemWidth = 240; // Match CSS .profile-img width
+    const gap = 70;        // Match CSS .infinite-track gap
+    const stride = itemWidth + gap;
+    
+    // INCREASED SPEED (1.2 is good for professional flow, not too dizzy)
+    const speed = 12.5; 
+    
+    let position = 0;
+    let isPaused = false;
+    let reqId;
+
+    // 1. CLONING Logic (Double buffer for wide screens)
+    const items = Array.from(track.children);
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+
+    const originalSetWidth = items.length * stride;
+
+    // 2. ANIMATION LOOP
+    function animate() {
+        if (!isPaused) {
+            position -= speed;
+        }
+
+        // Infinite Reset (Invisible Snap)
+        if (Math.abs(position) >= originalSetWidth) {
+            position = 0;
+        }
+        if (position > 0) {
+            position = -originalSetWidth;
+        }
+
+        track.style.transform = `translate3d(${position}px, 0, 0)`;
+        reqId = requestAnimationFrame(animate);
+    }
+
+    // Start
+    reqId = requestAnimationFrame(animate);
+
+    // 3. CONTROLS
+    const move = (direction) => {
+        position += (direction * stride);
+        // Force update immediately for snappy feel
+        track.style.transform = `translate3d(${position}px, 0, 0)`;
+    };
+
+    nextBtn.addEventListener("click", () => move(-1));
+    prevBtn.addEventListener("click", () => move(1));
+
+    // 4. PAUSE ON HOVER
+    track.addEventListener("mouseenter", () => isPaused = true);
+    track.addEventListener("mouseleave", () => isPaused = false);
+    
+    // Also pause when hovering buttons
+    nextBtn.addEventListener("mouseenter", () => isPaused = true);
+    nextBtn.addEventListener("mouseleave", () => isPaused = false);
+    prevBtn.addEventListener("mouseenter", () => isPaused = true);
+    prevBtn.addEventListener("mouseleave", () => isPaused = false);
+});
+</script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       
@@ -575,6 +881,82 @@
       });
 
     });
+  </script>
+  <script>
+   document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("track");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // --- Configuration ---
+    // Width of card (280) + Gap (40) = 320
+    const itemWidth = 280; 
+    const gap = 40;
+    const stride = itemWidth + gap;
+    
+    let position = 0;
+    const speed = 0.8; // Speed of auto-scroll
+    let isPaused = false;
+    let reqId;
+
+    // --- 1. Clone Logic for Infinity ---
+    const items = Array.from(track.children);
+    // Clone enough items to fill screen width + buffer
+    // Adding 2 sets of clones ensures smooth wrapping
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+    items.forEach(item => track.appendChild(item.cloneNode(true)));
+
+    // Calculate total width of one original set
+    const originalSetWidth = items.length * stride;
+
+    // --- 2. Animation Engine ---
+    function animate() {
+        if (!isPaused) {
+            position -= speed;
+        }
+
+        // --- The Infinite Reset ---
+        // If we have scrolled LEFT past the whole original set
+        if (Math.abs(position) >= originalSetWidth) {
+            position = 0;
+        }
+        // If we have scrolled RIGHT past 0 (e.g. clicking prev button)
+        if (position > 0) {
+            position = -originalSetWidth;
+        }
+
+        // Apply
+        track.style.transform = `translate3d(${position}px, 0, 0)`;
+        reqId = requestAnimationFrame(animate);
+    }
+
+    // Start Loop
+    reqId = requestAnimationFrame(animate);
+
+    // --- 3. Manual Controls ---
+    const moveManually = (direction) => {
+        // direction: -1 for next, 1 for prev
+        // Move by exactly one card width
+        position += (direction * stride);
+        
+        // Ensure visual update happens immediately to feel responsive
+        track.style.transform = `translate3d(${position}px, 0, 0)`;
+    };
+
+    nextBtn.addEventListener("click", () => moveManually(-1));
+    prevBtn.addEventListener("click", () => moveManually(1));
+
+    // --- 4. Hover State ---
+    const pause = () => isPaused = true;
+    const resume = () => isPaused = false;
+
+    track.addEventListener("mouseenter", pause);
+    track.addEventListener("mouseleave", resume);
+    nextBtn.addEventListener("mouseenter", pause);
+    nextBtn.addEventListener("mouseleave", resume);
+    prevBtn.addEventListener("mouseenter", pause);
+    prevBtn.addEventListener("mouseleave", resume);
+});
   </script> 
   <script src="./assets/js/global-header.js"></script> 
 </body>
