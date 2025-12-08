@@ -47617,131 +47617,324 @@ body.mobile-menu-open {
         margin-right: 15px;
         font-size: 14px;
     }
+/* Main Section Background */
+.team-pro-section {
+    position: relative;
+    padding: 130px 0;
+    overflow: hidden;
+    font-family: var(--tp-ff-inter);
+    /* Ambient Gradient Background using your Palette */
+    background: radial-gradient(circle at center, #ffffff 0%, var(--tp-common-cream) 90%);
+}
 
-    /* --- TEAM SECTION (Polished Infinite Scroll) --- */
-    .team-section {
-        padding: 120px 0;
-        background: #fff;
-        position: relative;
-    }
+.relative-z {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Floating SVGs --- */
+.bg-layer {
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Mouse passes through */
+}
+
+.floating-svg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+}
+
+.shape-1 {
+    top: -15%;
+    left: -10%;
+    animation: float1 25s infinite ease-in-out;
+}
+
+.shape-2 {
+    bottom: -20%;
+    right: -10%;
+    animation: float2 30s infinite ease-in-out;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(30px, 40px) rotate(10deg); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-30px, -20px) rotate(-10deg); }
+}
+
+/* --- Typography --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.sub-heading {
+    display: inline-block;
+    color: var(--tp-common-blue);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    background: rgba(116, 99, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 50px;
+}
+
+.main-heading {
+    font-family: var(--tp-ff-clash-bold), sans-serif; /* Fallback to sans-serif */
+    font-size: 3.5rem;
+    color: var(--tp-common-black);
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+/* --- Carousel Layout --- */
+.carousel-container {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faded-track-window {
+    width: 100%;
+    overflow: hidden;
+    padding: 30px 0;
     
-    .team-scroll-stage {
-        width: 100%;
-        overflow: hidden;
-        padding: 50px 0;
-        /* Soft fade on edges */
-        mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-    }
+    /* Professional Fade: Wider transparent edges for smoother exit */
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
 
-    .team-track {
-        display: flex;
-        gap: 60px;
-        width: max-content;
-        padding-left: 60px; /* Initial offset */
-    }
+.infinite-track {
+    display: flex;
+    gap: 70px; /* Spacious gap implies luxury/professionalism */
+    width: max-content;
+    will-change: transform;
+}
 
-    .team-item {
-        width: 260px;
-        text-align: center;
-        flex-shrink: 0;
-        /* group; for hover states */
-    }
+/* --- Profile Item (Clean, No Card, No Border) --- */
+.team-profile {
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
 
-    .team-img-wrapper {
-        width: 220px;
-        height: 220px;
-        margin: 0 auto 25px;
-        border-radius: 50%;
-        overflow: hidden;
-        /* Double border effect */
-        box-shadow: 0 0 0 5px #fff, 0 0 0 8px var(--primary);
-        transition: 0.4s ease;
-    }
+.team-profile:hover {
+    transform: translateY(-10px);
+}
 
-    .team-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease, filter 0.5s ease;
-        filter: grayscale(80%); /* Artistic grayscale initial state */
-    }
-    
-    /* Hover Effect: Colorize and Zoom */
-    .team-item:hover .team-img-wrapper { box-shadow: 0 0 0 5px #fff, 0 0 0 12px var(--accent); }
-    .team-item:hover .team-img-wrapper img {
-        transform: scale(1.1);
-        filter: grayscale(0%);
-    }
+.profile-img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 25px;
+    background: #f0f0f0;
+    position: relative;
+    /* No border, no shadow - just pure image */
+}
 
-    .team-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; }
-    .team-role { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(100%);
+}
 
-    /* --- CTA SECTION --- */
-    .cta-section {
-        padding: 100px 0;
-        background: var(--dark);
-        text-align: center;
-        color: #fff;
-        /* Subtle pattern overlay option */
-        background-image: radial-gradient(circle at center, rgba(255,255,255,0.03) 2px, transparent 2px);
-        background-size: 40px 40px;
-    }
+.team-profile:hover .profile-img img {
+    transform: scale(1.1);
+    filter: brightness(105%);
+}
 
-    /* --- RESPONSIVE FIXES --- */
-    @media (max-width: 991px) {
-        section { padding: 80px 0; }
-        .hero-heading { font-size: 2.8rem; }
-        .hero-text { font-size: 1.1rem; }
-        .founder-bg-text { display: none; } /* Hide giant text on mobile */
-        .founder-img-frame { margin-bottom: 50px; }
-        
-        /* HERO MOBILE: Lottie First, Text Below */
-        .about-hero .row {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-        .about-hero .col-lg-6.text-center { margin-bottom: 40px; }
+.profile-info h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--tp-common-black);
+    font-family: var(--tp-ff-clash-medium), sans-serif;
+}
 
-        /* VM SECTION MOBILE: Split View (Lottie on BG, Text in Card) */
-        .vm-card { 
-            padding: 0; 
-            background: transparent !important; 
-            box-shadow: none !important; 
-            border: none;
-            margin-bottom: 60px;
-        }
-        
-        .vm-mobile-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+.profile-info p {
+    margin: 6px 0 0 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--tp-common-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .vm-card.vision-mode .vm-mobile-card {
-            background: linear-gradient(to bottom, #fff, rgba(116, 99, 255, 0.05));
-        }
-        .vm-card.mission-mode .vm-mobile-card {
-             background: linear-gradient(to bottom, #fff, rgba(218, 250, 102, 0.15));
-        }
+/* --- Navigation Buttons (Minimal) --- */
+.nav-minimal {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #fff;
+    color: var(--tp-common-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    flex-shrink: 0;
+    margin: 0 15px;
+}
 
-        .vm-icon-box { margin: 0 auto 25px; }
-        .mission-list li { justify-content: center; text-align: left; }
-        
-        /* Reorder Mission for Mobile: Lottie First (order 1), Text Second (order 2) */
-        .order-mobile-1 { order: 1; margin-bottom: 40px; } /* Lottie Container */
-        .order-mobile-2 { order: 2; } /* Text Container */
-        
-        /* Reorder Vision for Mobile: Lottie First, Text Second */
-        .vm-card.vision-mode .row {
-            display: flex;
-            flex-direction: column-reverse; /* Puts Lottle (2nd col) on top */
-        }
-        .vm-card.vision-mode .col-lg-6.text-center {
-            margin-bottom: 40px; /* Space between Lottie and Card */
-        }
-    }
- 
-/* >>>>>>> 683559851ff91a33730de526459362cdff762b06 */
+.nav-minimal:hover {
+    border-color: var(--tp-common-blue);
+    color: var(--tp-common-blue);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(116, 99, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+    .nav-minimal { display: none; }
+    .main-heading { font-size: 2.5rem; }
+    .team-profile { width: 200px; }
+    .profile-img { width: 200px; height: 200px; }
+}
+/* --- CTA Section Styles --- */
+.cta-professional {
+    position: relative;
+    padding: 120px 0;
+    background-color: var(--tp-common-white); /* Pure White BG */
+    overflow: hidden;
+    font-family: var(--tp-ff-inter);
+    text-align: center;
+}
+
+/* Ensure content sits above background SVGs */
+.relative-z {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Typography --- */
+.cta-title {
+    font-family: var(--tp-ff-clash-bold), sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--tp-common-black); /* Black text for visibility */
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.highlight-text {
+    color: var(--tp-common-blue); /* Brand accent for emphasis */
+    position: relative;
+    display: inline-block;
+}
+
+/* Optional underline decoration */
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: var(--tp-theme-green);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.cta-desc {
+    color: #555555; /* Dark grey for readability */
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 45px;
+    font-weight: 500;
+}
+
+/* --- Premium Button --- */
+.premium-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 45px;
+    background-color: var(--tp-common-black); /* Black button = Premium */
+    color: var(--tp-common-white);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.premium-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.premium-btn:hover {
+    background-color: var(--tp-common-blue); /* Switch to Brand Blue */
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(116, 99, 255, 0.25);
+}
+
+.premium-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* --- Background SVGs --- */
+.cta-bg-shape {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shape-left {
+    top: -50px;
+    left: -50px;
+    animation: ctaFloat 20s infinite linear;
+}
+
+.shape-right {
+    bottom: -20px;
+    right: 5%;
+    animation: ctaPulse 8s infinite ease-in-out;
+}
+
+/* --- Animations --- */
+@keyframes ctaFloat {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes ctaPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    .cta-professional { padding: 80px 0; }
+    .cta-title { font-size: 2.5rem; }
+    .cta-desc { font-size: 1.1rem; }
+    .premium-btn { width: 100%; justify-content: center; }
+}
