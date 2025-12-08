@@ -38070,7 +38070,7 @@
 
 
 	/*
-	Based on an optimized c++ solution in
+	Based on an optimized c++Solutions in
 	 - http://stackoverflow.com/questions/9489736/catmull-rom-curve-with-no-cusps-and-no-self-intersections/
 	 - http://ideone.com/NoEbVM
 

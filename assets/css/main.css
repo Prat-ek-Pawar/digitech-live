@@ -45574,8 +45574,13 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     .hero-lottie-wrapper { flex: 1; display: flex; justify-content: center; }
     .hero-title {font-size: clamp( 2.7rem, 4.4vw, 3.4rem); font-weight: 750; line-height: 1.2; margin-bottom: 1rem; color: #040316; }
     .highlight { color: #FFB701 ; }
-    .hero-subtitle { font-size: 1.1rem; color: #555; max-width: 90%; }
-    
+    .hero-subtitle { font-size: 1.1rem; color: #555; max-width: 100%; text-align: left; margin-left: -20px;}
+    @media (max-width: 991px) {
+      .hero-subtitle {
+        margin :0;
+        text-align: center;
+      }
+    }
     @media (max-width: 991px) {
       .hero-container-flex { flex-direction: column-reverse; text-align: center; }
       .hero-lottie-wrapper { width: 100%; margin-bottom: 20px; }
@@ -45586,7 +45591,12 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     .funfact-wrapper { background: #000; border-radius: 30px; padding: 40px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
     .funfact-item h4 { color: #fff; font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; }
     .funfact-item span { color: #dafa66; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; font-weight: 600; }
-
+.funfact-h2 {
+  margin-bottom: 100px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--tp-ff-heading);
+}
     /* --- OVERVIEW & FORM --- */
     .overview-section { padding: 120px 0 80px; background-color: #ffffff; }
     .overview-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; color: #040316; }
@@ -46660,30 +46670,21 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
 .review-nav:hover {
   background: #ffffff;
 }
-
-@media (max-width: 576px) {
-  .review-card {
-    flex: 0 0 80%;
-    max-width: 80%;
-  }
-
-  .review-nav {
-    display: none; /* optional on mobile */
-  }
-}
-
-
 /* Small screens – show wider cards */
 @media (max-width: 576px) {
   .review-card {
     flex: 0 0 80%;
-    max-width: 10%;
+    max-width: 25%;
   }
 
   .review-nav {
     display: none; /* optional on mobile */
   }
 }
+
+  .review-nav {
+    display: none; /* optional on mobile */
+  }
  
 
 
