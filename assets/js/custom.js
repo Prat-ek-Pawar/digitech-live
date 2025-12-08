@@ -200,34 +200,34 @@
 
         // Wave Parameters
         const geometry = new THREE.BufferGeometry();
-        const count = 3000; // Increased count for density
+        const count = 2000; // Increased count for density
         const positions = new Float32Array(count * 3);
         const scales = new Float32Array(count);
         
         for(let i=0; i<count; i++) {
-            positions[i*3] = (Math.random() - 0.5) * 30; // Wider x spread
+            positions[i*3] = (Math.random() - 0.5) * 20; // Wider x spread
             positions[i*3+1] = (Math.random() - 0.5) * 5; // y spread
             positions[i*3+2] = (Math.random() - 0.5) * 10; // z spread
             scales[i] = Math.random();
         }
         
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
+        geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 0.5));
         
         const material = new THREE.PointsMaterial({
             size: 0.06, // Much smaller particles
-            color: 0x7463FF,
+            color: 0xC1ED00,
             map: circleTexture,
             transparent: true,
-            opacity: 0.6, // More subtle
+            opacity: 0.9, // More subtle
             sizeAttenuation: true,
-            alphaTest: 0.5
+            alphaTest:0.5
         });
         
         const particles = new THREE.Points(geometry, material);
         scene.add(particles);
         
-        camera.position.z = 5;
+        camera.position.z = 10;
         
         // Mobile Adjustment Variables
         let isMobile = false;
@@ -300,7 +300,7 @@
               ease: "power3.out",
               scrollTrigger: {
                   trigger: el,
-                  start: "top 85%"
+                  start: "top 80%"
               }
           });
       });
