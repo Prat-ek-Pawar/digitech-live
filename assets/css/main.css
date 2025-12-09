@@ -46082,7 +46082,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
         font-weight: 800;
         line-height: 1.05;
         margin-bottom: 30px;
-        background: linear-gradient(135deg, #e8e8e8 0%, #a69bf7 100%);
+        background: linear-gradient(135deg, #e8e8e8 0%, #1e40af 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -46097,7 +46097,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     /* CREATIVE CARDS */
     .tech-card {
         background: rgba(20, 15, 40, 0.6);
-        border: 1px solid rgba(116, 99, 255, 0.2);
+        border: 1px solid rgba(255, 170, 80, 0.2);
         border-radius: 30px;
         padding: 50px;
         margin-bottom: 50px; /* Space between cards */
@@ -46132,7 +46132,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
     .tech-card:hover {
         transform: translateY(-10px) scale(1.02);
         background: rgba(30, 25, 60, 0.8);
-        box-shadow: 0 30px 80px rgba(116, 99, 255, 0.15);
+        box-shadow: 0 30px 80px rgba(255, 145, 0, 0.15);
     }
 
     .tech-card-icon {
@@ -46483,7 +46483,7 @@ i[class*="fa"], .fa, .fas, .far, .fal, .fab,    /* Font Awesome */
 
     .section-subtitle {
       font-size: 1.1rem;
-      color: var(--tp-common-blue);
+      color: var(--tp-theme-yellow);
       margin-top: 0;
     }
 
