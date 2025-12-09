@@ -47485,7 +47485,7 @@ body.mobile-menu-open {
         color: var(--primary);
     }
 
-    .hero-btn {
+   .hero-btn {
         background: var(--accent);
         color: #fff;
         padding: 14px 35px;
