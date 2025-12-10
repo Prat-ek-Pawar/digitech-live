@@ -47947,3 +47947,74 @@ body.mobile-menu-open {
     .cta-desc { font-size: 1.1rem; }
     .premium-btn { width: 100%; justify-content: center; }
 }
+/* =========================================
+   MOBILE STACKING FIX (Lottie Header)
+   ========================================= */
+
+@media (max-width: 991px) {
+  /* 1. Container Reset */
+  .ai-industries-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: visible; /* Essential for sticky elements */
+  }
+
+  /* 2. Reset the Left Column Wrapper */
+  /* This ensures title and lottie stack vertically, not side-by-side */
+  .ai-sticky-container {
+    display: block !important; 
+    position: static !important; /* Remove desktop sticky logic */
+    height: auto !important;
+    padding: 0 15px;
+    margin-bottom: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* 3. Title Styles (Scrolls away naturally) */
+  .ai-section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  .ai-section-title br {
+    display: none;
+  }
+
+  /* 4. Lottie Box (The Sticky Header) */
+  .ai-lottie-box {
+    width: 100%;
+    height: 120px; /* Fixed height for the sticky bar */
+    background-color: #090910; /* Solid background to hide cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 50; /* Higher than cards */
+    position: relative; /* GSAP will handle the fixed positioning */
+  }
+
+  /* Resize the animation inside */
+  .ai-lottie-box lottie-player {
+    width:300px !important;
+    height: 150px !important;
+  }
+
+  /* 5. Right Column (Cards Container) */
+  .ai-industries-section .col-lg-7 {
+    position: relative;
+    z-index: 5;
+    padding-top: 30px; /* Gap between Lottie and first card */
+  }
+
+  /* 6. Card Styling */
+  .ai-ind-card {
+    background: #13131a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Shadow pushes up to create depth between stack items */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.8); 
+    margin-bottom: 15px;
+  }
+}
