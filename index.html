@@ -99,11 +99,12 @@
 
     .hero-title {
         color: var(--primary-dark);
-        font-weight: 800;
-        font-size: clamp(2rem, 4vw, 3.5rem); 
-        line-height: 1.2;
+        font-weight: 700;
+        font-size: clamp(1.6rem, 4vw, 3.5rem); 
+        line-height: 1.1;
         margin-bottom: 20px;
-        letter-spacing: -1px;
+        letter-spacing: 1px;
+        width: 140% !important;
     }
     
     .hero-desc {
@@ -304,15 +305,43 @@
         padding-left: 0;
         line-height: 1.8;
     }
+.hero-span{
+  font-size: 1rem;
+}
+.hero-subtitle{
+  font-size: 1rem;
+}
 
     @media (max-width: 991px) {
         .creative-form-wrapper { justify-content: center; margin-top: 50px; }
-        .hero-title { font-size: 2.5rem; }
+        .hero-span { font-size: 1.1rem; letter-spacing: 1px;}
+        .hero-title { font-size: 2rem; align-items: center;}
         .faq-sticky-wrapper { position: relative; top: 0; margin-bottom: 50px; }
-        .faq-title-big { font-size: 3rem; }
+        .faq-title-big { font-size: 2rem; }
         .big-accordion .accordion-button { font-size: 1.3rem; padding: 25px 0; }
         .big-accordion .accordion-body { font-size: 1.1rem; }
+        .hero-btn-main {
+          margin-left: 20px !important;
+        }
     }
+ .hero-btn-main { 
+  background: var(--dark) !important; 
+  color: white; 
+  padding: 10px 20px;
+  margin: 10px; 
+  border:var(--accent-lime) 2px solid; 
+  border-radius: 25px; 
+  text-decoration: none;
+  font-weight: 600; 
+  transition: 0.3s;
+  display: inline-block;
+  margin-left: -30px;
+}
+  .hero-btn-main:hover { 
+  background: var(--soft-gray); 
+  color: var(--accent-lime ); 
+  transform: translateY(-2.5px);
+}
  .service-card-btn {
             display: inline-block;
             margin-top: 20px;
@@ -450,6 +479,104 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+  </style>
+  <style>
+  /* Full hero slider area */
+.hero-professional {
+  position: relative;
+  background: #fdfdfd;
+  overflow: hidden;
+}
+
+/* Each hero slide */
+.heroHeroSwiper .swiper-slide {
+  padding: 40px  80px;
+}
+
+.hero-text-wrapper {
+  min-height: 220px;
+}
+
+.hero-visual-wrapper {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Add image / lottie etc. inside this later */
+}
+
+/* Navigation + pagination styling */
+.heroHeroSwiper .swiper-button-prev,
+.heroHeroSwiper .swiper-button-next {
+  color: #040316;
+  width: 24px;
+  height: 24px;
+  border-radius: 30%;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.heroHeroSwiper .swiper-button-prev::after,
+.heroHeroSwiper .swiper-button-next::after {
+  font-size: 16px;
+}
+
+.heroHeroSwiper .swiper-pagination-bullet {
+  background: #b3b3c5;
+  opacity: 1;
+}
+
+.heroHeroSwiper .swiper-pagination-bullet-active {
+  background: #040316;
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+  .heroHeroSwiper .swiper-slide {
+    padding: 20px  20px;
+  }
+  .swiper {
+    height: 800px;
+  }
+  .hero-visual-wrapper {
+    margin-top: 30px;
+  }
+  .hero-professional {
+    padding-top: 120px;
+    padding-bottom: 0%;
+   
+  }
+  .hero-slide-wrapper {
+min-height: 100px;
+  }
+  }
+
+@media (max-width: 991px) {
+  .hero-text-col {
+    order: 1; /* text goes below */
+  }
+  .hero-visual-col {
+    order: 2; /* lottie goes on top */
+  }
+
+  .hero-text-wrapper {
+    align-items: center !important;  /* center horizontally */
+    text-align: center !important;   /* center text + button */
+  }
+.hero-lottie-wrapper {
+  margin-bottom: 10px !important;
+  margin-right: 20px !important;
+}
+}
+.hero-lottie-wrapper {
+  margin-left: 10px;
+  margin-right: -60px;
+}
+.service-section-title {
+  font-size: 48px;
+  background: linear-gradient(135deg, #e8e8e8 0%, #1e40af 100%);
+  margin-bottom: 15px;
+}
   </style>
  <script type="application/ld+json">
   {
@@ -887,87 +1014,150 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <main>
+<!-- hero section slider-->
+  <section class="hero-professional">
+  <div class="swiper heroHeroSwiper">
+    <div class="swiper-wrapper">
 
-          <!-- ==============================================
-             PROFESSIONAL HERO SECTION
-             ============================================== -->
-          <section class="hero-professional">
-            <div class="container">
-              <div class="row align-items-center">
-
-                <div class="col-lg-7">
-                  <div class="hero-content">
-                    <h1 class="hero-title" style="width: 111% !important;">
-                      #No.1 Best Digital Marketing Agency in Pune | Trusted by
-                      100+ Clients
-                    </h1>
-                    <p class="hero-desc">
-                      The Digitech Solutions is one of the
-                      website development and digital marketing agency in Pune.
-                      We started in 2019 with a team of skilled professionals
-                      who know website building and online marketing inside out.
-                    </p>
-                    <p class="hero-desc">
-                      As a smart and result-driven Best digital marketing
-                      company in Pune, we
-                      help businesses grow with custom strategies made just for
-                      them. At Digitech Solutions, we first understand your
-                      business needs, then build the right online solutions to
-                      help you grow. We offer website design, SEO, social media
-                      handling, paid ads, and content marketing—everything you
-                      need to build your brand and reach more customers online.
-                    </p>
-                  </div>
-
-                  <div class="hero-buttons d-flex gap-3 mt-4">
-                    <a href="tel:+91 98228 57421"
-                      style="background-color: #090910; color: #dafa66;"
-                      class="btn  rounded-pill px-4 py-2">
-                      <b> Contact Now</b>
-                    </a>
-                    <a href="contact.html"
-                      style="background-color: #090910; color: #dafa66;"
-                      class="btn  rounded-pill px-4 py-2">
-                      <b> Get in Touch </b>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="col-lg-5">
-                  <div class="creative-form-wrapper">
-                    <div class="pp-enquiry-card" id="consultation">
-                      <h3 class="pp-enquiry-header">Talk To Expert!</h3>
-                      <span class="pp-enquiry-sub">Book your free 30-min
-                        strategy call</span>
-
-                      <form class="pp-enquiry-form"
-                        onsubmit="handleFormSubmit(event)">
-                        <input type="text" name="fullName"
-                          class="creative-input" placeholder="Full Name*"
-                          required>
-                        <input type="text" name="whatsappNumber"
-                          class="creative-input" placeholder="WhatsApp Number*"
-                          required>
-
-                        <select name="service" class="creative-input">
-                          <option value>Select Service</option>
-                          <option value="SEO">SEO</option>
-                          <option value="PPC">PPC Ads</option>
-                          <option value="SMM">Social Media</option>
-                          <option value="Web">Web Development</option>
-                        </select>
-
-                        <button type="submit" class="pp-btn-send">
-                          Get Free Consultation
-                        </button>
-                        <div class="form-response mt-3 text-center"></div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+      <!-- SLIDE 1 -->
+      <div class="swiper-slide">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- LEFT: TEXT AREA -->
+            <div class="col-lg-6 mb-5 mb-lg-0 hero-text-col">
+              <div class="hero-text-wrapper">
+                <!-- Slide 1: Add your heading, description, CTAs here -->
+                 <h4 class="hero-span">Digital Marketing</h4>
+                 <h1 class="hero-title">We Are Pune’s <span class="highlight">No.1 Digital Marketing</span> Services Provider</h1>
+                 <p class="hero-subtitle">We provide expert SEO, Google Ads, content marketing, and lead generation services that grow your business and deliver real results.</p>
+                 <a href="/contact.html" class="hero-btn-main">Start Project</a>
               </div>
             </div>
-          </section>
+            <!-- RIGHT: VISUAL AREA -->
+            <div class="col-lg-6 hero-visual-col">
+              <div class="hero-visual-wrapper">
+                <!-- Slide 1: Add image / lottie / cards etc. here --> 
+                 <div class="hero-lottie-wrapper">
+             <lottie-player src="/assets/lottie/Web Design.json" background="transparent" speed="1" class="hero-lottie" loop autoplay></lottie-player>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="swiper-slide">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="hero-text-wrapper">
+                <!-- Slide 2 text content -->
+                  <h4 class="hero-span">Social Media Marketing</h4>
+                 <h1 class="hero-title">We Manage Your  <span class="highlight">Social Media</span> to Build Brand Visibility</h1>
+                 <p class="hero-subtitle">We create engaging content, run targeted ads, and manage your social media platforms to boost your online presence and audience engagement.</p>
+                 <a href="/contact.html" class="hero-btn-main">Start Project</a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual-wrapper">
+                <!-- Slide 2 visual content -->
+                  <div class="hero-lottie-wrapper">
+             <lottie-player src="/assets/lottie/social media marketing.json" background="transparent" speed="1" class="hero-lottie" loop autoplay></lottie-player>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="swiper-slide">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="hero-text-wrapper">
+                <!-- Slide 3 text content -->
+                  <h4 class="hero-span">Website Developement</h4>
+                 <h1 class="hero-title">We Build SEO-Friendly, <span class="highlight"> Responsive Websites </span>for Your Business</h1>
+                 <p class="hero-subtitle"> We provide custom-designed websites that are fast, mobile-optimized, and designed to convert your visitors into loyal customers.</p>
+                 <a href="/contact.html" class="hero-btn-main">Start Project</a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual-wrapper">
+                <!-- Slide 3 visual content -->
+                  <div class="hero-lottie-wrapper">
+             <lottie-player src="/assets/lottie/Desktop and smartphone app development.json" background="transparent" speed="1" class="hero-lottie" loop autoplay></lottie-player>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="swiper-slide">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="hero-text-wrapper">
+                <!-- Slide 4 text content -->
+                  <h4 class="hero-span">Mobile App Development</h4>
+                 <h1 class="hero-title">We Develop Custom <span class="highlight"> Mobile Apps </span>for Android & iOS</h1>
+                 <p class="hero-subtitle"> We turn your ideas into scalable, user-friendly apps with intuitive UI/UX and powerful features to support business growth.</p>
+                 <a href="/contact.html" class="hero-btn-main">Start Project</a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual-wrapper">
+                <!-- Slide 4 visual content -->
+                  <div class="hero-lottie-wrapper">
+             <lottie-player src="/assets/lottie/Mobile chat dialog application interface.json" background="transparent" speed="1" class="hero-lottie" loop autoplay></lottie-player>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="swiper-slide">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="hero-text-wrapper">
+                <!-- Slide 5 text content -->
+                  <h4 class="hero-span">Branding & Design</h4>
+                 <h1 class="hero-title">We Create Impactful <span class="highlight">Branding & Visual </span>Identity Solutions</h1>
+                 <p class="hero-subtitle"> We provide custom-designed websites that are fast, mobile-optimized, and designed to convert your visitors into loyal customers.</p>
+                 <a href="/contact.html" class="hero-btn-main">Start Project</a>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="hero-visual-wrapper">
+                <!-- Slide 5 visual content -->
+                  <div class="hero-lottie-wrapper">
+             <lottie-player src="/assets/lottie/political.json" background="transparent" speed="1" class="hero-lottie" loop autoplay></lottie-player>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="swiper-pagination hero-hero-pagination"></div>
+
+    <!-- Navigation Arrows -->
+    <div class="swiper-button-prev hero-hero-prev"></div>
+    <div class="swiper-button-next hero-hero-next"></div>
+  </div>
+</section>
+
+
 
           <!-- Core Services Section -->
           <section class="pp-service-details-process-ptb"
@@ -978,10 +1168,7 @@
               <div class="row">
                 <div class="col-12 text-center mb-40">
                   <h2 id="dynamic-title"
-                    class="pp-service-details-process-title"
-                    style="font-size: 48px; color: #fff; margin-bottom: 15px;">
-                    Our Core Digital Marketing Services
-                  </h2>
+                    class="service-section-title">Our Core Digital Marketing Services</h2>
                   <p style="color: #ccc; margin-bottom: 40px;">Comprehensive
                     solutions tailored for your growth</p>
                 </div>
@@ -2089,5 +2276,25 @@ function openCategory(categoryId, titleText) {
 
     <script
       src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+     <script>
+  var heroHeroSwiper = new Swiper(".heroHeroSwiper", {
+    loop: true,
+    speed: 800,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: ".hero-hero-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".hero-hero-next",
+      prevEl: ".hero-hero-prev"
+    }
+  });
+</script>
+
+
   </body>
 </html>
