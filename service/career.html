@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Careers | The Digitech Solutions</title>
+    <meta name="description" content="Join The Digitech Solutions team. Explore career opportunities and apply now.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/the-digitech-solutions-favicon.png">
+    
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome-pro.css">
+    <link rel="stylesheet" href="../assets/css/spacing.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #040316; 
+            --accent-lime: #dafa66;
+            --accent-purple: #7463ff;
+            --text-main: #1d1d24;
+            --body-bg: #f3f5f9;
+            --card-white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section (Clean Light) */
+        .career-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #e8ecf2 100%);
+            color: var(--primary-dark);
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .career-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+        }
+        
+        .career-hero-title .highlight {
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, #dafa66 0%, #dafa66 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 88%;
+            text-shadow: none;
+        }
+        
+        .career-hero-desc {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        .career-hero-btn {
+            background: var(--primary-dark);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(4, 3, 22, 0.2);
+        }
+        
+        .career-hero-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(4, 3, 22, 0.3);
+            color: #fff;
+            background: #000;
+        }
+        
+        /* Micro Animations */
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1; /* Subtle for light theme */
+            z-index: 0;
+            animation: orbFloat 10s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+        
+        .orb-1 { width: 400px; height: 400px; background: var(--accent-lime); top: -100px; right: -100px; animation-duration: 12s; }
+        .orb-2 { width: 300px; height: 300px; background: #6efff6; bottom: -50px; left: -100px; animation-duration: 15s; }
+        
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 50px); }
+        }
+
+        /* --- Hiring Procedure: Vertical Timeline (Creative) --- */
+        .procedure-section {
+            padding: 60px 0;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .procedure-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: var(--primary-dark);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* Central Line */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #e0e0e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0; /* Hidden for GSAP */
+            transform: translateY(50px);
+        }
+
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; text-align: left; }
+
+        /* Dot on the line */
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-lime);
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px var(--primary-dark);
+            position: absolute;
+            top: 25px;
+            right: -12px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.right .timeline-dot { left: -12px; }
+
+        /* Content Box */
+        .timeline-content {
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Clean shadow */
+            position: relative;
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--accent-lime);
+        }
+
+        .step-number-timeline {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(0,0,0,0.04);
+            position: absolute;
+            top: 10px;
+            line-height: 1;
+        }
+        .timeline-item.left .step-number-timeline { right: 20px; }
+        .timeline-item.right .step-number-timeline { left: 20px; }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            margin-top: 20px; /* Space for number */
+        }
+
+        .timeline-content p {
+            color: #666;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive Timeline */
+        @media screen and (max-width: 768px) {
+            .timeline-container::after { left: 50%; }
+            .timeline-item { width: 100%; padding: 0; text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
+            .timeline-item.left, .timeline-item.right { left: 0; text-align: center; }
+            .timeline-dot { left: 50%; transform: translateX(-50%); top: -15px; margin: 0; right: auto; }
+            .timeline-content { width: 90%; margin: 0 auto; text-align: center; }
+            .step-number-timeline { position: static; display: block; margin-bottom: 10px; font-size: 2.5rem; text-align: center; }
+            .timeline-item.left .step-number-timeline, .timeline-item.right .step-number-timeline { position: static; text-align: center; }
+        }
+
+        /* --- Job Openings (Dashboard Style) --- */
+        .openings-section {
+            padding: 60px 0;
+            background: #f8f9fc;
+            position: relative;
+        }
+
+        /* --- Refined Job Card (Professional) --- */
+        .job-card {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            gap: 30px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08); /* Crisp grey border */
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* Clean Professional Hover */
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08); /* Clean dark shadow */
+            border-color: var(--primary-dark); /* Solid sharp border */
+        }
+        
+        .job-card:hover .apply-arrow {
+            background: var(--primary-dark);
+            color: #fff;
+            transform: rotate(-45deg) scale(1.1);
+        }
+
+        /* --- CTA / Apply Section (Premium Dark) --- */
+        .apply-section {
+            padding: 80px 0;
+            background: #040316; /* Deep dark bg */
+            color: #fff;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 0; /* Separation from list */
+        }
+
+        /* Background decoration */
+        .apply-bg-glow {
+            position: absolute;
+            width: 600px; height: 600px;
+            background: var(--accent-purple);
+            opacity: 0.15;
+            filter: blur(100px);
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .apply-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .apply-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        
+        .apply-desc {
+            font-size: 1.2rem;
+            color: #a0a0a5;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 500px;
+            align-items: center;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 5px;
+            transition: 0.3s;
+            word-break: break-all;
+        }
+        
+        .email-link:hover {
+            color: var(--accent-lime);
+            border-color: var(--accent-lime);
+        }
+
+        .chat-btn {
+            background: #25d366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+        
+        .chat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+            color: #fff;
+        }
+
+        .lottie-icon {
+            width: 120px;
+            height: 120px;
+            background: #f0f0f5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .job-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .job-desc {
+            margin: 0 0 15px;
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .job-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .job-tag {
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            background: #f4f6fa;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .job-action {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .openings-badge {
+            background: rgba(218, 250, 102, 0.3);
+            color: #556b2f;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .apply-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        
+        .job-card:hover .apply-arrow {
+            background: var(--accent-lime);
+            color: var(--primary-dark);
+            transform: rotate(-45deg);
+        }
+
+        
+        .procedure-card:hover .step-icon-svg {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 20px rgba(218, 250, 102, 0.4));
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .step-desc {
+            font-size: 1rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Distinct Apply Section */
+        .apply-section {
+            padding: 120px 0;
+            background-color: var(--soft-gray); /* White/Light Grey BG */
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Wave Separator Top */
+        .footer-wave-top {
+            position: absolute;
+            top: -1px; /* Overlap slightly */
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        
+        .footer-wave-top svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+        
+        .footer-wave-top .shape-fill {
+            fill: #040316;
+        }
+        
+        .apply-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .apply-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+        }
+        
+        .apply-desc {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 50px;
+        }
+        
+        /* --- CTA / Apply Section (Clean Light) --- */
+        .apply-section {
+            padding: 80px 0;
+            background: #ffffff; /* Switched to White/Light */
+            color: var(--primary-dark);
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Background decoration (Subtle for Light) */
+        .apply-bg-glow {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--accent-lime); /* Lime glow looks good on white */
+            opacity: 0.1;
+            filter: blur(80px);
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .apply-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .apply-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--primary-dark);
+        }
+        
+        .apply-desc {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            display: inline-flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 550px;
+            align-items: center;
+        }
+
+        .cta-label {
+            color: #333; /* Dark text as requested */
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark); /* Dark color for readability */
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-lime);
+            padding-bottom: 2px;
+            transition: 0.3s;
+            word-break: break-all;
+        }
+        
+        .email-link:hover {
+            color: #555;
+            border-color: var(--primary-dark);
+        }
+        
+        .cta-divider {
+             color: #999; font-size: 0.9rem; font-weight: 600;
+        }
+
+        .chat-btn {
+            background: #25d366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+        
+        .chat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+            color: #fff;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 991px) {
+            /* Job Cards Stack */
+            .job-card { 
+                grid-template-columns: 1fr; 
+                text-align: left; /* Keep text left aligned even on mobile stack for readability */
+                gap: 20px; 
+                display: flex; 
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .job-card .lottie-icon { margin: 0; /* Left align icon */ }
+            .job-action { align-items: flex-start; width: 100%; justify-content: flex-start; flex-direction: row; gap: 20px; }
+            .job-tags { justify-content: flex-start; }
+            
+            /* Typography Scale */
+            .career-hero-title { font-size: 2.5rem; }
+            .apply-title { font-size: 2rem; }
+            .email-link { font-size: 1.1rem; }
+            
+            /* Modal Responsive */
+            .modal-card { padding: 30px 20px; width: 95%; max-width: 95%; box-shadow: none; }
+            .modal-title { font-size: 1.3rem; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+
+        @media (max-width: 768px) {
+            /* Timeline Left-Aligned for Mobile (Cleanest) */
+            .timeline-container::after { 
+                left: 20px; /* Line on left */ 
+            }
+            .timeline-item { 
+                width: 100%; 
+                padding: 0 0 0 60px; /* Space for line */
+                text-align: left; 
+                margin-bottom: 30px; 
+                display: block;
+            }
+            .timeline-item.left, .timeline-item.right { 
+                left: 0; 
+                text-align: left; 
+            }
+            
+            /* Dots on Line */
+            .timeline-dot { 
+                left: 20px; 
+                transform: translateX(-50%); 
+                top: 0; 
+                margin: 0; 
+                right: auto; 
+            }
+            .timeline-item.right .timeline-dot { left: 20px; }
+            
+            .timeline-content { 
+                width: 100%; 
+                margin: 0; 
+                text-align: left; 
+                padding: 20px;
+            }
+            
+            /* Step Number Adjustment */
+            .step-number-timeline { 
+                position: relative; 
+                font-size: 1.5rem; 
+                margin-bottom: 5px; 
+                color: var(--accent-lime);
+                -webkit-text-stroke: 1px var(--primary-dark);
+            }
+            .timeline-item.left .step-number-timeline, .timeline-item.right .step-number-timeline { 
+                position: relative; 
+                text-align: left; 
+            }
+
+            /* Smaller Fonts for Mobile */
+            .timeline-content h3 { font-size: 1.25rem; margin-top: 5px; }
+            .timeline-content p { font-size: 0.9rem; }
+            .procedure-title { font-size: 2.2rem; }
+            .job-info h3 { font-size: 1.3rem; }
+            .job-desc { font-size: 0.9rem; }
+        }
+    </style>
+    
+    <!-- Load Global Header Script -->
+    <script src="../assets/js/global-header.js"></script>
+</head>
+
+<body class="tp-magic-cursor">
+    
+    <!-- Unique Global Header Container -->
+    <div id="global-header-container"></div>
+    
+    <!-- Magic Cursor -->
+    <div id="magic-cursor" class="cursor-white-bg">
+        <div id="ball"></div>
+    </div>
+    
+    <!-- HERO SECTION -->
+    <section class="career-hero">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        
+        <div class="container position-relative" style="z-index: 2;">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="career-hero-title">
+                        Build Your <br> 
+                        <span class="highlight">Future</span> With Us
+                    </h1>
+                    <p class="career-hero-desc">
+                        We are looking for creative minds, tech enthusiasts, and problem solvers. Join Pune's #No.1 Digital Marketing Agency and take your career to the next level.
+                    </p>
+                    <a href="#procedure" class="career-hero-btn">
+                        See Process <i class="fa fa-arrow-down"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <lottie-player src="../assets/lottie/growth.json" background="transparent" speed="1" style="width: 100%; max-width: 500px; height: auto;" loop autoplay></lottie-player>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- HIRING PROCEDURE SECTION -->
+    <!-- JOB OPENINGS (Dashboard Grid) -->
+    <section class="openings-section">
+        <div class="container">
+            <h2 class="procedure-title" style="margin-bottom: 60px;">Current <span>Openings</span></h2>
+            
+            <!-- Job 1: Sales Executive -->
+            <div class="job-card" onclick="openApplyModal('Sales Executive')">
+                <div class="lottie-icon">
+                    <lottie-player src="../assets/lottie/Business.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+                </div>
+                <div class="job-info">
+                    <h3>Sales Executive</h3>
+                    <p class="job-desc">Drive business growth by identifying new opportunities and building strong client relationships. Ideally for those who love closing deals.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">On-Site</span>
+                        <span class="job-tag">Lead Generation</span>
+                        <span class="job-tag">Negotiation</span>
+                    </div>
+                </div>
+                <div class="job-action">
+                    <span class="openings-badge">3+ Openings</span>
+                    <div class="apply-arrow"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Job 2: Telecaller -->
+            <div class="job-card" onclick="openApplyModal('Telecaller')">
+                <div class="lottie-icon">
+                    <lottie-player src="../assets/lottie/Mobile chat dialog application interface.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+                </div>
+                <div class="job-info">
+                    <h3>Telecaller</h3>
+                    <p class="job-desc">The voice of Digitech. Handle outbound calls, follow up on leads, and maintain excellent customer communication standards.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Communication</span>
+                        <span class="job-tag">Cold Calling</span>
+                        <span class="job-tag">Client Support</span>
+                    </div>
+                </div>
+                <div class="job-action">
+                    <span class="openings-badge">1 Opening</span>
+                    <div class="apply-arrow"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Job 3: Social Media Manager -->
+            <div class="job-card" onclick="openApplyModal('Social Media Manager')">
+                <div class="lottie-icon">
+                    <lottie-player src="../assets/lottie/social media marketing.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+                </div>
+                <div class="job-info">
+                    <h3>Social Media Manager</h3>
+                    <p class="job-desc">Curate viral content and manage our brand presence across Instagram, LinkedIn, and X. Data-driven creativity required.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Content Strategy</span>
+                        <span class="job-tag">Instagram/LinkedIn</span>
+                        <span class="job-tag">Analytics</span>
+                    </div>
+                </div>
+                <div class="job-action">
+                    <span class="openings-badge">1 Opening</span>
+                    <div class="apply-arrow"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Job 4: Graphics & Video Editing -->
+            <div class="job-card" onclick="openApplyModal('Graphics & Video Editor')">
+                <div class="lottie-icon">
+                    <lottie-player src="../assets/lottie/Web Design.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+                </div>
+                <div class="job-info">
+                    <h3>Graphics & Video Editor</h3>
+                    <p class="job-desc">Bring visual stories to life. Proficiency in Premiere Pro, After Effects, and Photoshop to create stunning reels and ads.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Premiere Pro</span>
+                        <span class="job-tag">After Effects</span>
+                        <span class="job-tag">Photoshop</span>
+                    </div>
+                </div>
+                <div class="job-action">
+                    <span class="openings-badge">1 Opening</span>
+                    <div class="apply-arrow"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Job 5: Full Stack Developer -->
+            <div class="job-card" onclick="openApplyModal('Full Stack Developer')">
+                <div class="lottie-icon">
+                    <lottie-player src="../assets/lottie/web development.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+                </div>
+                <div class="job-info">
+                    <h3>Full Stack Developer</h3>
+                    <p class="job-desc">Architect scalable solutions. Must have deep expertise in our core stack and ability to ship production-grade code.</p>
+                    <div class="job-tags" style="flex-wrap: wrap;">
+                        <span class="job-tag">Django</span>
+                        <span class="job-tag">React</span>
+                        <span class="job-tag">Postgres SQL</span>
+                        <span class="job-tag">Node JS</span>
+                        <span class="job-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="job-action">
+                    <span class="openings-badge">1 Opening</span>
+                    <div class="apply-arrow"><i class="fa fa-arrow-right"></i></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HIRING PROCEDURE (Creative Timeline) -->
+    <section id="procedure" class="procedure-section">
+        <div class="container">
+            <h2 class="procedure-title">Our Hiring <span>Process</span></h2>
+            
+            <div class="timeline-container">
+                
+                <!-- Step 1 (Left) -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="step-number-timeline">01</div>
+                        <h3>Application & Review</h3>
+                        <p>Submit your best work. We don't just look at CVs; we look at passion, portfolio, and code quality. If you stand out, we'll reach out.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 (Right) -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="step-number-timeline">02</div>
+                        <h3>Technical Interview</h3>
+                        <p>A deep dive into your skills. Expect real-world problem-solving scenarios, architectural discussions, and a vibe check with the team.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 (Left) -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="step-number-timeline">03</div>
+                        <h3>Final Offer</h3>
+                        <p>We believe in quick decisions. If it's a match, you'll receive a competitive offer. Welcome to the team where growth knows no bounds.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- APPLY SECTION (Premium Dark Footer) -->
+    <section id="apply" class="apply-section">
+        <div class="apply-bg-glow"></div>
+        <div class="container apply-content">
+            <h2 class="apply-title">Ready to Make an Impact?</h2>
+            <p class="apply-desc">Your journey to excellence starts here.</p>
+            <div class="cta-box">
+                <span style="color: #888; text-transform: uppercase;">Send your CV directly to</span>
+                <a href="mailto:official@thedigitechsolutions.com" class="email-link">official@thedigitechsolutions.com</a>
+                <span style="color: #666; font-size: 0.9rem;">— OR —</span>
+                <a href="https://api.whatsapp.com/send?phone=919822857421" target="_blank" class="chat-btn"><i class="fab fa-whatsapp"></i> Chat with HR</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION FORM MODAL (Clean, No Blur Issues) -->
+    <div id="applyModal" class="apply-modal">
+        <div class="modal-backdrop" onclick="closeApplyModal()"></div>
+        <div class="modal-card">
+            <button class="close-modal-btn" onclick="closeApplyModal()">&times;</button>
+            <h3 class="modal-title">Apply for <span id="modalJobTitle" style="color:var(--primary-dark);">Role</span></h3>
+            <p class="modal-subtitle">Join us and build the future.</p>
+            
+            <form id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Highest Education</label>
+                        <input type="text" required placeholder="Ex: B.Tech, MCA">
+                    </div>
+                    <div class="form-group">
+                        <label>CGPA / Percentage</label>
+                        <input type="text" required placeholder="Ex: 8.5 or 85%">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Skills <small>(Press Enter to add)</small></label>
+                    <!-- SKILLS CAPSULE INPUT -->
+                    <div class="skills-input-container" onclick="document.getElementById('skillInput').focus()">
+                        <div id="skillsList" class="skills-list"></div>
+                        <input type="text" id="skillInput" placeholder="Add skill..." onkeydown="handleSkillInput(event)">
+                    </div>
+                    <input type="hidden" id="skillsHiddenInput" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Joining Availability</label>
+                    <select required>
+                        <option value="" disabled selected>Select availability</option>
+                        <option value="immediate">Immediate</option>
+                        <option value="15days">Within 15 Days</option>
+                        <option value="1month">1 Month</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" style="width: 100%;">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .apply-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 0.3s ease;
+        }
+        .apply-modal.active { opacity: 1; pointer-events: all; }
+
+        .modal-backdrop {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Slightly lighter solid overlay */
+            z-index: 1; /* Explicit low z-index */
+        }
+
+        .modal-card {
+            background: #fff; width: 100%; max-width: 550px; padding: 40px;
+            border-radius: 20px; position: relative; z-index: 100; /* Explicit high z-index */
+            transform: translateY(30px) scale(0.95);
+            transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            max-height: 90vh; overflow-y: auto;
+        }
+        .apply-modal.active .modal-card { transform: translateY(0) scale(1); }
+        
+        /* Ensure pointer events don't get trapped in Lottie */
+        .job-card lottie-player { pointer-events: none; }
+
+        .close-modal-btn {
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(0,0,0,0.05); border: none; width: 36px; height: 36px;
+            border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        .close-modal-btn:hover { background: #fee; color: red; transform: rotate(90deg); }
+
+        .modal-title { font-size: 1.8rem; font-weight: 800; color: #333; margin-bottom: 5px; }
+        .modal-subtitle { color: #888; font-size: 0.95rem; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #555; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px 16px; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: 0.3s; background: #fcfcfc;
+        }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary-dark); background: #fff; outline: none; }
+        .submit-btn { background: var(--primary-dark); color: #fff; padding: 15px; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent-lime); color: var(--primary-dark); transform: translateY(-2px); }
+        
+        /* SKILLS CAPSULE STYLES */
+        .skills-input-container {
+            border: 2px solid #eee; border-radius: 10px; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; background: #fcfcfc; cursor: text;
+        }
+        .skills-input-container:focus-within { border-color: var(--primary-dark); background: #fff; }
+        .skill-tag {
+            background: #eef; color: var(--primary-dark); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 8px;
+        }
+        .skill-tag span { cursor: pointer; font-weight: bold; color: #999; font-size: 1.1em; line-height: 1; }
+        .skill-tag span:hover { color: red; }
+        #skillInput { border: none !important; background: transparent !important; padding: 0 !important; width: auto; flex-grow: 1; min-width: 100px; height: auto; }
+        #skillInput:focus { outline: none; }
+
+        /* ARROW FIX */
+        .apply-arrow {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: var(--primary-dark); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; transition: 0.3s;
+        }
+        .job-card:hover .apply-arrow {
+            background: var(--accent-lime); color: var(--primary-dark); transform: rotate(-45deg);
+        }
+
+        @media(max-width:600px){ .modal-card { padding: 30px 20px; width: 95%; } .form-row { grid-template-columns: 1fr; gap: 0; } }
+    </style>
+
+    <script>
+        // --- MODAL LOGIC ---
+        function openApplyModal(jobTitle) {
+            document.getElementById('modalJobTitle').innerText = jobTitle;
+            document.getElementById('applyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            clearSkills(); // Reset skills
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function submitApplication(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.submit-btn');
+            const originalText = btn.innerText;
+
+            // Validate skills
+            if (skills.length === 0) {
+                alert('Please add at least one skill.');
+                return;
+            }
+            document.getElementById('skillsHiddenInput').value = skills.join(', ');
+
+            btn.innerText = 'Submitting...';
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                alert('Thank you! Your application has been submitted successfully.\nHR will review your skills: ' + skills.join(', '));
+                closeApplyModal();
+                e.target.reset();
+                clearSkills();
+                btn.innerText = originalText;
+                btn.style.opacity = '1';
+            }, 1000);
+        }
+
+        // --- SKILLS CHIP LOGIC ---
+        let skills = [];
+        const skillsList = document.getElementById('skillsList');
+        const skillInput = document.getElementById('skillInput');
+
+        function handleSkillInput(e) {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                const val = skillInput.value.trim().replace(',', '');
+                if (val && !skills.includes(val)) {
+                    addSkill(val);
+                }
+                skillInput.value = '';
+            }
+            // Backspace to remove last tag
+            if (e.key === 'Backspace' && skillInput.value === '' && skills.length > 0) {
+                removeSkill(skills.length - 1);
+            }
+        }
+
+        function addSkill(text) {
+            skills.push(text);
+            renderSkills();
+        }
+
+        function removeSkill(index) {
+            skills.splice(index, 1);
+            renderSkills();
+        }
+        
+        function clearSkills() {
+            skills = [];
+            renderSkills();
+        }
+
+        function renderSkills() {
+            skillsList.innerHTML = '';
+            skills.forEach((skill, index) => {
+                const tag = document.createElement('div');
+                tag.className = 'skill-tag';
+                tag.innerHTML = `${skill} <span onclick="event.stopPropagation(); removeSkill(${index})">&times;</span>`;
+                skillsList.appendChild(tag);
+            });
+        }
+    </script>
+
+    <!-- Global Footer Container -->
+    <div id="global-footer-container"></div>
+
+    <!-- JS here -->
+    <script src="../assets/js/vendor/jquery.js"></script>
+    <script src="../assets/js/bootstrap-bundle.js"></script>
+    <script src="../assets/js/tp-cursor.js"></script>
+    <!-- Lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
+    <!-- Load Footer -->
+    <script src="../assets/js/global-footer.js"></script>
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate Timeline Items
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            gsap.fromTo(item, 
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Animate Central Line
+        gsap.fromTo('.timeline-container::after',
+            { height: 0 },
+            {
+                height: '100%',
+                duration: 1.5,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: '.timeline-container',
+                    start: "top 70%",
+                    end: "bottom 70%",
+                    scrub: true
+                }
+            }
+        );
+        
+        // Floating Orbs Animation
+        gsap.to(".orb-1", {
+            y: 30,
+            x: 20,
+            duration: 4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+        
+        gsap.to(".orb-2", {
+            y: -40,
+            x: -30,
+            duration: 5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+    </script>
+</body>
+</html>

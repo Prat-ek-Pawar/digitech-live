@@ -420,6 +420,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <ul class="uni-nav-list">
                     <li class="uni-nav-item"><a href="/index.html" class="uni-nav-link">Home</a></li>
                     <li class="uni-nav-item"><a href="/about-us.html" class="uni-nav-link">About</a></li>
+                    <li class="uni-nav-item"><a href="/service/career.html" class="uni-nav-link">Career</a></li>
+                    <li class="uni-nav-item"><a href="/blog.html" class="uni-nav-link">Blog</a></li>
                     
                     <li class="uni-nav-item">
                         <a href="javascript:void(0)" class="uni-nav-link">
@@ -571,6 +573,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
 
+            <a href="/blog.html" class="uni-mob-link">Blog</a>
+            <a href="/service/career.html" class="uni-mob-link">Career</a>
             <a href="/contact.html" class="uni-mob-link">Contact</a>
 
             <div class="uni-mob-social">

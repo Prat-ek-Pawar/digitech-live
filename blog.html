@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog - The Digitech Solutions</title>
+    <meta name="description" content="Explore our latest thoughts, insights, and trends on digital marketing, web development, and branding.">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/the-digitech-solutions-favicon.png">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+    <link rel="stylesheet" href="assets/css/spacing.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Premium Light Theme Colors */
+            --primary-dark: #040316;
+            --accent-lime: #dafa66; 
+            --accent-purple: #7463ff;
+            --text-main: #1d1d24;
+            --text-light: #5d5d64;
+            
+            /* UI colors */
+            --body-bg: #f3f5f9; /* Slight grey-blue tint for depth */
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 40px rgba(4, 3, 22, 0.06);
+            --card-hover-shadow: 0 20px 60px rgba(4, 3, 22, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section (Premium Light) --- */
+        .blog-hero {
+            position: relative;
+            padding: 140px 0 60px; /* Reduced padding */
+            background: linear-gradient(135deg, #ffffff 0%, #eef1f5 100%);
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .blog-hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Decorative Elements (Subtle) */
+        .decoration-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .decoration-orb.top-right { background: var(--accent-purple); top: -100px; right: -100px; }
+        .decoration-orb.bottom-left { background: var(--accent-lime); bottom: -100px; left: -100px; }
+
+        /* --- Animated SVG Backgrounds --- */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            top: 15%; left: 5%;
+            width: 120px;
+            color: var(--accent-purple);
+            animation-duration: 8s;
+        }
+
+        .shape-2 {
+            bottom: 20%; right: 5%;
+            width: 180px;
+            color: var(--accent-lime);
+            animation: drift 10s ease-in-out infinite;
+        }
+        
+        .shape-3 {
+            bottom: 30%; left: 10%;
+            width: 80px;
+            color: var(--primary-dark);
+            opacity: 0.05;
+            animation-duration: 8s;
+            animation-direction: reverse;
+        }
+
+        /* Hero Text Z-Index Fix */
+        .blog-hero .container { position: relative; z-index: 1; }
+
+        /* --- Blog Layout --- */
+        .blog-container {
+            padding: 100px 0 140px;
+            background: var(--body-bg);
+        }
+
+        /* Blog Post Card (High Contrast) */
+        .blog-card {
+            background: var(--card-bg);
+            border: none; /* Removed border for specialized shadow look */
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--card-shadow);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .blog-thumb {
+            width: 100%;
+            height: 260px; /* Increased height */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .blog-card:hover .blog-thumb img {
+            transform: scale(1.08); /* Smoother zoom */
+        }
+
+        .blog-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-dark);
+            padding: 8px 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .blog-content {
+            padding: 35px; /* More breathing room */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-meta {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+        }
+        
+        .blog-meta i { color: var(--accent-purple); margin-right: 6px; }
+
+        .blog-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .blog-title a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .blog-title a:hover { color: var(--accent-purple); }
+
+        .blog-excerpt {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .read-more-link {
+            font-weight: 700;
+            color: #ffffff; /* White Text */
+            background: var(--primary-dark); /* Dark BG */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            padding: 12px 25px; /* Button sizing */
+            border-radius: 50px;
+            margin-top: auto; /* Push to bottom if flex column */
+        }
+        .read-more-link:hover { 
+            gap: 15px; 
+            background: var(--accent-purple); 
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(116, 99, 255, 0.3);
+        }
+        
+        .read-more-link i { font-size: 0.8em; }
+
+        /* Sidebar Widgets (Floating clean look) */
+        .sidebar-widget {
+            background: var(--card-bg);
+            border: none;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .widget-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f5;
+            position: relative;
+        }
+        
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-purple);
+        }
+
+
+        /* Search Widget */
+        .search-form {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 50px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: #333;
+            padding: 0 15px;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-dark);
+            outline: none;
+            background: #fff;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 50px;
+            width: 50px;
+            background: transparent;
+            border: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Recent Posts Widget */
+        .recent-post-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .recent-post-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .recent-thumb {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .recent-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recent-info h5 {
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .recent-info h5 a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .recent-info h5 a:hover {
+            color: #555;
+        }
+
+        .recent-date {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Categories List */
+        .cat-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cat-list li {
+            margin-bottom: 12px;
+        }
+
+        .cat-list li a {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            text-decoration: none;
+            padding: 8px 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .cat-list li a:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+
+        .cat-count {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #333;
+        }
+        
+        .cat-list li a:hover .cat-count {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        /* Tags Cloud */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-cloud a {
+            display: inline-block;
+            background: #f5f5f5;
+            color: #666;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .tag-cloud a:hover {
+            background: #fff;
+            color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+    </style>
+    
+    <!-- Load Global Header Script -->
+    <script src="assets/js/global-header.js"></script>
+</head>
+
+<body class="tp-magic-cursor">
+
+    <!-- Unique Global Header Container -->
+    <div id="global-header-container"></div>
+
+    <!-- Magic Cursor -->
+    <div id="magic-cursor" class="cursor-white-bg">
+        <div id="ball"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="blog-hero">
+        <div class="decoration-orb top-right"></div>
+        <div class="decoration-orb bottom-left"></div>
+        
+        <!-- Animated SVG Shapes -->
+        <div class="hero-shapes">
+            <!-- Shape 1: Squiggle -->
+            <svg class="shape shape-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,79.6,-46.3C87.4,-33.5,90.1,-18,88.4,-2.9C86.7,12.2,80.6,26.9,71.5,39.3C62.4,51.7,50.3,61.8,37.2,69.5C24.1,77.2,10,82.5,-3.6,88.7C-17.2,94.9,-30.3,101.9,-41.8,93.6C-53.3,85.3,-63.2,61.7,-70.2,40.1C-77.2,18.5,-81.3,-1.1,-77.4,-18.2C-73.5,-35.3,-61.6,-49.9,-48.3,-57.4C-35,-64.9,-20.3,-65.3,-5.7,-55.4L0,-50Z" transform="translate(100 100)" />
+            </svg>
+            
+            <!-- Shape 2: Circle Mesh -->
+            <svg class="shape shape-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                <circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+            
+            <!-- Shape 3: Triangle -->
+            <svg class="shape shape-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,15 90,85 10,85" fill="none" stroke="currentColor" stroke-width="4" />
+            </svg>
+        </div>
+
+        <div class="container relative-layer">
+            <h1>Our Latest <span style="color:var(--accent-lime);">Insights</span></h1>
+            <p>Expert articles, trends, and strategies found nowhere else. Stay ahead in the digital world with The Digitech Solutions.</p>
+        </div>
+    </section>
+
+    <!-- BLOG CONTENT -->
+    <section class="blog-container">
+        <div class="container">
+            <div class="row">
+                
+                <!-- Blog Grid (Left) -->
+                <div class="col-lg-8">
+                    <div class="row g-4" id="blog-grid">
+                        
+                        <!-- Post 1: Digital Marketing Pune -->
+                        <div class="col-md-6 blog-item" data-category="Digital Marketing">
+                            <article class="blog-card">
+                                <div class="blog-thumb">
+                                    <span class="blog-tag">Digital Marketing</span>
+                                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Digital Marketing Agency in Pune">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-user"></i> Digitech Team</span>
+                                        <span><i class="far fa-calendar"></i> Dec 12, 2025</span>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">Why Every Business in Pune Needs Digital Marketing in 2025</a></h3>
+                                    <p class="blog-excerpt">Discover how Pune’s digital landscape is shifting. From local SEO dominance to precision targeting, find out why a digital-first approach is no longer optional for businesses in Maharashtra.</p>
+                                    <a href="blog-details.html" class="read-more-link">Read Analysis <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 2: Web Development -->
+                        <div class="col-md-6 blog-item" data-category="Web Development">
+                            <article class="blog-card">
+                                <div class="blog-thumb">
+                                    <span class="blog-tag">Web Development</span>
+                                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop" alt="Custom Website Design vs Template">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-user"></i> Dev Desk</span>
+                                        <span><i class="far fa-calendar"></i> Dec 10, 2025</span>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">Custom Website vs. Templates: What Works Best for SMBs?</a></h3>
+                                    <p class="blog-excerpt">Should you build a custom React application or use a WordPress template? We break down performance, SEO, and scalability to help Indian businesses make the right investment.</p>
+                                    <a href="blog-details.html" class="read-more-link">See Comparison <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 3: SEO Strategy -->
+                        <div class="col-md-6 blog-item" data-category="SEO & Traffic">
+                            <article class="blog-card">
+                                <div class="blog-thumb">
+                                    <span class="blog-tag">SEO Strategy</span>
+                                    <img src="https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?q=80&w=800&auto=format&fit=crop" alt="Rank 1 on Google SEO Checklist">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-user"></i> SEO Specialist</span>
+                                        <span><i class="far fa-calendar"></i> Dec 05, 2025</span>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">The Ultimate SEO Checklist to Rank #1 on Google in 2025</a></h3>
+                                    <p class="blog-excerpt">SEO is changing with AI Overviews and Core Updates. Here is our proven 10-step checklist to secure the top spot on search engines and drive massive organic traffic to your site.</p>
+                                    <a href="blog-details.html" class="read-more-link">Get The Checklist <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Post 4: Social Media -->
+                        <div class="col-md-6 blog-item" data-category="Digital Marketing">
+                            <article class="blog-card">
+                                <div class="blog-thumb">
+                                    <span class="blog-tag">Social Media</span>
+                                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="Social Media Growth Strategy">
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span><i class="far fa-user"></i> Social Team</span>
+                                        <span><i class="far fa-calendar"></i> Nov 28, 2025</span>
+                                    </div>
+                                    <h3 class="blog-title"><a href="blog-details.html">How to 10x Your Brand's Reach with Short-Form Video</a></h3>
+                                    <p class="blog-excerpt">Reels and Shorts are the kings of engagement. Learn the psychological hooks and content strategies that turn passive scrollers into active followers and loyal customers.</p>
+                                    <a href="blog-details.html" class="read-more-link">Learn Strategy <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    
+                    <!-- Pagination (Static for now) -->
+                    <div class="row mt-5" style="margin-top: 50px !important;">
+                        <div class="col-12 text-center">
+                            <a href="#" class="hero-btn" style="background:transparent; border:1px solid var(--accent-lime); color:white; padding: 12px 30px; border-radius: 50px; font-weight: 700; transition: 0.3s;" onmouseover="this.style.background='var(--accent-lime)'; this.style.color='var(--primary-dark)';" onmouseout="this.style.background='transparent'; this.style.color='var(--primary-dark)';" onclick="return false;">Load More Articles</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar (Right) -->
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <aside class="sidebar-wrapper ps-lg-4">
+                        
+                        <!-- Search Widget -->
+                        <div class="sidebar-widget">
+                            <h4 class="widget-title">Search</h4>
+                            <form class="search-form" onsubmit="return false;">
+                                <input type="text" class="search-input" id="blog-search" placeholder="Search keywords..." onkeyup="filterPosts()">
+                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                        <!-- Recent Posts Widget -->
+                        <div class="sidebar-widget">
+                            <h4 class="widget-title">Recent Posts</h4>
+                            
+                            <div class="recent-post-item">
+                                <div class="recent-thumb">
+                                    <img src="https://images.unsplash.com/photo-1572410908411-927ebb07e92d?q=80&w=200&auto=format&fit=crop" alt="Thumb">
+                                </div>
+                                <div class="recent-info">
+                                    <h5><a href="blog-details.html">5 Proven SEO Strategies for 2026</a></h5>
+                                    <span class="recent-date">Dec 10, 2025</span>
+                                </div>
+                            </div>
+                            
+                            <div class="recent-post-item">
+                                <div class="recent-thumb">
+                                    <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=200&auto=format&fit=crop" alt="Thumb">
+                                </div>
+                                <div class="recent-info">
+                                    <h5><a href="blog-details.html">Why Your Business Needs a Funnel</a></h5>
+                                    <span class="recent-date">Dec 05, 2025</span>
+                                </div>
+                            </div>
+
+                            <div class="recent-post-item">
+                                <div class="recent-thumb">
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=200&auto=format&fit=crop" alt="Thumb">
+                                </div>
+                                <div class="recent-info">
+                                    <h5><a href="blog-details.html">Future of Web Development</a></h5>
+                                    <span class="recent-date">Nov 28, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Widget -->
+                        <div class="sidebar-widget">
+                            <h4 class="widget-title">Categories</h4>
+                            <ul class="cat-list">
+                                <li><a href="javascript:void(0)" onclick="filterCategory('All')">All Categories</a></li>
+                                <li><a href="javascript:void(0)" onclick="filterCategory('Digital Marketing')">Digital Marketing <span class="cat-count">12</span></a></li>
+                                <li><a href="javascript:void(0)" onclick="filterCategory('Web Development')">Web Development <span class="cat-count">08</span></a></li>
+                                <li><a href="javascript:void(0)" onclick="filterCategory('Branding')">Branding <span class="cat-count">05</span></a></li>
+                                <li><a href="javascript:void(0)" onclick="filterCategory('SEO & Traffic')">SEO & Traffic <span class="cat-count">10</span></a></li>
+                                <li><a href="javascript:void(0)" onclick="filterCategory('Case Studies')">Case Studies <span class="cat-count">03</span></a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget">
+                            <h4 class="widget-title">Tags</h4>
+                            <div class="tag-cloud">
+                                <a href="#">Business</a>
+                                <a href="#">Marketing</a>
+                                <a href="#">Design</a>
+                                <a href="#">Technology</a>
+                                <a href="#">Startups</a>
+                                <a href="#">Growth</a>
+                                <a href="#">Tips</a>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="global-footer-container"></div>
+    <script src="assets/js/global-footer.js"></script>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/bootstrap-bundle.js"></script>
+    <script src="assets/js/tp-cursor.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        function filterCategory(category) {
+            const posts = document.querySelectorAll('.blog-item');
+            
+            posts.forEach(post => {
+                if (category === 'All' || post.getAttribute('data-category') === category) {
+                    post.style.display = 'block';
+                    // Re-add animation class if needed for smooth transition
+                    post.classList.add('animate__fadeIn'); 
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+
+        function filterPosts() {
+            const input = document.getElementById('blog-search');
+            const filter = input.value.toLowerCase();
+            const posts = document.querySelectorAll('.blog-item');
+
+            posts.forEach(post => {
+                const title = post.querySelector('.blog-title').innerText.toLowerCase();
+                const excerpt = post.querySelector('.blog-excerpt').innerText.toLowerCase();
+                
+                if (title.includes(filter) || excerpt.includes(filter)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
